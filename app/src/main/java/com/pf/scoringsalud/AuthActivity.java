@@ -33,6 +33,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class AuthActivity extends AppCompatActivity {
     private int GOOGLE_SIGN_IN = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class AuthActivity extends AppCompatActivity {
         //Analitycs
         FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
-        bundle.putString("message","integracion firebase completa");
+        bundle.putString("message", "integracion firebase completa");
         analytics.logEvent("InitScreen", bundle);
 
         //setup
@@ -56,18 +57,18 @@ public class AuthActivity extends AppCompatActivity {
         authLayout.setVisibility(View.VISIBLE);
     }
 
-    private void session(){
+    private void session() {
         SharedPreferences preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
-        String email = preferences.getString("email",null);
-        String provider = preferences.getString("provider",null);
-        if(email != null && provider!= null ){
+        String email = preferences.getString("email", null);
+        String provider = preferences.getString("provider", null);
+        if (email != null && provider != null) {
             LinearLayout authLayout = findViewById(R.id.authLayout);
             authLayout.setVisibility(View.INVISIBLE);
-            showHome(email,ProviderType.valueOf(provider));
+            showHome(email, ProviderType.valueOf(provider));
         }
     }
 
-    private void setup(){
+    private void setup() {
         Button botonRegistro = findViewById(R.id.logOutButton);
         Button botonLogin = findViewById(R.id.loginButton);
         final Button googleButton = findViewById(R.id.googleButton);
@@ -77,13 +78,13 @@ public class AuthActivity extends AppCompatActivity {
         botonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(pass.getText().toString())  ){
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.getText().toString(),pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if (!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(pass.getText().toString())) {
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.getText().toString(), pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
-                            }else{
+                            } else {
                                 showAlert(task.getException().toString());
                             }
                         }
@@ -94,13 +95,13 @@ public class AuthActivity extends AppCompatActivity {
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(pass.getText().toString())  ){
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(),pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if (!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(pass.getText().toString())) {
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email.getText().toString(), pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
-                            }else{
+                            } else {
                                 showAlert(task.getException().toString());
                             }
                         }
@@ -124,7 +125,7 @@ public class AuthActivity extends AppCompatActivity {
         });
     }
 
-    private void showAlert(String e){
+    private void showAlert(String e) {
         AlertDialog.Builder builder = new AlertDialog.Builder(AuthActivity.this);
         builder.setTitle("Error");
         builder.setMessage(e);
@@ -133,10 +134,10 @@ public class AuthActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void showHome(String email, ProviderType provider){
-        Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-        intent.putExtra("email",email);
-        intent.putExtra("provider",provider.name());
+    private void showHome(String email, ProviderType provider) {
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.putExtra("email", email);
+        intent.putExtra("provider", provider.name());
         startActivity(intent);
     }
 
@@ -144,17 +145,17 @@ public class AuthActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==GOOGLE_SIGN_IN){
+        if (requestCode == GOOGLE_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                if (account != null ){
+                if (account != null) {
                     AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
                     FirebaseAuth.getInstance().signInWithCredential(credential);
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         showHome(task.getResult().getEmail(), ProviderType.GOOGLE);
-                    }else{
+                    } else {
                         showAlert(task.getException().toString());
                     }
                 }

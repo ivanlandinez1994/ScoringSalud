@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         //setup
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        setup(bundle.getString("email"),bundle.getString("provider"));
+        setup(bundle.getString("email"), bundle.getString("provider"));
 
         //Persistir Datos
         SharedPreferences.Editor preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         preferences.apply();
     }
 
-    private void setup(String email, String provider){
+    private void setup(String email, String provider) {
         TextView correoElectronico = findViewById(R.id.emailTextView);
         TextView prov = findViewById(R.id.providerTextView);
         Button botonLogOut = findViewById(R.id.logOutButton);
