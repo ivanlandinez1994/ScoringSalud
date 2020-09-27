@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.prefs.Preferences;
@@ -36,6 +39,20 @@ public class HomeActivity extends AppCompatActivity {
         preferences.putString("email", bundle.getString("email"));
         preferences.putString("provider", bundle.getString("provider"));
         preferences.apply();
+
+
+        //drawer, comportamiento del boton para abrir drawer
+        final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        //colores en los iconos del drawer
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setItemIconTintList(null);
     }
 
     private void setup(String email, String provider) {
@@ -58,5 +75,7 @@ public class HomeActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
     }
 }

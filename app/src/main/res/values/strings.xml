@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Scoring Salud</string>
     <string name="prefs_file">com.pf.scoringsalud.PREFERENCE_FILE_KEY</string>
+    <string name="profile">Profile</string>
+    <string name="rutina">Rutina</string>
+    <string name="logors">Logors</string>
+    <string name="progreso">Progreso</string>
+    <string name="jonh_doe">Jonh Doe</string>
 </resources>
