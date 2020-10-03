@@ -109,10 +109,12 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-
+        app:itemBackground="@drawable/nav_view_item_background"
         app:menu="@menu/navigation_menu"
         app:headerLayout="@layout/layout_navigation_header"
-        />
+
+
+    />
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

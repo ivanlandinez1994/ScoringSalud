@@ -4,31 +4,37 @@
     <item
         android:id="@+id/menuHome"
         android:icon="@drawable/cabin"
-        android:title="@string/home"/>
+        android:title="@string/home"
+        android:checkable="true"/>
     <item
         android:id="@+id/menuProfile"
         android:icon="@drawable/card"
-        android:title="@string/profile"/>
+        android:title="@string/profile"
+        android:checkable="true"/>
 
        <item
         android:id="@+id/menuRutina"
         android:icon="@drawable/calendar"
-        android:title="@string/rutina"/>
+        android:title="@string/rutina"
+           android:checkable="true"/>
 
         <item
         android:id="@+id/menuLogros"
         android:icon="@drawable/medal"
-        android:title="@string/logors"/>
+        android:title="@string/logors"
+        android:checkable="true"/>
 
         <item
         android:id="@+id/menuProgreso"
         android:icon="@drawable/goal"
-        android:title="@string/progreso"/>
+        android:title="@string/progreso"
+        android:checkable="true"/>
 
         <item
         android:id="@+id/about"
         android:icon="@drawable/info"
-        android:title="About"/>
+        android:title="About"
+        android:checkable="true" />
 
 
 
