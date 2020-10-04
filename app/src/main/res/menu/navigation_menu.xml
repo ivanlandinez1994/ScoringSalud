@@ -38,6 +38,7 @@
 
     <item
         android:id="@+id/salir"
+        android:icon="@drawable/exit"
         android:title="Log Out"
         android:checkable="true" />
 

@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         //setup
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        
+
 
         //Persistir Datos
         SharedPreferences.Editor preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
