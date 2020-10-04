@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/menuProfile">
+
+    <fragment
+        android:id="@+id/menuProfile"
+        android:name="com.pf.scoringsalud.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/menuLogros"
+        android:name="com.pf.scoringsalud.LogrosFragment"
+        android:label="Logros"
+        tools:layout="@layout/fragment_logros" />
+    <fragment
+        android:id="@+id/menuProgreso"
+        android:name="com.pf.scoringsalud.ProgresoFragment"
+        android:label="Progreso"
+        tools:layout="@layout/fragment_progreso" />
+    <fragment
+        android:id="@+id/menuRutina"
+        android:name="com.pf.scoringsalud.RutinaFragment"
+        android:label="fraRutina"
+        tools:layout="@layout/fragment_rutina" />
+    <fragment
+        android:id="@+id/about"
+        android:name="com.pf.scoringsalud.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/menuHome"
+        android:name="com.pf.scoringsalud.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/salir"
+        android:name="com.pf.scoringsalud.salir"
+        android:label="fragment_salir"
+        tools:layout="@layout/fragment_salir" />
+
+
+</navigation>
