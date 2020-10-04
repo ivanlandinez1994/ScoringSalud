@@ -8,13 +8,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -53,7 +53,7 @@ public class AuthActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        LinearLayout authLayout = findViewById(R.id.authLayout);
+        ConstraintLayout authLayout = findViewById(R.id.authLayout);
         authLayout.setVisibility(View.VISIBLE);
     }
 
@@ -62,20 +62,20 @@ public class AuthActivity extends AppCompatActivity {
         String email = preferences.getString("email", null);
         String provider = preferences.getString("provider", null);
         if (email != null && provider != null) {
-            LinearLayout authLayout = findViewById(R.id.authLayout);
+            ConstraintLayout authLayout = findViewById(R.id.authLayout);
             authLayout.setVisibility(View.INVISIBLE);
             showHome(email, ProviderType.valueOf(provider));
         }
     }
 
     private void setup() {
-        Button botonRegistro = findViewById(R.id.logOutButton);
+        //Button botonRegistro = findViewById(R.id.logOutButton);
         Button botonLogin = findViewById(R.id.loginButton);
         final Button googleButton = findViewById(R.id.googleButton);
         final TextView email = findViewById(R.id.emailEditText);
         final TextView pass = findViewById(R.id.passwordEditText);
 
-        botonRegistro.setOnClickListener(new View.OnClickListener() {
+       /* botonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(pass.getText().toString())) {
@@ -91,7 +91,7 @@ public class AuthActivity extends AppCompatActivity {
                     });
                 }
             }
-        });
+        });*/
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
