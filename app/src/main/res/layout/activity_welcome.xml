@@ -40,14 +40,14 @@
       android:id="@+id/buttonW"
       android:layout_width="279dp"
       android:layout_height="54dp"
+      android:background="@drawable/rounded_corners"
+      android:radius="23dp"
       android:text="Iniciar"
       android:textColor="@color/white"
-      android:radius="23dp"
-      android:background="@drawable/rounded_corners"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.416"
+      app:layout_constraintHorizontal_bias="0.515"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textView3"
-      app:layout_constraintVertical_bias="0.808" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.831" />
 </androidx.constraintlayout.widget.ConstraintLayout>
