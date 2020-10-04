@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "102370289482",
+    "firebase_url": "https://scoring-salud.firebaseio.com",
+    "project_id": "scoring-salud",
+    "storage_bucket": "scoring-salud.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102370289482:android:90828906f0b278d8f843b3",
+        "android_client_info": {
+          "package_name": "com.pf.scoringsalud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102370289482-ginbn1a8abbr0pooqoj3bjigjlkiolc5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pf.scoringsalud",
+            "certificate_hash": "8f4094d0df9ca9b2cc2c9e90e4f1ed796e0e1241"
+          }
+        },
+        {
+          "client_id": "102370289482-fb8b8e2t0h3ls2pli6fnjg7p5gdcci6g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pf.scoringsalud",
+            "certificate_hash": "2d7ab6b72b6eaa6b7438163f6517e454396542be"
+          }
+        },
+        {
+          "client_id": "102370289482-n2dncdgvhv2r80l580ndb4csu7vr80rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt_HeYn53bgc2skYwqjI-pRNqvhc3G6Fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102370289482-n2dncdgvhv2r80l580ndb4csu7vr80rn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
