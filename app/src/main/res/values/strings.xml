@@ -12,4 +12,6 @@
     <string name="home">Home</string>
     <string name="experta">EXPERTA</string>
     <string name="scoring_salud">Scoring Salud</string>
+    <string name="o_con_tus_credenciales_experta">O con tus credenciales Experta:</string>
+    <string name="inicio_con_google">Inicio con Google</string>
 </resources>
