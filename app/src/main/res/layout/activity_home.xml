@@ -78,26 +78,23 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/emailTextView"
-            android:layout_width="277dp"
-            android:layout_height="46dp"
-            android:text="Email"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutToolBar"
-            app:layout_constraintVertical_bias="0.152" />
 
-        <TextView
-            android:id="@+id/providerTextView"
-            android:layout_width="278dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="44dp"
-            android:text="Proveedor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <fragment

@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
+        //comportamiento para el cierre de sesion desde el drawer
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull
@@ -96,12 +96,10 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void setup(String email, String provider) {
-        TextView correoElectronico = findViewById(R.id.emailTextView);
-        TextView prov = findViewById(R.id.providerTextView);
+
         Button botonLogOut = findViewById(R.id.logOutButton);
 
-        correoElectronico.setText(email);
-        prov.setText(provider);
+
         botonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
