@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Water"
+    tools:context=".WaterActivity"
     android:background="@color/background">
 
 
@@ -30,7 +30,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <ImageView
-                android:id="@+id/imageMenu"
+                android:id="@+id/backBTN"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:contentDescription="@string/app_name"

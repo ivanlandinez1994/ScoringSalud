@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/health"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".Water"></activity>
+        <activity android:name=".WaterActivity"></activity>
         <activity android:name=".Registro" />
         <activity android:name=".AuthActivity" />
         <activity

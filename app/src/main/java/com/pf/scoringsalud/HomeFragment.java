@@ -25,7 +25,7 @@ public class HomeFragment extends Fragment {
         btnAgua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Water.class);
+                Intent intent = new Intent(getActivity(), WaterActivity.class);
                 startActivity(intent);
             }
         });
