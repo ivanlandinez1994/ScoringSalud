@@ -40,7 +40,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'       // <-- Consumo web Api
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2' // <-- Convertir respuesta json a objeto
     //----------------------------------------------------------
-
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
