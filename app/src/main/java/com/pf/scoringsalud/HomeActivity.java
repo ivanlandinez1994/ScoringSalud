@@ -43,8 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //Persistir Datos
         SharedPreferences.Editor preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
-        preferences.putString("email", bundle.getString("email"));
-        preferences.putString("provider", bundle.getString("provider"));
+
         preferences.apply();
 
 
@@ -63,6 +62,7 @@ public class HomeActivity extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
+
 
         //comportamiento para el cierre de sesion desde el drawer
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
@@ -84,7 +84,6 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
