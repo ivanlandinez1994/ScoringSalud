@@ -47,15 +47,17 @@
             android:layout_marginBottom="442dp"
             android:background="@drawable/round_white"
             android:drawableStart="@drawable/fruta_smaller"
+            android:paddingEnd="28dp"
             android:text="Comidas"
             android:textAlignment="textEnd"
-            android:paddingEnd="28dp"
             android:textColor="@color/colorPrimary"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/buttonComSleep"
@@ -83,15 +85,17 @@
             android:layout_marginBottom="157dp"
             android:background="@drawable/round_white"
             android:drawableStart="@drawable/camina_smaller"
+            android:paddingEnd="28dp"
             android:text="Pasos"
             android:textAlignment="textEnd"
-            android:paddingEnd="28dp"
             android:textColor="@color/colorPrimary"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/buttonAgua"
