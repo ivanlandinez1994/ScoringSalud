@@ -20,6 +20,17 @@ public class HomeFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
 
+        // abrir activity ejercicios
+        Button btnEX= view.findViewById(R.id.buttonEjercicios);
+        btnEX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EjerciciosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         // abrir activity agua
         Button btnAgua= view.findViewById(R.id.buttonAgua);
         btnAgua.setOnClickListener(new View.OnClickListener() {
