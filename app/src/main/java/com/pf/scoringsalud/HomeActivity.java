@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.pf.scoringsalud.notifications.NotificationActivity;
 
 import java.util.prefs.Preferences;
 
@@ -36,6 +37,35 @@ public class HomeActivity extends AppCompatActivity {
         preferences.putString("email", bundle.getString("email"));
         preferences.putString("provider", bundle.getString("provider"));
         preferences.apply();
+
+        Button btnGetUser = findViewById(R.id.obtenerUsuario);
+        btnGetUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), GetUser.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnNoti = findViewById(R.id.notificacion);
+        btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnCrearUsuario = findViewById(R.id.crearUsuario);
+        btnCrearUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void setup(String email, String provider) {
