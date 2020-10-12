@@ -1,6 +1,8 @@
 package com.pf.scoringsalud;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pf.scoringsalud.User.User;
+import com.pf.scoringsalud.consumoApi.ApiUsuario;
 import com.pf.scoringsalud.interfaces.UserApi;
 
 import okhttp3.ResponseBody;
@@ -24,12 +27,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends AppCompatActivity {
     String userMail;
-    FirebaseUser userFirebase;
-    EditText userDni;
-    EditText userNombre;
-    EditText userApellido;
-    EditText userEdad;
-    EditText userPuesto;
+    EditText userMailEdit;
+    EditText userDniEdit;
+    EditText userNombreEdit;
+    EditText userApellidoEdit;
+    EditText userEdadEdit;
+    EditText userPuestoEdit;
     Button btnRegister;
     User user;
     @Override
@@ -37,13 +40,17 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        userFirebase = FirebaseAuth.getInstance().getCurrentUser();
-        userMail = userFirebase.getEmail();
-        userDni = findViewById(R.id.userDni);
-        userNombre = findViewById(R.id.userNombre);
-        userApellido = findViewById(R.id.userApellido);
-        userEdad = findViewById(R.id.userEdad);
-        userPuesto = findViewById(R.id.userPuesto);
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        userMail = bundle.getString("email");
+        userMailEdit = findViewById(R.id.userUserEdit);
+        userMailEdit.setText(userMail);
+        userMailEdit.setEnabled(false);
+        userDniEdit = findViewById(R.id.userDniEdit);
+        userNombreEdit = findViewById(R.id.userNombreEdit);
+        userApellidoEdit = findViewById(R.id.userApellidoEdit);
+        userEdadEdit = findViewById(R.id.userEdadEdit);
+        userPuestoEdit = findViewById(R.id.userPuestoEdit);
         btnRegister = findViewById(R.id.btnRegistro);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -51,11 +58,11 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 user = new User();
                 user.setMail(userMail);
-                user.setDni(userDni.getText().toString());
-                user.setNombre(userNombre.getText().toString());
-                user.setApellido(userApellido.getText().toString());
-                user.setEdad(userEdad.getText().toString());
-                user.setPuesto(userPuesto.getText().toString());
+                user.setDni(userDniEdit.getText().toString());
+                user.setNombre(userNombreEdit.getText().toString());
+                user.setApellido(userApellidoEdit.getText().toString());
+                user.setEdad(userEdadEdit.getText().toString());
+                user.setPuesto(userPuestoEdit.getText().toString());
                 user.setPuntos(0);
                 registrar(user);
             }
@@ -63,34 +70,19 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registrar(User user){
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-        final Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.0.120:8081/")
-                .addConverterFactory(GsonConverterFactory.create(gson)).build();
-
-        final UserApi userApi = retrofit.create(UserApi.class);
-        Call<ResponseBody> call=userApi.crearUsuario(user);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    if (response.isSuccessful()) {
-                        Toast.makeText(RegisterActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
-                        Log.i("Success", "Usuario Creado");
-                    }
-                    Log.i("RESPONSE",response.toString());
-                    Log.i("ERROR Successful", retrofit.baseUrl().toString() + response.code());
-                } catch (Exception e) {
-                    Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
-                Log.i("Failure", t.toString());
-            }
-        });
+        ApiUsuario userApi = new ApiUsuario();
+        Response response = userApi.registrarUsuario(user, getApplicationContext());
+        Log.i("Success", user.toString());
+        if (response != null && response.isSuccessful()) {
+            Toast.makeText(RegisterActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+            Log.i("Success", "Usuario Creado");
+            FirebaseUser userFirebase;
+            userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            intent.putExtra("email", userFirebase.getEmail());
+            intent.putExtra("provider", ProviderType.GOOGLE);
+            startActivity(intent);
+        }
+        //Log.i("ERROR Successful", Integer.toString(response.code()));
     }
 }

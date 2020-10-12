@@ -42,8 +42,7 @@
             android:value="@string/default_notification_channel_id" />
 
         <activity android:name=".AuthActivity" />
-        <activity android:name=".Registro"/>
-        <activity android:name=".EjerciciosActivity"></activity>
+        <activity android:name=".EjerciciosActivity" />
         <activity android:name=".WaterActivity" />
         <activity
             android:name=".HomeActivity"
