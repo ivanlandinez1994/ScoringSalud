@@ -129,7 +129,7 @@ public class ApiUsuario {
     }
 
     private void goIntent(Class activityDestino, User user, Context context, String mail){
-        Log.i("Exception catch onResponse: ", activityDestino.toString());
+        Log.i("Inicio Go Intent: ", activityDestino.toString());
         Intent intent;
         if (user!=null){
             intent = new Intent(context, activityDestino);
