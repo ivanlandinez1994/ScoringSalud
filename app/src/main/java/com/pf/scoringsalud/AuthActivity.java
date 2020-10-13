@@ -1,14 +1,22 @@
 package com.pf.scoringsalud;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.Api;
+import com.google.firebase.auth.FirebaseUser;
+import com.pf.scoringsalud.User.User;
+import com.pf.scoringsalud.consumoApi.ApiUsuario;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.NetworkOnMainThreadException;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,13 +24,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -30,10 +36,19 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.pf.scoringsalud.interfaces.UserApi;
 
-public class AuthActivity extends AppCompatActivity {
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class AuthActivity extends AppCompatActivity{
     private int GOOGLE_SIGN_IN = 100;
-
+    private User userFound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,23 +90,6 @@ public class AuthActivity extends AppCompatActivity {
         final TextView email = findViewById(R.id.emailEditText);
         final TextView pass = findViewById(R.id.passwordEditText);
 
-       /* botonRegistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(pass.getText().toString())) {
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.getText().toString(), pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
-                            } else {
-                                showAlert(task.getException().toString());
-                            }
-                        }
-                    });
-                }
-            }
-        });*/
         botonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,10 +133,17 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void showHome(String email, ProviderType provider) {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        intent.putExtra("email", email);
-        intent.putExtra("provider", provider.name());
-        startActivity(intent);
+        Intent intent;
+        FirebaseUser userFirebase;
+        userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+        destActivity(userFirebase.getEmail());
+    }
+
+    private void destActivity(final String email){
+        ApiUsuario usuarioApi = new ApiUsuario();
+        usuarioApi.getUsuarioApiAsincrono(email,
+                HomeActivity.class,
+                AuthActivity.this);
     }
 
     @Override
@@ -167,6 +172,5 @@ public class AuthActivity extends AppCompatActivity {
             }
         }
     }
-
 
 }
