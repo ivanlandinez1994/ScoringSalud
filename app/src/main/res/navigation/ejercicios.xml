@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ejercicios"
-
     app:startDestination="@id/listaEjercicios">
 
     <fragment
@@ -11,4 +10,9 @@
         android:name="com.pf.scoringsalud.ListaEjercicios"
         android:label="fragment_lista_ejercicios"
         tools:layout="@layout/fragment_lista_ejercicios" />
+    <fragment
+        android:id="@+id/ejerDesc"
+        android:name="com.pf.scoringsalud.EjerDesc"
+        android:label="fragment_ejer_desc"
+        tools:layout="@layout/fragment_ejer_desc" />
 </navigation>
