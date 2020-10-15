@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ejercicios"
+
+    app:startDestination="@id/listaEjercicios">
+
+    <fragment
+        android:id="@+id/listaEjercicios"
+        android:name="com.pf.scoringsalud.ListaEjercicios"
+        android:label="fragment_lista_ejercicios"
+        tools:layout="@layout/fragment_lista_ejercicios" />
+</navigation>
