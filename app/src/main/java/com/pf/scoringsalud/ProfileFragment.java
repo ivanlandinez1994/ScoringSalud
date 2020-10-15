@@ -23,8 +23,8 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        //imicio boton back //
-        back = view.findViewById(R.id.back);
+        //ibicio boton back //
+        /*back = view.findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
         });
 
         //fin boton back //
-
+*/
 
         return view;
     }
