@@ -15,4 +15,14 @@
         android:name="com.pf.scoringsalud.EjerDesc"
         android:label="fragment_ejer_desc"
         tools:layout="@layout/fragment_ejer_desc" />
+    <fragment
+        android:id="@+id/ejerRun"
+        android:name="com.pf.scoringsalud.EjerRun"
+        android:label="fragment_ejer_run"
+        tools:layout="@layout/fragment_ejer_run" />
+    <fragment
+        android:id="@+id/ejerEnd2"
+        android:name="com.pf.scoringsalud.EjerEnd"
+        android:label="fragment_ejer_end"
+        tools:layout="@layout/fragment_ejer_end" />
 </navigation>
