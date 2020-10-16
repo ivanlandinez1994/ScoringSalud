@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registrar(User user){
         ApiUsuario userApi = new ApiUsuario();
-        Response response = userApi.registrarUsuario(user, getApplicationContext());
+        Response response = userApi.registrarUsuario(user, HomeActivity.class, getApplicationContext());
         Log.i("Success", user.toString());
         if (response != null && response.isSuccessful()) {
             Toast.makeText(RegisterActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
