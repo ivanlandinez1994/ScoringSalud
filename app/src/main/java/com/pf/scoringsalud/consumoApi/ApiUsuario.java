@@ -55,7 +55,7 @@ public class ApiUsuario {
         return apiUsuario;
     }*/
 
-    public Response<ResponseBody> registrarUsuario(User user,  final Class activityDestino, final Context actualContext){
+    public void registrarUsuario(User user,  final Class activityDestino, final Context actualContext){
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -86,8 +86,6 @@ public class ApiUsuario {
                 Log.i("Failure", t.toString());
             }
         });
-
-        return resp;
     }
 
     public void getUsuarioApiAsincrono(final String mail, final Class activityDestino, final Context actualContext){
