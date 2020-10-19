@@ -71,18 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registrar(User user){
         ApiUsuario userApi = new ApiUsuario();
-        Response response = userApi.registrarUsuario(user, getApplicationContext());
+        userApi.registrarUsuario(user, HomeActivity.class, getApplicationContext());
         Log.i("Success", user.toString());
-        if (response != null && response.isSuccessful()) {
-            Toast.makeText(RegisterActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
-            Log.i("Success", "Usuario Creado");
-            FirebaseUser userFirebase;
-            userFirebase = FirebaseAuth.getInstance().getCurrentUser();
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            intent.putExtra("email", userFirebase.getEmail());
-            intent.putExtra("provider", ProviderType.GOOGLE);
-            startActivity(intent);
-        }
         //Log.i("ERROR Successful", Integer.toString(response.code()));
     }
 }

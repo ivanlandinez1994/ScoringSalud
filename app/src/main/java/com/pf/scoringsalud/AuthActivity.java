@@ -70,6 +70,9 @@ public class AuthActivity extends AppCompatActivity{
         super.onStart();
         ConstraintLayout authLayout = findViewById(R.id.authLayout);
         authLayout.setVisibility(View.VISIBLE);
+
+        setup();
+        session();
     }
 
     private void session() {
@@ -98,6 +101,7 @@ public class AuthActivity extends AppCompatActivity{
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                Log.i("task successful line 105:", task.getResult().getUser().getEmail());
                                 showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
                             } else {
                                 showAlert(task.getException().toString());
@@ -133,17 +137,17 @@ public class AuthActivity extends AppCompatActivity{
     }
 
     private void showHome(String email, ProviderType provider) {
-        Intent intent;
-        FirebaseUser userFirebase;
-        userFirebase = FirebaseAuth.getInstance().getCurrentUser();
-        destActivity(userFirebase.getEmail());
+        try{
+            Log.i("it's home line 143:", email);
+            destActivity(email);
+        }catch(NullPointerException e){
+            Log.i("Exception 146:", e.toString());
+        }
     }
 
     private void destActivity(final String email){
         ApiUsuario usuarioApi = new ApiUsuario();
-        usuarioApi.getUsuarioApiAsincrono(email,
-                HomeActivity.class,
-                AuthActivity.this);
+        usuarioApi.getUsuarioApiAsincrono(email, HomeActivity.class, AuthActivity.this);
     }
 
     @Override
@@ -156,10 +160,15 @@ public class AuthActivity extends AppCompatActivity{
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 if (account != null) {
+                    Log.i("OnActivityResult", "entro a onactivity");
                     AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
                     FirebaseAuth.getInstance().signInWithCredential(credential);
+                    Log.i("OnActivityResult", "Bebore if");
                     if (task.isSuccessful()) {
+                        Log.i("OnActivityResult", "start if");
+                        Log.i("task successful line 168:", task.getResult().getEmail());
                         showHome(task.getResult().getEmail(), ProviderType.GOOGLE);
+                        Log.i("OnActivityResult", "End if");
                     } else {
                         showAlert(task.getException().toString());
                     }

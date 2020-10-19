@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,8 +36,11 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.i("Failure","Inicio");
+        Log.i("HomeAct: Inicio HomeActivity","Inicio");
 
+        //-----------------Validar desde donde llega (usuario o mail)-----------------//
+        /*Toast.makeText(HomeActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+        Log.i("Success", "Usuario Creado");*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -53,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         preferences.apply();
 
 
-        Log.i("Failure","Termino de persistir");
+        Log.i("HomeAct: Fin persistencia","Termino de persistir");
 
 
         //drawer, comportamiento del boton para abrir drawer
@@ -84,7 +88,6 @@ public class HomeActivity extends AppCompatActivity {
                     SharedPreferences.Editor preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
                     preferences.clear();
                     preferences.apply();
-
 
                     Intent intent = new Intent(getApplicationContext(), AuthActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
