@@ -23,17 +23,24 @@ public class WaterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_water);
 
 
-        // boton atras
-        findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
+        // boton atras DEPRECADO
+        /*findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 view.getContext().startActivity(intent);
             }
-        });
+        })*/
         ///
 
+    //boton antras (vuelve a la ultima acttivity vista
+        findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
 
+            }
+        });
 
     }
 

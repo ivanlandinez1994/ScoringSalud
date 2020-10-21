@@ -17,22 +17,6 @@
         android:background="@drawable/back_trans"
         >
 
-        <Button
-            android:id="@+id/back"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="77dp"
-            android:layout_height="36dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/back"
-            android:text="Incio"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.015"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023" />
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"

@@ -29,8 +29,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiUsuario {
     private static UserApi apiUsuario;
-    private static String conectionString = "http://192.168.0.89:8081/"; // validar si la uri esta mal TRY/CATCH
-    final Retrofit retrofit = new Retrofit.Builder().baseUrl(conectionString)
+    private static String uriMongo = "http://192.168.0.89:8081/";
+    final Retrofit retrofit = new Retrofit.Builder().baseUrl(uriMongo)
             .addConverterFactory(GsonConverterFactory.create()).build();
 
     final UserApi userApi = retrofit.create(UserApi.class);
