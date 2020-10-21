@@ -8,39 +8,32 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ActionMenuView;
 import android.widget.Button;
 
 
-public class ProfileFragment extends Fragment {
-
-
-    Button back;
+public class EjerRun extends Fragment {
+    Button go;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view= inflater.inflate(R.layout.fragment_ejer_run, container, false);
 
-        //inicio boton back //
-        /*back = view.findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
+        go= view.findViewById(R.id.btnEnd);
+        go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeFragment homeF= new HomeFragment();
+                EjerEnd ed= new EjerEnd();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.perfilF, homeF );
+                transaction.replace(R.id.ejerDesc, ed );
                 transaction.commit();
             }
         });
 
-        //fin boton back //
-*/
+
+
 
         return view;
     }
-
-
-
 }

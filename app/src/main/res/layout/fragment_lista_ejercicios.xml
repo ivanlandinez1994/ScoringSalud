@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:id="@+id/listaEjer"
+    tools:context=".ListaEjercicios">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp">
+
+
+            <Button
+                android:id="@+id/e1"
+                android:layout_width="match_parent"
+                android:layout_height="133dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="582dp"
+                android:background="@drawable/rounded_accent"
+                android:drawableStart="@drawable/ejer"
+                android:text="Ejercicio 1"
+                android:textAlignment="textEnd"
+                android:paddingEnd="28dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/e2"
+                android:layout_width="match_parent"
+                android:layout_height="133dp"
+                android:layout_marginTop="156dp"
+                android:layout_marginBottom="442dp"
+                android:background="@drawable/rounded_corners"
+                android:drawableStart="@drawable/ejer"
+                android:paddingEnd="28dp"
+                android:text="Ejercicio 2"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/e3"
+                android:layout_width="match_parent"
+                android:layout_height="133dp"
+                android:layout_marginTop="299dp"
+                android:layout_marginBottom="299dp"
+                android:background="@drawable/rounded_accent"
+                android:drawableStart="@drawable/ejer"
+                android:text="Ejercicio 3"
+                android:textAlignment="textEnd"
+                android:paddingEnd="28dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/e4"
+                android:layout_width="match_parent"
+                android:layout_height="133dp"
+                android:layout_marginTop="441dp"
+                android:layout_marginBottom="157dp"
+                android:background="@drawable/rounded_corners"
+                android:drawableStart="@drawable/ejer"
+                android:text="Ejercicio 4"
+                android:textAlignment="textEnd"
+                android:paddingEnd="28dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/e5"
+                android:layout_width="match_parent"
+                android:layout_height="133dp"
+                android:layout_marginTop="582dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_accent"
+                android:drawableStart="@drawable/ejer"
+                android:text="Ejercicio 5"
+                android:textAlignment="textEnd"
+                android:paddingEnd="28dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</FrameLayout>
