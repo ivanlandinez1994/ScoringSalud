@@ -1,23 +1,19 @@
-package com.pf.scoringsalud.consumoApi;
+package com.pf.scoringsalud.api.consumo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
+//---------Autentication---------//
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.pf.scoringsalud.GetUser;
-import com.pf.scoringsalud.HomeActivity;
 import com.pf.scoringsalud.RegisterActivity;
 import com.pf.scoringsalud.User.User;
-import com.pf.scoringsalud.interfaces.UserApi;
+import com.pf.scoringsalud.api.Config;
+import com.pf.scoringsalud.api.interfaces.UserApi;
 
-
+//---------Conection---------//
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -28,9 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiUsuario {
-    private static UserApi apiUsuario;
-    private static String uriMongo = "http://192.168.0.89:8081/";
-    final Retrofit retrofit = new Retrofit.Builder().baseUrl(uriMongo)
+    final Retrofit retrofit = new Retrofit.Builder().baseUrl(Config.URL_API)
             .addConverterFactory(GsonConverterFactory.create()).build();
 
     final UserApi userApi = retrofit.create(UserApi.class);
