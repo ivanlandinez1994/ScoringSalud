@@ -21,8 +21,8 @@ public class AboutFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=  inflater.inflate(R.layout.fragment_about, container, false);
 
-        //imicio boton back //
-        back = view.findViewById(R.id.back);
+        //inicio boton back //
+        /*back = view.findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,9 +31,10 @@ public class AboutFragment extends Fragment {
                 transaction.replace(R.id.aboutF, homeF );
                 transaction.commit();
 
-         // fin boton back
+
             }
-        });
+    // fin boton back
+        });*/
     return view;
     }
 }
