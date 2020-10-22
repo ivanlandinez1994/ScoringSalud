@@ -15,7 +15,7 @@ import com.pf.scoringsalud.GetUser;
 import com.pf.scoringsalud.HomeActivity;
 import com.pf.scoringsalud.RegisterActivity;
 import com.pf.scoringsalud.User.User;
-import com.pf.scoringsalud.interfaces.UserApi;
+import com.pf.scoringsalud.api.interfaces.UserApi;
 
 
 import okhttp3.OkHttpClient;
