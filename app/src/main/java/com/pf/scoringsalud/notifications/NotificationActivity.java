@@ -8,22 +8,32 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.pf.scoringsalud.EjerciciosActivity;
 import com.pf.scoringsalud.HomeActivity;
+import com.pf.scoringsalud.ProfileFragment;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.Welcome;
 
 import java.util.Calendar;
+
+import javax.xml.transform.Result;
+
+import retrofit2.http.POST;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -31,11 +41,15 @@ public class NotificationActivity extends AppCompatActivity {
     private PendingIntent pendingIntent;
     private final static String CHANNEL_ID = "NOTIFICACION";
     private final static int NOTIFICACION_ID = 0;
+    private static final int REQUEST_RESULT = 200;
     //boton notificacion
 
     private TextView notificationsTime;
     private int alarmID = 1;
     private SharedPreferences settings;
+   // String GROPU_KEY = "com.pf.scoringsalud.ACTIVIDAD";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +126,8 @@ public class NotificationActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "Noticacion";
@@ -122,17 +138,41 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     private void createNotification(){
+
+        Intent resu  = new Intent(getApplicationContext(),  EjerciciosActivity.class);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resu);
+
+        PendingIntent pending = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
-        builder.setContentTitle("Notificacion Android");
-        builder.setContentText("Prueba de notificacion");
+        builder.setContentTitle("Tienes una Actividad");
+        builder.setContentText("prueba de actividad");
         builder.setColor(Color.BLUE);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setLights(Color.MAGENTA, 1000, 1000);
         builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
         builder.setDefaults(Notification.DEFAULT_SOUND);
-
+        builder.setContentIntent(pending);
+        builder.addAction(R.drawable.gym, "Cancelar", pendingIntent);
+        builder.setAutoCancel(true);
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
         notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+
+
+
+
     }
+
+
+    //
+
+
+
+
+
+
 }
