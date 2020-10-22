@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "102370289482-ginbn1a8abbr0pooqoj3bjigjlkiolc5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pf.scoringsalud",
-            "certificate_hash": "8f4094d0df9ca9b2cc2c9e90e4f1ed796e0e1241"
-          }
-        },
-        {
           "client_id": "102370289482-fb8b8e2t0h3ls2pli6fnjg7p5gdcci6g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
