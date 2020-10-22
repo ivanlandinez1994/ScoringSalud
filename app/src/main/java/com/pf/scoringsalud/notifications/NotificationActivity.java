@@ -25,7 +25,7 @@ import com.pf.scoringsalud.R;
 
 import java.util.Calendar;
 
-public class NotificationActivity extends AppCompatActivity {
+public class    NotificationActivity extends AppCompatActivity {
 
     private Button btNotificacion;
     private PendingIntent pendingIntent;
