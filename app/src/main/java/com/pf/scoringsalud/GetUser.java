@@ -11,9 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pf.scoringsalud.User.User;
-import com.pf.scoringsalud.interfaces.UserApi;
-
-import org.w3c.dom.Text;
+import com.pf.scoringsalud.api.interfaces.UserApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;

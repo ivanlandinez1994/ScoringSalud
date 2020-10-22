@@ -42,11 +42,7 @@
             android:value="@string/default_notification_channel_id" />
 
         <activity android:name=".AuthActivity" />
-        <activity android:name=".EjerciciosActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleTask"
-            android:taskAffinity=""
-            />
+        <activity android:name=".EjerciciosActivity" />
         <activity android:name=".WaterActivity" />
         <activity
             android:name=".HomeActivity"
@@ -54,15 +50,11 @@
         <activity
             android:name=".Welcome"
             android:screenOrientation="portrait"> <!-- primera activity que se ve en la app -->
-            <!-- a modo de prueba para testear el intent del notificacion agrego estos atributos  -->
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
 
         <service
