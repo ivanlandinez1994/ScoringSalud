@@ -25,4 +25,7 @@
     <string name="o_con_tus_credenciales_experta">O con tus credenciales Experta:</string>
     <string name="inicio_con_google">Inicio con Google</string>
     <string name="texto_aceptar">Aceptar</string>
+    <string name="tu_proxima_actividad_iniciara_en">Tu proxima actividad iniciara en:</string>
+    <string name="programar_actividad">Programar Actividad</string>
+    <string name="tu_proxima_actividad_iniciar_a_las">Tu proxima actividad iniciará a las:</string>
 </resources>
