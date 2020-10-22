@@ -42,7 +42,7 @@ public class NotificationActivity extends AppCompatActivity {
     private TextView notificationsTime;
     private int alarmID = 1;
     private SharedPreferences settings;
-   // String GROPU_KEY = "com.pf.scoringsalud.ACTIVIDAD";
+    // String GROPU_KEY = "com.pf.scoringsalud.ACTIVIDAD";
 
 
 
