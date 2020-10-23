@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.pf.scoringsalud.notifications.NotificationActivity;
+
 public class HomeFragment extends Fragment {
 
     CardView ptos;
@@ -58,14 +60,13 @@ public class HomeFragment extends Fragment {
         });*/
 
 
-        ptos= view.findViewById(R.id.cardPoints);
-        ptos.setOnClickListener(new View.OnClickListener() {
+
+        Button btnAct= view.findViewById(R.id.buttonRutinas);
+        btnAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProgresoFragment ed = new ProgresoFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.homeF, ed );
-                transaction.commit();
+                Intent intent = new Intent(getActivity(), NotificationActivity.class);
+                startActivity(intent);
             }
         });
 
