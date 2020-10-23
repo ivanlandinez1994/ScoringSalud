@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".notifications.NotificationActivity">
+    tools:context=".notifications.NotificationActivity"
+    android:id="@+id/notification">
 
     <LinearLayout
         android:id="@+id/linearLayout"
