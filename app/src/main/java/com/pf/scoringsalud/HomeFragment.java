@@ -3,7 +3,9 @@ package com.pf.scoringsalud;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +14,7 @@ import android.widget.Button;
 
 public class HomeFragment extends Fragment {
 
-    Button button;
+    CardView ptos;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,7 +44,33 @@ public class HomeFragment extends Fragment {
         });
 
 
-        ////////////////////////
+
+        //abrir fragment puntos
+       /* ptos= view.findViewById(R.id.cardPoints);
+        ptos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProgresoFragment ed = new ProgresoFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.homeF, ed);
+                transaction.commit();
+            }
+        });*/
+
+
+        ptos= view.findViewById(R.id.cardPoints);
+        ptos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProgresoFragment ed = new ProgresoFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.homeF, ed );
+                transaction.commit();
+            }
+        });
+
+
+
         return view;
     }
 
