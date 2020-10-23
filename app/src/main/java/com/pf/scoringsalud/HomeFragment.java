@@ -47,17 +47,17 @@ public class HomeFragment extends Fragment {
 
 
 
-        //abrir fragment puntos
-       /* ptos= view.findViewById(R.id.cardPoints);
-        ptos.setOnClickListener(new View.OnClickListener() {
+        Button e1= view.findViewById(R.id.btnProgress);
+        e1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProgresoFragment ed = new ProgresoFragment();
+                ProgresoFragment ed= new ProgresoFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.homeF, ed);
+                transaction.replace(R.id.homeF, ed );
                 transaction.commit();
             }
-        });*/
+        });
+
 
 
 
@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
 
 
