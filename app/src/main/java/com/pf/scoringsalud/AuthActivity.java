@@ -35,7 +35,6 @@ import java.util.List;
 
 public class AuthActivity extends AppCompatActivity implements OnFailureListener {
     private int GOOGLE_SIGN_IN = 100;
-    private User userFound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
