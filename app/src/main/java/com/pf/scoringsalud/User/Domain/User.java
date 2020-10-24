@@ -1,4 +1,4 @@
-package com.pf.scoringsalud.User;
+package com.pf.scoringsalud.User.Domain;
 
 import java.io.Serializable;
 
