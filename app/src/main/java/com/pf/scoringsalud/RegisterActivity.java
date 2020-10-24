@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.pf.scoringsalud.User.User;
+import com.pf.scoringsalud.User.Domain.User;
 import com.pf.scoringsalud.api.consumo.ApiUsuario;
 
 public class RegisterActivity extends AppCompatActivity {
