@@ -62,6 +62,8 @@ dependencies {
     //barchart
     implementation 'com.github.hadiidbouk:ChartProgressBar-Android:2.0.6'
 
+    //Gif Drawable
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 }
 
 apply plugin: 'com.google.gms.google-services'
