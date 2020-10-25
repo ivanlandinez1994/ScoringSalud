@@ -28,6 +28,7 @@ import java.util.Calendar;
 
 public class NotificationActivity extends AppCompatActivity {
 
+
     private Button btNotificacion;
     private PendingIntent pendingIntent;
     private final static String CHANNEL_ID = "NOTIFICACION";
@@ -46,6 +47,15 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+
+        //boton antras (vuelve a la ultima acttivity vista
+        findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+
+            }
+        });
 
         btNotificacion = findViewById(R.id.btNotificacion);
         btNotificacion.setOnClickListener(new View.OnClickListener() {
