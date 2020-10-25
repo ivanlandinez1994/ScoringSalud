@@ -137,7 +137,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
-        builder.setContentTitle("Tienes una Actividad");
+        builder.setContentTitle("Tenes una Actividad");
         builder.setContentText("prueba de actividad");
         builder.setColor(Color.BLUE);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);

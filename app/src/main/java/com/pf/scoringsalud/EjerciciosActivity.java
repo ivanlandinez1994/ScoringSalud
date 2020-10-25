@@ -34,7 +34,8 @@ public class EjerciciosActivity extends AppCompatActivity {
         findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                //finish();
+                Intent intent = Intent(this, HomeActivity.class);
 
             }
         });
