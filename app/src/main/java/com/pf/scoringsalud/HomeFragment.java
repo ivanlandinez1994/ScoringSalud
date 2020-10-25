@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.pf.scoringsalud.notifications.NotificationActivity;
+
 public class HomeFragment extends Fragment {
 
     Button button;
@@ -42,7 +44,27 @@ public class HomeFragment extends Fragment {
         });
 
 
-        ////////////////////////
+        // abrir activity puntos
+        Button btnptos= view.findViewById(R.id.btnProgress);
+        btnptos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Puntos.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        Button btnAct= view.findViewById(R.id.buttonRutinas);
+        btnAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 

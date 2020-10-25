@@ -16,11 +16,6 @@
         android:label="Logros"
         tools:layout="@layout/fragment_logros" />
     <fragment
-        android:id="@+id/menuProgreso"
-        android:name="com.pf.scoringsalud.ProgresoFragment"
-        android:label="Progreso"
-        tools:layout="@layout/fragment_progreso" />
-    <fragment
         android:id="@+id/menuRutina"
         android:name="com.pf.scoringsalud.RutinaFragment"
         android:label="fraRutina"
