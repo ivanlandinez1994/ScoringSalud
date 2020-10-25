@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/cabin"
+        android:title="@string/home"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/menuProfile"
+        android:icon="@drawable/card"
+        android:title="@string/profile"
+        android:checkable="true"/>
+    
+        <item
+        android:id="@+id/menuProgreso"
+        android:icon="@drawable/goal"
+        android:title="@string/progreso"
+        android:checkable="true"/>
+
+        <item
+        android:id="@+id/about"
+        android:icon="@drawable/info"
+        android:title="About"
+        android:checkable="true" />
+
+    <item
+        android:id="@+id/salir"
+        android:icon="@drawable/exit"
+        android:title="Log Out"
+        android:checkable="true" />
+
+
+
+</menu>

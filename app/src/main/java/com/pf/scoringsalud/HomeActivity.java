@@ -3,15 +3,43 @@ package com.pf.scoringsalud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.icu.util.Freezable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.makeramen.roundedimageview.RoundedImageView;
+import com.pf.scoringsalud.User.Data.LoadImage;
+import com.pf.scoringsalud.notifications.NotificationActivity;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.prefs.Preferences;
 
 enum ProviderType {
@@ -20,43 +48,102 @@ enum ProviderType {
 }
 
 public class HomeActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i("HomeAct: Inicio HomeActivity","Inicio");
+
+        //-----------------Validar desde donde llega (usuario o mail)-----------------//
+        /*Toast.makeText(HomeActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+        Log.i("Success", "Usuario Creado");*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         //setup
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        setup(bundle.getString("email"),bundle.getString("provider"));
+
 
         //Persistir Datos
         SharedPreferences.Editor preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
         preferences.putString("email", bundle.getString("email"));
         preferences.putString("provider", bundle.getString("provider"));
         preferences.apply();
-    }
 
-    private void setup(String email, String provider){
-        TextView correoElectronico = findViewById(R.id.emailTextView);
-        TextView prov = findViewById(R.id.providerTextView);
-        Button botonLogOut = findViewById(R.id.logOutButton);
 
-        correoElectronico.setText(email);
-        prov.setText(provider);
-        botonLogOut.setOnClickListener(new View.OnClickListener() {
+        Log.i("HomeAct: Fin persistencia","Termino de persistir");
+
+
+        //drawer, comportamiento del boton para abrir drawer
+        final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //borrado de datos
-                SharedPreferences.Editor preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
-                preferences.clear();
-                preferences.apply();
-
-                FirebaseAuth.getInstance().signOut();
-                onBackPressed();
+                drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        //colores en los iconos del drawer
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setItemIconTintList(null);
+
+        NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        //comportamiento para el cierre de sesion desde el drawer
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull
+                    NavDestination destination, @Nullable Bundle arguments) {
+                if(destination.getId() == R.id.salir){
+                    FirebaseAuth.getInstance().signOut();
+
+                    SharedPreferences.Editor preferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit();
+                    preferences.clear();
+                    preferences.apply();
+
+                    AuthUI.getInstance()
+                            .signOut(getApplicationContext())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    // ...
+                                }
+                            });
+
+
+                    Intent intent = new Intent(getApplicationContext(), AuthActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+
+            }
+        });
+        setCustomHeader();
+    }
+
+    private void setCustomHeader(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+        View hView = navigationView.getHeaderView(0);
+        TextView tvEmail;
+        TextView tvNombre;
+        RoundedImageView ivUser;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        tvEmail = hView.findViewById(R.id.tvEmailHeader);
+        tvNombre = hView.findViewById(R.id.tvNameHeader);
+        ivUser = hView.findViewById(R.id.imageProfile);
+        if(user!=null) {
+            tvEmail.setText(user.getEmail());
+            tvNombre.setText(user.getDisplayName());
+            ivUser.setImageBitmap(null);
+            LoadImage loadImage = new LoadImage(ivUser);
+            loadImage.execute(user.getPhotoUrl().toString());
+            Log.i("image profe:", user.getPhotoUrl().toString());
+        }else{
+            tvEmail.setText("Jhon");
+            tvNombre.setText("Doe");
+
+        }
     }
 }
