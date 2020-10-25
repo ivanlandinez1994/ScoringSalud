@@ -1,5 +1,9 @@
 package com.pf.scoringsalud.notifications;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -16,10 +20,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.pf.scoringsalud.EjerciciosActivity;
 import com.pf.scoringsalud.R;
@@ -130,25 +130,51 @@ public class NotificationActivity extends AppCompatActivity {
 
     private void createNotification(){
 
-        Intent resu  = new Intent(this,  EjerciciosActivity.class);
-        resu.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pending = PendingIntent.getActivity(this, 0, resu, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Intent intentActividad  = new Intent(this,  EjerciciosActivity.class);
+        // intentActividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //DEfinimos la nueva actividad como tarea
+        PendingIntent pendingActividad = PendingIntent.getActivity(this, 0, intentActividad, 0);
+
+        Intent intentPosponer = new Intent(this, NotificationActivity.class);
+        PendingIntent pendingPosponer = PendingIntent.getActivity(this, 0, intentPosponer, 0);
+
+        NotificationCompat.Action actividad = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_delete, "Hacer", pendingActividad).build();
+        NotificationCompat.Action posponer = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_edit, "Posponer", pendingPosponer).build();
+
+        Intent intentFinal = new Intent(this, NotificationActivity.class);
+        intentFinal.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
-        builder.setContentTitle("Tenes una Actividad");
-        builder.setContentText("prueba de actividad");
-        builder.setColor(Color.BLUE);
-        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        builder.setLights(Color.MAGENTA, 1000, 1000);
-        builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
-        builder.setDefaults(Notification.DEFAULT_SOUND);
-        builder.setContentIntent(pending);
-        builder.setAutoCancel(true);
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-        notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                intentFinal,
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
+        try {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+            builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
+            builder.setContentTitle("Tienes una Actividad");
+            builder.setContentText("prueba de actividad");
+            builder.setColor(Color.BLUE);
+            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+            builder.setLights(Color.MAGENTA, 1000, 1000);
+            builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
+            builder.setDefaults(Notification.DEFAULT_SOUND);
+            builder.setAutoCancel(true);
+            builder.setContentIntent(resultPendingIntent);
+            builder.addAction(actividad);
+            builder.addAction(posponer).build();
+
+            //NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext())
+            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            mNotifyMgr.notify(NOTIFICACION_ID, builder.build());
+
+        }catch (Exception e ){
+            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+
+        }
 
 
 
