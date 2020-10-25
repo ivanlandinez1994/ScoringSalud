@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
     <item
         android:drawable="@drawable/ejem"
         android:width="148dp"
         android:height="112dp">
     </item>
-</layer-list>
+</RelativeLayout>
