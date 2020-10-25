@@ -31,9 +31,4 @@
     <!-- Twitter consumer key and secret -->
     <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
     <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>
-    <string name="tu_proxima_actividad_iniciara_en">Tu proxima actividad iniciara en:</string>
-    <string name="programar_actividad">Programar Actividad</string>
-    <string name="tu_proxima_actividad_iniciar_a_las">Tu proxima actividad iniciará a las:</string>
-    <string name="ver_progreso">Ver progreso</string>
->>>>>>> origin
 </resources>

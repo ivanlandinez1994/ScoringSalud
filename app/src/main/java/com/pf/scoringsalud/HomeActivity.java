@@ -120,6 +120,7 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
         setCustomHeader();
     }
 
@@ -146,4 +147,10 @@ public class HomeActivity extends AppCompatActivity {
 
         }
     }
+
+    private void setProfilePhoto(){
+
+    }
+
+
 }

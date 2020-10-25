@@ -3,20 +3,16 @@ package com.pf.scoringsalud;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.pf.scoringsalud.notifications.NotificationActivity;
-
 public class HomeFragment extends Fragment {
 
-    CardView ptos;
+    Button button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,32 +42,7 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-        //abrir fragment puntos
-       /* ptos= view.findViewById(R.id.cardPoints);
-        ptos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ProgresoFragment ed = new ProgresoFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.homeF, ed);
-                transaction.commit();
-            }
-        });*/
-
-
-
-        Button btnAct= view.findViewById(R.id.buttonRutinas);
-        btnAct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), NotificationActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
+        ////////////////////////
         return view;
     }
 

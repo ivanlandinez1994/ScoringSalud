@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".EjerRun"
-    android:id="@id/ejerRun"
-    android:clickable="true">
+    android:id="@id/ejerRun">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -42,10 +41,8 @@
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16"
-                    app:layout_constraintVertical_bias="0.416" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 <ImageView
                     android:id="@+id/imageView2"

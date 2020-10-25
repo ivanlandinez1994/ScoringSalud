@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".EjerDesc"
-    android:id="@+id/ejerDesc"
-    android:clickable="true">
+    android:id="@+id/ejerDesc">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

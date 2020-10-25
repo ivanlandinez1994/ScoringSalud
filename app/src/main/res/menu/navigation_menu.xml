@@ -18,6 +18,11 @@
         android:title="@string/rutina"
            android:checkable="true"/>
 
+        <item
+        android:id="@+id/menuLogros"
+        android:icon="@drawable/medal"
+        android:title="@string/logors"
+        android:checkable="true"/>
 
         <item
         android:id="@+id/menuProgreso"
