@@ -10,6 +10,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.pf.scoringsalud.HomeActivity;
+import com.pf.scoringsalud.EjerciciosActivity;
 import com.pf.scoringsalud.R;
 
 import java.util.Calendar;
@@ -31,11 +32,15 @@ public class NotificationActivity extends AppCompatActivity {
     private PendingIntent pendingIntent;
     private final static String CHANNEL_ID = "NOTIFICACION";
     private final static int NOTIFICACION_ID = 0;
+    private static final int REQUEST_RESULT = 200;
     //boton notificacion
 
     private TextView notificationsTime;
     private int alarmID = 1;
     private SharedPreferences settings;
+    // String GROPU_KEY = "com.pf.scoringsalud.ACTIVIDAD";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +117,8 @@ public class NotificationActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "Noticacion";
@@ -122,17 +129,63 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     private void createNotification(){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
-        builder.setContentTitle("Notificacion Android");
-        builder.setContentText("Prueba de notificacion");
-        builder.setColor(Color.BLUE);
-        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        builder.setLights(Color.MAGENTA, 1000, 1000);
-        builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
-        builder.setDefaults(Notification.DEFAULT_SOUND);
 
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-        notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+
+        Intent intentActividad  = new Intent(this,  EjerciciosActivity.class);
+        // intentActividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //DEfinimos la nueva actividad como tarea
+        PendingIntent pendingActividad = PendingIntent.getActivity(this, 0, intentActividad, 0);
+
+        Intent intentPosponer = new Intent(this, NotificationActivity.class);
+        PendingIntent pendingPosponer = PendingIntent.getActivity(this, 0, intentPosponer, 0);
+
+        NotificationCompat.Action actividad = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_delete, "Hacer", pendingActividad).build();
+        NotificationCompat.Action posponer = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_edit, "Posponer", pendingPosponer).build();
+
+        Intent intentFinal = new Intent(this, NotificationActivity.class);
+        intentFinal.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                intentFinal,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        try {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+            builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
+            builder.setContentTitle("Tienes una Actividad");
+            builder.setContentText("prueba de actividad");
+            builder.setColor(Color.BLUE);
+            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+            builder.setLights(Color.MAGENTA, 1000, 1000);
+            builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
+            builder.setDefaults(Notification.DEFAULT_SOUND);
+            builder.setAutoCancel(true);
+            builder.setContentIntent(resultPendingIntent);
+            builder.addAction(actividad);
+            builder.addAction(posponer).build();
+
+            //NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext())
+            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            mNotifyMgr.notify(NOTIFICACION_ID, builder.build());
+
+        }catch (Exception e ){
+            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+
+        }
+
+
+
     }
+
+
+    //
+
+
+
+
+
+
 }

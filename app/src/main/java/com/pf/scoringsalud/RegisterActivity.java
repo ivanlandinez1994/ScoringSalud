@@ -8,22 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.pf.scoringsalud.User.User;
-import com.pf.scoringsalud.consumoApi.ApiUsuario;
-import com.pf.scoringsalud.interfaces.UserApi;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import com.pf.scoringsalud.User.Domain.User;
+import com.pf.scoringsalud.api.consumo.ApiUsuario;
 
 public class RegisterActivity extends AppCompatActivity {
     String userMail;

@@ -10,16 +10,7 @@
         android:name="com.pf.scoringsalud.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/menuLogros"
-        android:name="com.pf.scoringsalud.LogrosFragment"
-        android:label="Logros"
-        tools:layout="@layout/fragment_logros" />
-    <fragment
-        android:id="@+id/menuProgreso"
-        android:name="com.pf.scoringsalud.ProgresoFragment"
-        android:label="Progreso"
-        tools:layout="@layout/fragment_progreso" />
+   
     <fragment
         android:id="@+id/menuRutina"
         android:name="com.pf.scoringsalud.RutinaFragment"

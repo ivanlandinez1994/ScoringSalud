@@ -11,19 +11,7 @@
         android:icon="@drawable/card"
         android:title="@string/profile"
         android:checkable="true"/>
-
-       <item
-        android:id="@+id/menuRutina"
-        android:icon="@drawable/calendar"
-        android:title="@string/rutina"
-           android:checkable="true"/>
-
-        <item
-        android:id="@+id/menuLogros"
-        android:icon="@drawable/medal"
-        android:title="@string/logors"
-        android:checkable="true"/>
-
+    
         <item
         android:id="@+id/menuProgreso"
         android:icon="@drawable/goal"
