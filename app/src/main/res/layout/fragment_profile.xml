@@ -16,17 +16,19 @@
         android:layout_marginRight="10dp">
 
 
-
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imageView"
-            android:layout_width="221dp"
-            android:layout_height="211dp"
+            android:layout_width="185dp"
+            android:layout_height="184dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/prof"
             app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.13"
-            tools:src="@drawable/prof" />
+            app:layout_constraintVertical_bias="0.045"
+            app:riv_oval="true" />
 
         <Button
             android:id="@+id/actualizar"
