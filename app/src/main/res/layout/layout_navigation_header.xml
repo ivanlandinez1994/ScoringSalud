@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimaryDark"
-    android:padding="20dp">
+    android:padding="20dp"    
+    tools:context=".RutinaFragment">
 
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/tvNameHeader"
         android:layout_width="136dp"
         android:layout_height="22dp"
         android:text="@string/jonh_doe"
@@ -28,6 +29,18 @@
         android:id="@+id/textView"
         android:layout_width="228dp"
         android:layout_height="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvEmailHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791" />
+
+    <TextView
+        android:id="@+id/tvEmailHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:text="mail@gmail.com"
         android:textAlignment="center"
         android:textColor="@color/white"

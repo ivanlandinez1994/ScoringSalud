@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pf.scoringsalud.RegisterActivity;
-import com.pf.scoringsalud.User.User;
+import com.pf.scoringsalud.User.Domain.User;
 import com.pf.scoringsalud.api.Config;
 import com.pf.scoringsalud.api.interfaces.UserApi;
 
