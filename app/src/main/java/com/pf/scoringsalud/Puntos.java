@@ -3,6 +3,7 @@ package com.pf.scoringsalud;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.hadiidbouk.charts.BarData;
@@ -21,6 +22,15 @@ public class Puntos extends AppCompatActivity implements OnBarClickedListener {
         setContentView(R.layout.activity_puntos);
 
         ArrayList<BarData> dataList = new ArrayList<>();
+
+        //boton antras (vuelve a la ultima acttivity vista
+        findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+
+            }
+        });
 
         BarData data = new BarData("Sep", 3.4f, "3.4€");
         dataList.add(data);
@@ -56,4 +66,8 @@ public class Puntos extends AppCompatActivity implements OnBarClickedListener {
     public void onBarClicked(int index) {
         Toast.makeText(this, String.valueOf(index), Toast.LENGTH_SHORT).show();
     }
+
+
+
+
 }
