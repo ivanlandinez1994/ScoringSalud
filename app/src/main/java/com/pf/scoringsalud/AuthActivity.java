@@ -178,7 +178,6 @@ public class AuthActivity extends AppCompatActivity implements OnFailureListener
                 if (resultCode == RESULT_OK) {
                     // Successfully signed in
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    Toast.makeText(this, "Bienvenid@: "+user.getDisplayName(), Toast.LENGTH_SHORT).show();
                     Log.i("task successful line 167:", user.getEmail());
                     showHome(user.getEmail(), ProviderType.GOOGLE);
                     // ...
