@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.pf.scoringsalud.EjerciciosActivity;
+import com.pf.scoringsalud.HomeActivity;
 import com.pf.scoringsalud.R;
 
 import java.util.Map;
@@ -39,7 +39,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String title, String msg) {
-        Intent intent = new Intent(this, EjerciciosActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, NotificationConfig.NOTIFICATION_ID, intent, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationConfig nc = new NotificationConfig(this, NotificationConfig.CHANNEL_ID_NOTIFICATIONS);

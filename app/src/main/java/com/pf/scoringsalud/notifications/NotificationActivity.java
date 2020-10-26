@@ -20,14 +20,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
-import com.pf.scoringsalud.EjerDesc;
 import com.pf.scoringsalud.EjerciciosActivity;
-import com.pf.scoringsalud.HomeActivity;
 import com.pf.scoringsalud.R;
 
 import java.util.Calendar;
 
 public class NotificationActivity extends AppCompatActivity {
+
 
     private Button btNotificacion;
     private PendingIntent pendingIntent;
@@ -47,6 +46,15 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+
+        //boton antras (vuelve a la ultima acttivity vista
+        findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+
+            }
+        });
 
         btNotificacion = findViewById(R.id.btNotificacion);
         btNotificacion.setOnClickListener(new View.OnClickListener() {
@@ -133,17 +141,16 @@ public class NotificationActivity extends AppCompatActivity {
 
 
         Intent intentActividad  = new Intent(this,  EjerciciosActivity.class);
-        intentActividad.putExtra("ejerD", "ejerDes");
-        intentActividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //DEfinimos la nueva actividad como tarea
+        // intentActividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //DEfinimos la nueva actividad como tarea
         PendingIntent pendingActividad = PendingIntent.getActivity(this, 0, intentActividad, 0);
 
-        Intent intentPosponer = new Intent(this, HomeActivity.class);
+        Intent intentPosponer = new Intent(this, NotificationActivity.class);
         PendingIntent pendingPosponer = PendingIntent.getActivity(this, 0, intentPosponer, 0);
 
         NotificationCompat.Action actividad = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_delete, "Hacer", pendingActividad).build();
-        NotificationCompat.Action posponer = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_edit, "Cancelar", pendingPosponer).build();
+        NotificationCompat.Action posponer = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_edit, "Posponer", pendingPosponer).build();
 
-        Intent intentFinal = new Intent(this, EjerDesc.class);
+        Intent intentFinal = new Intent(this, NotificationActivity.class);
         intentFinal.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -157,8 +164,8 @@ public class NotificationActivity extends AppCompatActivity {
         try {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
             builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
-            builder.setContentTitle("Hora de realizar Actividad");
-            builder.setContentText("Ha llegado la hora de una nueva actividad");
+            builder.setContentTitle("Tienes una Actividad");
+            builder.setContentText("prueba de actividad");
             builder.setColor(Color.BLUE);
             builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
             builder.setLights(Color.MAGENTA, 1000, 1000);
@@ -167,8 +174,7 @@ public class NotificationActivity extends AppCompatActivity {
             builder.setAutoCancel(true);
             builder.setContentIntent(resultPendingIntent);
             builder.addAction(actividad);
-            builder.addAction(posponer);
-
+            builder.addAction(posponer).build();
 
             //NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext())
             NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
