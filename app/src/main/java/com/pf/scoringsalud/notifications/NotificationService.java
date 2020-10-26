@@ -16,7 +16,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import com.pf.scoringsalud.HomeActivity;
+import com.pf.scoringsalud.EjerciciosActivity;
 import com.pf.scoringsalud.R;
 
 
@@ -42,7 +42,7 @@ public class NotificationService extends IntentService {
         String NOTIFICATION_CHANNEL_ID = getApplicationContext().getString(R.string.app_name);
         Context context = this.getApplicationContext();
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent mIntent = new Intent(this, HomeActivity.class);
+        Intent mIntent = new Intent(this, EjerciciosActivity.class);
         Resources res = this.getResources();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 
@@ -66,6 +66,18 @@ public class NotificationService extends IntentService {
                 mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
                 notifManager.createNotificationChannel(mChannel);
             }
+
+            Intent intentActividad  = new Intent(this,  EjerciciosActivity.class);
+            intentActividad.putExtra("ejerDesc", "ejerDesc");
+            intentActividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //DEfinimos la nueva actividad como tarea
+            PendingIntent pendingActividad = PendingIntent.getActivity(this, 0, intentActividad, 0);
+
+            Intent intentPosponer = new Intent(this, EjerciciosActivity.class);
+            // PendingIntent pendingPosponer = PendingIntent.getActivity(this, 0, intentPosponer, 0);
+            PendingIntent dismissIntent = NotificationActivity.getDismissIntent(NOTIFICACION_ID, this);
+            NotificationCompat.Action actividad = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_delete, "Hacer", pendingActividad).build();
+            NotificationCompat.Action posponer = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_edit, "Cancelar", dismissIntent).build();
+
             builder = new NotificationCompat.Builder(context, id);
             mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -76,6 +88,8 @@ public class NotificationService extends IntentService {
                     .setDefaults(Notification.DEFAULT_ALL)
                     .setAutoCancel(true)
                     .setSound(soundUri)
+                    .addAction(actividad)
+                    .addAction()
 
                     .setContentIntent(pendingIntent)
                     .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
