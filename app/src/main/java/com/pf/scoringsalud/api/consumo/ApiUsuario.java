@@ -46,8 +46,8 @@ public class ApiUsuario {
                         userFirebase = FirebaseAuth.getInstance().getCurrentUser();
                         goIntent(activityDestino,response,actualContext,userFirebase.getEmail());
                     }
-                    Log.i("RESPONSE",response.body().string());
-                    Log.i("ERROR Successful", Integer.toString(response.code()));
+                    Log.i("Response body:",response.body().string());
+                    Log.i("Response code: ", Integer.toString(response.code()));
                 } catch (Exception e) {
                     Log.i("Excepcion", "register exception"+e.getMessage());
                     //Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -56,7 +56,8 @@ public class ApiUsuario {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                //Toast.makeText(context, "Error de conexion", Toast.LENGTH_SHORT).show();
+                String error = "Error de conexion, intente nuevamente";
+                Toast.makeText(actualContext, error, Toast.LENGTH_SHORT).show();
                 Log.i("Failure", t.toString());
             }
         });
@@ -92,6 +93,8 @@ public class ApiUsuario {
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 Log.i("Failure (OnFailure): ",t.toString());
+                String error = "Error de conexion, intente nuevamente";
+                Toast.makeText(actualContext, error, Toast.LENGTH_SHORT).show();
                 goIntent(activityDestino, null, actualContext, null);
             }
         });
@@ -102,6 +105,9 @@ public class ApiUsuario {
         Intent intent;
         try {
             if (response.body() instanceof User && (User) response.body() != null) {
+                String nombre;
+                nombre = ((User) response.body()).getNombre();
+                Toast.makeText(context, "Bienvenid@: "+nombre, Toast.LENGTH_SHORT).show();
                 intent = new Intent(context, activityDestino);
                 intent.putExtra("usuario", (User) response.body());
                 Log.i("NO NULO: ", "user not null");
@@ -118,11 +124,9 @@ public class ApiUsuario {
                 context.startActivity(intent);
             } else {
                 Log.i("context", context.toString());
-                Toast.makeText(context, "Error de conexion intente nuevamente", Toast.LENGTH_LONG);
                 Log.i("Disconnected: ", "Return");
             }
         }catch(NullPointerException e){
-            Toast.makeText(context, "Error de conexion intente nuevamente mas tarde", Toast.LENGTH_LONG);
             Log.i("Conection Error: ", e.toString());
         }
     }
