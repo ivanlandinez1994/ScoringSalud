@@ -1,8 +1,13 @@
 package com.pf.scoringsalud;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,13 +28,76 @@ public class ProfileFragment extends Fragment {
     TextView tvEmail;
     TextView tvNombre;
     ImageView ivUser;
+    Button btn1;
+    Button btn2;Button btn3;Button btn4;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // Inflate the layout for this fragment
+
+        btn1=view.findViewById(R.id.sedentario);
+        btn2=view.findViewById(R.id.medioActivo);
+        btn3=view.findViewById(R.id.activo);
+        btn4=view.findViewById(R.id.altoActivo);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+
+
+
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+
+
+            }
+        });
+
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+
+
+            }
+        });
+
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+
+
+            }
+        });
+
+
+
         setData(view);
         return view;
     }
@@ -55,6 +124,10 @@ public class ProfileFragment extends Fragment {
             tvEmail.setText("Jhon");
             tvNombre.setText("Doe");
         }
+
+
+
+
     }
 }
 
