@@ -3,12 +3,14 @@ package com.pf.scoringsalud.Puntuable;
 import com.pf.scoringsalud.Puntuable.Medidor.Contador;
 import com.pf.scoringsalud.Puntuable.Medidor.Medible;
 
+import java.util.ArrayList;
+
 public class Actividad extends Puntuable {
 
     protected boolean PosicionUnica;
     protected int repeticiones;
     protected int repeticionesRealizadas;
-    protected Medible[] medidores;
+    protected ArrayList<Medible> medidores;
 
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
                      String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones) {
@@ -18,7 +20,7 @@ public class Actividad extends Puntuable {
         setRepeticionesRealizadas(0);
     }
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
-                     String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones, Medible[] medidores) {
+                     String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones, ArrayList<Medible> medidores) {
         super(codigo, nombre,puntosOtorgables,articulacion,rutaGif,descripcion);
         this.PosicionUnica=PosicionUnica;
         setRepeticiones(repeticiones);
@@ -65,18 +67,18 @@ public class Actividad extends Puntuable {
     public void setPosicionUnica(boolean posicionUnica) {
         PosicionUnica = posicionUnica;
     }
-    public Medible[]  getMedidores() {
+    public ArrayList<Medible>  getMedidores() {
         return medidores;
     }
-    public void setMedidores(Medible[] medidores) {
+    public void setMedidores(ArrayList<Medible> medidores) {
         this.medidores = medidores;
     }
 
     public long getDuracionSegundos(){
         long tiempo=0;
-        for(int i =0;i<medidores.length;i++){
-            if(medidores[i]instanceof Contador){
-                tiempo = (((Contador)medidores[i]).getTiempo())/1000;
+        for(int i =0;i<medidores.size();i++){
+            if(medidores.get(i)instanceof Contador){
+                tiempo = (((Contador)medidores.get(i)).getTiempo())/1000;
             }
         }
         return tiempo;
@@ -84,9 +86,9 @@ public class Actividad extends Puntuable {
 
     public long getDuracionTotalSegundos(){
         long tiempo=0;
-        for(int i =0;i<medidores.length;i++){
-            if(medidores[i]instanceof Contador){
-                tiempo = (this.repeticiones*((Contador)medidores[i]).getTiempo())/1000;
+        for(int i =0;i<medidores.size();i++){
+            if(medidores.get(i) instanceof Contador){
+                tiempo = (this.repeticiones*((Contador)medidores.get(i)).getTiempo())/1000;
             }
         }
         return tiempo;
