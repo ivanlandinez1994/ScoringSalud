@@ -1,14 +1,9 @@
 package com.pf.scoringsalud;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EjerciciosActivity extends AppCompatActivity {
 
@@ -25,7 +20,6 @@ public class EjerciciosActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 view.getContext().startActivity(intent);
-
             }
         });*/
 
