@@ -57,7 +57,7 @@ public class FactoryPuntuable {
                     posicionUno = new int[]{8,0,1};
                     posicionDos = new int[]{-8,0,1};
                     acelerometro = new Acelerometro(posicionUno,posicionDos);
-                    contador = new Contador(10000);
+                    contador = new Contador(15000);
                     medibles = new ArrayList<Medible>();
                     medibles.add(acelerometro);
                     medibles.add(contador);

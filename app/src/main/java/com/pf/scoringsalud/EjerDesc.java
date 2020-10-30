@@ -1,6 +1,9 @@
 package com.pf.scoringsalud;
 
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 
@@ -18,6 +21,9 @@ import android.widget.TextView;
 
 import com.pf.scoringsalud.Factorys.FactoryPuntuable;
 import com.pf.scoringsalud.Puntuable.Actividad;
+import com.pf.scoringsalud.Puntuable.Medidor.Acelerometro;
+import com.pf.scoringsalud.Puntuable.Medidor.Contador;
+import com.pf.scoringsalud.Puntuable.Medidor.Proximity;
 
 
 public class EjerDesc extends Fragment {
@@ -61,15 +67,7 @@ public class EjerDesc extends Fragment {
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
               recuperarDato(result.getString("codigo").toString());
               a = (Actividad) FactoryPuntuable.actividad(dato);
-              if(a == null){
-                  tv_ejedesc_nombre.setText("NULL");
-                  tv_ejedesc_articulacion.setText("Null");
-                  tv_ejedesc_duracion.setText("Null");
-              }else{
-                  tv_ejedesc_nombre.setText(a.getNombre());
-                  tv_ejedesc_articulacion.setText("Articulacion "+a.getArticulacion());
-                  tv_ejedesc_duracion.setText("Duracion: " + a.getDuracionTotalSegundos() + " Segundos");
-              }
+              setearDatos();
 
             }
         });
@@ -91,6 +89,23 @@ public class EjerDesc extends Fragment {
     }
     private void recuperarDato(String dato){
         this.dato = dato;
+    }
+    private void setearDatos(){
+
+            if(a.tieneContador()) {
+                for (int i = 0; i < a.getMedidores().size(); i++) {
+                    if (a.getMedidores().get(i) instanceof Contador) {
+                        tv_ejedesc_duracion.setText("Duracion: "+((((Contador) a.getMedidores().get(i)).getDuracionSegundos()) * a.getRepeticiones())+" Segundos");
+                    }
+
+                }
+            }else{
+                tv_ejedesc_duracion.setText("--:--");
+            }
+
+        tv_ejedesc_nombre.setText(a.getNombre());
+        tv_ejedesc_articulacion.setText("Articulacion "+a.getArticulacion());
+
     }
 
 }

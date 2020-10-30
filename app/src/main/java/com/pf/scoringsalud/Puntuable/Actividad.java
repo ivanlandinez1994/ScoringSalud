@@ -1,7 +1,9 @@
 package com.pf.scoringsalud.Puntuable;
 
+import com.pf.scoringsalud.Puntuable.Medidor.Acelerometro;
 import com.pf.scoringsalud.Puntuable.Medidor.Contador;
 import com.pf.scoringsalud.Puntuable.Medidor.Medible;
+import com.pf.scoringsalud.Puntuable.Medidor.Proximity;
 
 import java.util.ArrayList;
 
@@ -74,25 +76,34 @@ public class Actividad extends Puntuable {
         this.medidores = medidores;
     }
 
-    public long getDuracionSegundos(){
-        long tiempo=0;
-        for(int i =0;i<medidores.size();i++){
-            if(medidores.get(i)instanceof Contador){
-                tiempo = (((Contador)medidores.get(i)).getTiempo())/1000;
+    public boolean tieneContador(){
+        boolean tiene = false;
+        for (Medible m: medidores) {
+            if(m instanceof Contador){
+                tiene=true;
             }
         }
-        return tiempo;
+        return tiene;
+    }
+    public boolean tieneAcelerometro(){
+        boolean tiene = false;
+        for (Medible m: medidores) {
+            if(m instanceof Acelerometro){
+                tiene=true;
+            }
+        }
+        return tiene;
+    }
+    public boolean tieneProximity(){
+        boolean tiene = false;
+        for (Medible m: medidores) {
+            if(m instanceof Proximity){
+                tiene=true;
+            }
+        }
+        return tiene;
     }
 
-    public long getDuracionTotalSegundos(){
-        long tiempo=0;
-        for(int i =0;i<medidores.size();i++){
-            if(medidores.get(i) instanceof Contador){
-                tiempo = (this.repeticiones*((Contador)medidores.get(i)).getTiempo())/1000;
-            }
-        }
-        return tiempo;
-    }
 
 
 

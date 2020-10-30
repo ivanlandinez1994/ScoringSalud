@@ -2,9 +2,9 @@ package com.pf.scoringsalud.Puntuable.Medidor;
 
 
 public class Contador implements Medible {
-    protected long tiempo;
+    private int tiempo;
 
-    public Contador(long tiempo){
+    public Contador(int tiempo){
         this.tiempo=tiempo;
     }
 
@@ -13,11 +13,17 @@ public class Contador implements Medible {
         return "Contador";
     }
 
-    public long getTiempo() {
+    public int getTiempo() {
         return tiempo;
     }
 
-    public void setTiempo(long tiempo) {
+    public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
     }
+
+    public long getDuracionSegundos(){
+
+        return tiempo/1000;
+    }
+
 }

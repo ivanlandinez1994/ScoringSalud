@@ -1,5 +1,13 @@
 package com.pf.scoringsalud;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,30 +16,51 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pf.scoringsalud.Factorys.FactoryPuntuable;
 import com.pf.scoringsalud.Puntuable.Actividad;
+import com.pf.scoringsalud.Puntuable.Medidor.Acelerometro;
+import com.pf.scoringsalud.Puntuable.Medidor.Contador;
+import com.pf.scoringsalud.Puntuable.Medidor.Proximity;
 
-
-public class EjerRun extends Fragment {
-    Button go;
+import static android.content.Context.SENSOR_SERVICE;
+import static androidx.core.content.ContextCompat.getSystemService;
+//
+public class EjerRun extends Fragment implements SensorEventListener {
+    Button go, end;
     String dato;
+    CountDownTimer contador;
     Actividad a;
     TextView tv_ejerun_tiempo, tv_ejerun_repeticiones;
+
+    private SensorManager sm;
+    private Sensor sensor;
+    private Vibrator vibrator;
+    private boolean acelerometro = false;
+    private boolean proximity=false;
+    private int contadorActividad;
+
+    private double x;
+    private double y;
+    private double z;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_ejer_run, container, false);
+        tv_ejerun_tiempo = view.findViewById(R.id.tv_ejerun_tiempo);
+        tv_ejerun_repeticiones = view.findViewById(R.id.tv_ejerun_repeticiones);
 
-        go= view.findViewById(R.id.btnEnd);
-        go.setOnClickListener(new View.OnClickListener() {
+        end= view.findViewById(R.id.btnEnd);
+        end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EjerEnd ed= new EjerEnd();
@@ -41,52 +70,119 @@ public class EjerRun extends Fragment {
             }
         });
 
+        go= view.findViewById(R.id.btn_ejerRun_comenzar);
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iniciarContador();
+            }
+        });
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tv_ejerun_tiempo = view.findViewById(R.id.tv_ejerun_tiempo);
-        tv_ejerun_repeticiones = view.findViewById(R.id.tv_ejerun_repeticiones);
-        tv_ejerun_tiempo.setText("NULL");
+        //recupero datos del fragment
         getParentFragmentManager().setFragmentResultListener("btn_ejerRun", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                System.out.println(result.getString("codigo").toString());
                 recuperarDato(result.getString("codigo").toString());
                 a = (Actividad) FactoryPuntuable.actividad(dato);
-                if(a == null){
-                    tv_ejerun_tiempo.setText("NULL");
-                    tv_ejerun_repeticiones.setText("Null");
-
-                }else{
-                    tv_ejerun_tiempo.setText(a.getDuracionSegundos() + " Segundos");
-                    tv_ejerun_repeticiones.setText(""+a.getRepeticionesRealizadas()+ " / "+a.getRepeticiones());
-
-                }
+                activarSensores();
 
             }
         });
-/*
-        go= view.findViewById(R.id.btnGO);
-        go.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("codigo",dato);
-                getParentFragmentManager().setFragmentResult("bundle",bundle);
-                EjerRun ed= new EjerRun();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.ejerDesc, ed );
-                transaction.commit();
-            }
-        });
+    }
 
- */
+    @Override
+    public void onPause() {
+        stop();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        start();
+        super.onResume();
+    }
+
+    private void start() {
+        sm.registerListener(this, sensor, sm.SENSOR_DELAY_FASTEST);
+    }
+
+    private void stop() {
+        sm.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        if(acelerometro){
+            x=sensorEvent.values[0];
+            y=sensorEvent.values[1];
+            z=sensorEvent.values[2];
+        }
+        if(proximity){
+            x=sensorEvent.values[0];
+        }
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+
     private void recuperarDato(String dato){
         this.dato = dato;
     }
+
+    public void activarSensores(){
+        if(a.getMedidores().size()!=0) {
+            sm = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+            for (int i = 0; i < a.getMedidores().size(); i++) {
+                //Acelerometro
+                if (a.getMedidores().get(i) instanceof Acelerometro) {
+                    sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+                    acelerometro = true;
+                }
+                //Contador
+                if (!(a.tieneContador())){
+                    tv_ejerun_tiempo.setText("--:--");
+                }else if(a.getMedidores().get(i) instanceof Contador) {
+                    contadorActividad = ((Contador)a.getMedidores().get(i)).getTiempo();
+                    tv_ejerun_tiempo.setText(""+((Contador)a.getMedidores().get(i)).getTiempo()/1000);
+                 //   tv_ejerun_tiempo.setText(String.valueOf(((Contador)a.getMedidores().get(i)).getDuracionSegundos()));
+                }
+                //Proximity
+                if (a.getMedidores().get(i) instanceof Proximity) {
+                    sensor = sm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+                    proximity = true;
+                }
+
+            }
+        }
+
+        if(a != null){
+           // tv_ejerun_tiempo.setText(a.getDuracionSegundos() + " Segundos");
+            tv_ejerun_repeticiones.setText(""+a.getRepeticionesRealizadas()+ " / "+a.getRepeticiones());
+        }
+    }
+
+    public void iniciarContador(){
+        contador = new CountDownTimer(contadorActividad,1000){
+
+        @Override
+        public void onTick(long l) {
+            tv_ejerun_tiempo.setText(String.valueOf(l/1000));
+        }
+
+        @Override
+        public void onFinish() {
+            tv_ejerun_tiempo.setText("Fin");
+        }
+
+    }.start();
+}
+
+
+
 }
