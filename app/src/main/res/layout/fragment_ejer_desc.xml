@@ -63,25 +63,26 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView12"
                     app:layout_constraintVertical_bias="0.618" />
 
-                <ImageView
+                <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/imageView2"
                     android:layout_width="351dp"
                     android:layout_height="169dp"
                     android:layout_marginBottom="384dp"
                     android:background="@color/colorAccent"
-                    android:src="@drawable/ejer"
+                    android:src="@drawable/ejer_cadera"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fechaAgua"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    />
 
                 <TextView
                     android:id="@+id/textView12"
-                    android:layout_width="262dp"
-                    android:layout_height="134dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis quam vel orci mattis, in pulvinar mauris finibus. Phasellus ut augue in purus efficitur suscipit at vitae justo. Nunc ac augue ac mauris tristique sodales eu eu justo. Sed auctor mauris in tincidunt semper. Cras lectus arcu, congue at mattis sed, imperdiet et turpis. Etiam diam mauris, mollis ut augue at, gravida ullamcorper ligula. "
+                    android:layout_width="279dp"
+                    android:layout_height="159dp"
+                    android:text="Colocarse de pie y dar un paso al frente con una de las piernas, flexionando ligeramente. Luego, estirar la pierna contraria totalmente estirada hacia atrás y flexionar la de adelante. Asegurarse que la pelvis vaya hacia adelante. Realizar 10 repeticiones (vaivenes) con cada pierna. Se conseguirá así un estiramiento de los flexores de la pierna atrasada."
                     android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +94,7 @@
                     android:id="@+id/tv_ejedesc_duracion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Duración"
+                    android:text="2 min"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.938"
@@ -105,7 +106,7 @@
                     android:id="@+id/tv_ejedesc_nombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre Ejercicio"
+                    android:text="Ejercicio Cadera"
                     android:textColor="@color/cardview_dark_background"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/textView12"
@@ -119,7 +120,7 @@
                     android:id="@+id/tv_ejedesc_articulacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Articulación"
+                    android:text="Cadera"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/textView10"
                     app:layout_constraintHorizontal_bias="0.079"
