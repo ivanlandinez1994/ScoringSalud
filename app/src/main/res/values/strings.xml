@@ -35,4 +35,6 @@
     <string name="programar_actividad">Programar Actividad</string>
     <string name="tu_proxima_actividad_iniciar_a_las">Tu proxima actividad iniciará a las:</string>
     <string name="ver_progreso">Ver progreso</string>
+    <string name="pick_date">Seleccionar fecha</string>
+    <string name="about_app">Con Scoring Salud podes mejorar tus habitos saludables, teniendo un registro y tus actividades, controlando tus tiempos de actividad y lo mejor es que obtendras puntos para seguir motivandote y compitiendo con tus amigos </string>
 </resources>
