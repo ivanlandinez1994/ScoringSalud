@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Actividad extends Puntuable {
 
+    protected   String articulacion;
     protected boolean PosicionUnica;
     protected int repeticiones;
     protected int repeticionesRealizadas;
@@ -16,14 +17,16 @@ public class Actividad extends Puntuable {
 
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
                      String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones) {
-        super(codigo, nombre,puntosOtorgables,articulacion,rutaGif,descripcion);
+        super(codigo, nombre,puntosOtorgables,rutaGif,descripcion);
+        this.articulacion=articulacion;
         this.PosicionUnica=PosicionUnica;
         setRepeticiones(repeticiones);
         setRepeticionesRealizadas(0);
     }
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
                      String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones, ArrayList<Medible> medidores) {
-        super(codigo, nombre,puntosOtorgables,articulacion,rutaGif,descripcion);
+        super(codigo, nombre,puntosOtorgables,rutaGif,descripcion);
+        this.articulacion = articulacion;
         this.PosicionUnica=PosicionUnica;
         setRepeticiones(repeticiones);
         setRepeticionesRealizadas(0);
@@ -103,7 +106,13 @@ public class Actividad extends Puntuable {
         }
         return tiene;
     }
+    public String getArticulacion() {
+        return articulacion;
+    }
 
+    public void setArticulacion(String articulacion) {
+        this.articulacion = articulacion;
+    }
 
 
 

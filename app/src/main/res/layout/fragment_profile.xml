@@ -43,7 +43,7 @@
                 android:id="@+id/textView31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nivel de Actividad Fisica"
+                android:text="Nivel de com.pf.scoringsalud.Puntuable.Actividad Fisica"
                 android:textColor="@color/colorPrimary"
                 android:textSize="22dp"
                 app:layout_constraintBottom_toBottomOf="parent"

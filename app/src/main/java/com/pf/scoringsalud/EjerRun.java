@@ -1,6 +1,7 @@
 package com.pf.scoringsalud;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -26,6 +27,8 @@ import android.widget.Toast;
 
 import com.pf.scoringsalud.Factorys.FactoryPuntuable;
 import com.pf.scoringsalud.Puntuable.Actividad;
+import com.pf.scoringsalud.Puntuable.EstrategiaMedicion.EstrategiaEjerRun;
+import com.pf.scoringsalud.Puntuable.EstrategiaMedicion.MedicionEjerRun;
 import com.pf.scoringsalud.Puntuable.Medidor.Acelerometro;
 import com.pf.scoringsalud.Puntuable.Medidor.Contador;
 import com.pf.scoringsalud.Puntuable.Medidor.Proximity;
@@ -38,18 +41,22 @@ public class EjerRun extends Fragment implements SensorEventListener {
     String dato;
     CountDownTimer contador;
     Actividad a;
-    TextView tv_ejerun_tiempo, tv_ejerun_repeticiones;
+    MedicionEjerRun medicion;
+    TextView tv_ejerun_tiempo, tv_ejerun_repeticiones, tv_ejerun_sensores;
 
     private SensorManager sm;
     private Sensor sensor;
     private Vibrator vibrator;
+
     private boolean acelerometro = false;
     private boolean proximity=false;
     private int contadorActividad;
+    private boolean comienzo =false;
 
     private double x;
     private double y;
     private double z;
+    private int contadorEjercicio;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +65,7 @@ public class EjerRun extends Fragment implements SensorEventListener {
         View view= inflater.inflate(R.layout.fragment_ejer_run, container, false);
         tv_ejerun_tiempo = view.findViewById(R.id.tv_ejerun_tiempo);
         tv_ejerun_repeticiones = view.findViewById(R.id.tv_ejerun_repeticiones);
-
+        tv_ejerun_sensores = view.findViewById(R.id.tv_ejerRun_sensores);
         end= view.findViewById(R.id.btnEnd);
         end.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +81,9 @@ public class EjerRun extends Fragment implements SensorEventListener {
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iniciarContador();
+
+                comenzar();
+                //iniciarContador();
             }
         });
         return view;
@@ -90,9 +99,10 @@ public class EjerRun extends Fragment implements SensorEventListener {
                 recuperarDato(result.getString("codigo").toString());
                 a = (Actividad) FactoryPuntuable.actividad(dato);
                 activarSensores();
-
+                medicion = new MedicionEjerRun(a);
             }
         });
+
     }
 
     @Override
@@ -117,13 +127,21 @@ public class EjerRun extends Fragment implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        if(acelerometro){
-            x=sensorEvent.values[0];
-            y=sensorEvent.values[1];
-            z=sensorEvent.values[2];
+        if(acelerometro) {
+            tv_ejerun_sensores.setText("x: " + x);
         }
-        if(proximity){
-            x=sensorEvent.values[0];
+        if(comienzo) {
+            if (acelerometro) {
+
+                x = sensorEvent.values[0];
+                y = sensorEvent.values[1];
+                z = sensorEvent.values[2];
+
+                ejercicio();
+            }
+            if (proximity) {
+                x = sensorEvent.values[0];
+            }
         }
     }
     @Override
@@ -136,8 +154,8 @@ public class EjerRun extends Fragment implements SensorEventListener {
     }
 
     public void activarSensores(){
-        if(a.getMedidores().size()!=0) {
-            sm = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+       // if(a.getMedidores().size()!=0) {
+            sm = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
             for (int i = 0; i < a.getMedidores().size(); i++) {
                 //Acelerometro
                 if (a.getMedidores().get(i) instanceof Acelerometro) {
@@ -150,7 +168,6 @@ public class EjerRun extends Fragment implements SensorEventListener {
                 }else if(a.getMedidores().get(i) instanceof Contador) {
                     contadorActividad = ((Contador)a.getMedidores().get(i)).getTiempo();
                     tv_ejerun_tiempo.setText(""+((Contador)a.getMedidores().get(i)).getTiempo()/1000);
-                 //   tv_ejerun_tiempo.setText(String.valueOf(((Contador)a.getMedidores().get(i)).getDuracionSegundos()));
                 }
                 //Proximity
                 if (a.getMedidores().get(i) instanceof Proximity) {
@@ -159,7 +176,7 @@ public class EjerRun extends Fragment implements SensorEventListener {
                 }
 
             }
-        }
+        //}
 
         if(a != null){
            // tv_ejerun_tiempo.setText(a.getDuracionSegundos() + " Segundos");
@@ -177,12 +194,41 @@ public class EjerRun extends Fragment implements SensorEventListener {
 
         @Override
         public void onFinish() {
-            tv_ejerun_tiempo.setText("Fin");
+            contadorActividad++;
         }
 
     }.start();
 }
 
+    public void ejercicio(){
+        if (medicion.getEstrategia().posicionCorrecta(x,y,z,contadorActividad)){
+            vibrator.vibrate(1000);
+            comienzo = false;
+            iniciarContador();
 
+        } else if (medicion.getEstrategia().posicionCorrecta(x,y,z,contadorActividad)) {
+            vibrator.vibrate(1000);
+            comienzo = false;
+            iniciarContador();
+        }
+
+        if (contadorActividad == 2 && a.getRepeticionesRealizadas() < a.getRepeticiones()){
+            a.setRepeticionesRealizadas(a.getRepeticionesRealizadas()+1);
+            tv_ejerun_repeticiones.setText("" + a.getRepeticionesRealizadas()+ "/" + a.getRepeticiones());
+            contadorActividad = 0;
+            ejercicio();
+        }
+        if(a.getRepeticionesRealizadas() == a.getRepeticiones()){
+            comienzo = false;
+            tv_ejerun_repeticiones.setText("FIN");
+        }
+    }
+
+    public void comenzar() {
+        if(medicion.getEstrategia().posicionInicio(x,y,z)) {
+            contadorEjercicio =0 ;
+            comienzo = true;
+        }
+    }
 
 }

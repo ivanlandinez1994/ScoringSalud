@@ -25,8 +25,8 @@ public class FactoryPuntuable {
         switch(n){
             case "HOMBRO":
 
-                posicionUno = new int[]{8,0,0};
-                posicionDos = new int[]{-8,0,0};
+                posicionUno = new int[]{8,0,1};
+                posicionDos = new int[]{-8,0,1};
                 acelerometro = new Acelerometro(posicionUno,posicionDos);
                 contador = new Contador(10000);
                 medibles = new ArrayList<Medible>();
@@ -54,16 +54,16 @@ public class FactoryPuntuable {
 
                 case "CUELLO":
 
-                    posicionUno = new int[]{8,0,1};
-                    posicionDos = new int[]{-8,0,1};
+                    posicionUno = new int[]{8,0,0};
+                    posicionDos = new int[]{-8,0,0};
                     acelerometro = new Acelerometro(posicionUno,posicionDos);
-                    contador = new Contador(15000);
+                    contador = new Contador(5000);
                     medibles = new ArrayList<Medible>();
                     medibles.add(acelerometro);
                     medibles.add(contador);
 
                     p = new Actividad(codigo,"Estiramiento de CUELLO",100,"CUELLO",
-                            "","",false,3,medibles);
+                            "","",false,2,medibles);
                     break;
             default:
                 p=null;
