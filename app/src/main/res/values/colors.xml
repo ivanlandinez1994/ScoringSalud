@@ -5,6 +5,7 @@
     <color name="white">#fff</color>
     <color name="background">#EFECEC</color>
     <color name="colorAccent">#83C2F3</color>
+    <color name="colorGray">#A3A3A3</color>
 
 
     <color name="empty">@android:color/transparent</color>

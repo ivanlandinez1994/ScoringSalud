@@ -1,5 +1,7 @@
 package com.pf.scoringsalud;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.pf.scoringsalud.notifications.NotificationActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +28,6 @@ public class RutinaFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     public RutinaFragment() {
         // Required empty public constructor
     }
@@ -49,6 +53,7 @@ public class RutinaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -61,4 +66,6 @@ public class RutinaFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_rutina, container, false);
     }
+
+
 }
