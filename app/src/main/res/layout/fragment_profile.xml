@@ -41,6 +41,15 @@
                 app:layout_constraintVertical_bias="0.021" />
 
 
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nivel de com.pf.scoringsalud.Puntuable.Actividad Fisica"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22dp"
+
+
             <Button
                 android:id="@+id/activo"
                 android:layout_width="52dp"
@@ -50,6 +59,7 @@
                 android:drawableStart="@drawable/walk"
                 android:drawableTint="@color/white"
                 android:paddingStart="10dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView31"
