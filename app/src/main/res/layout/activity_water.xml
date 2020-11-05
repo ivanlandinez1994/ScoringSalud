@@ -131,9 +131,10 @@
                     app:layout_constraintVertical_bias="0.055" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btnLess"
                     android:layout_width="36dp"
                     android:layout_height="44dp"
+                    android:layout_marginStart="88dp"
                     android:background="@color/white"
                     android:text="-"
                     android:textColor="@color/colorPrimary"
@@ -146,9 +147,10 @@
                     app:layout_constraintVertical_bias="0.343" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnPlus"
                     android:layout_width="36dp"
                     android:layout_height="44dp"
+                    android:layout_marginEnd="88dp"
                     android:background="@color/white"
                     android:text="+"
                     android:textColor="@color/colorPrimary"
@@ -161,7 +163,7 @@
                     app:layout_constraintVertical_bias="0.343" />
 
                 <TextView
-                    android:id="@+id/tv_ejerun_repeticiones"
+                    android:id="@+id/tv_agua"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="72dp"
