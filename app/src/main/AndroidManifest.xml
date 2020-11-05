@@ -30,9 +30,6 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".EjerciciosActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Puntos"></activity>
-
-
         <activity android:name=".Puntos" />
 
         <activity android:name=".RegisterActivity" />
