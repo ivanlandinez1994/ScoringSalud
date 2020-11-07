@@ -16,7 +16,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import com.pf.scoringsalud.HomeActivity;
+import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.R;
 
 
@@ -42,7 +42,7 @@ public class NotificationService extends IntentService {
         String NOTIFICATION_CHANNEL_ID = getApplicationContext().getString(R.string.app_name);
         Context context = this.getApplicationContext();
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent mIntent = new Intent(this, HomeActivity.class);
+        Intent mIntent = new Intent(this, EjerciciosActivity.class);
         Resources res = this.getResources();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 
@@ -70,10 +70,10 @@ public class NotificationService extends IntentService {
             mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             builder.setContentTitle(getString(R.string.app_name)).setCategory(Notification.CATEGORY_SERVICE)
-                    .setSmallIcon(R.drawable.ic_stat_ic_notification)   // required
+                    .setSmallIcon(R.drawable.gym)   // required
                     .setContentText(message)
-                    .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_stat_ic_notification))
-                    .setDefaults(Notification.DEFAULT_ALL)
+                    .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.gym))
+                    .setDefaults(Notification.DEFAULT_ALL) //este metodo esta deprecado para api26
                     .setAutoCancel(true)
                     .setSound(soundUri)
 
