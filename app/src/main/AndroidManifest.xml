@@ -28,26 +28,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EjerciciosActivity"
+        <activity android:name=".activity.EjerciciosActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Puntos" />
+        <activity android:name=".activity.PuntosActivity" />
 
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".GetUser" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.GetUserActivity" />
         <activity android:name=".notifications.NotificationActivity"
                   android:taskAffinity="" android:excludeFromRecents="true"/>
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.
         -->
-        <activity android:name=".AuthActivity" />
+        <activity android:name=".activity.AuthActivity" />
         <!--
  Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more.
         -->
-        <activity android:name=".WaterActivity" />
+        <activity android:name=".activity.WaterActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreenActivity"

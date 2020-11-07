@@ -8,8 +8,8 @@ import android.widget.Toast;
 //---------Autentication---------//
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.pf.scoringsalud.RegisterActivity;
-import com.pf.scoringsalud.User.Domain.User;
+import com.pf.scoringsalud.activity.RegisterActivity;
+import com.pf.scoringsalud.user.Domain.User;
 import com.pf.scoringsalud.api.Config;
 import com.pf.scoringsalud.api.interfaces.UserApi;
 
@@ -63,7 +63,7 @@ public class ApiUsuario {
         });
     }
 
-    public void getUsuarioApiAsincrono(final String mail, final Class activityDestino, final Context actualContext){
+    public void getUsuario(final String mail, final Class activityDestino, final Context actualContext){
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
