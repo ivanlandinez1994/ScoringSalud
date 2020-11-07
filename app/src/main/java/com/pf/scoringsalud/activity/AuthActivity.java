@@ -35,7 +35,6 @@ import java.util.List;
 
 public class AuthActivity extends AppCompatActivity implements OnFailureListener {
     private int GOOGLE_SIGN_IN = 100;
-    private User userFound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,7 +213,6 @@ public class AuthActivity extends AppCompatActivity implements OnFailureListener
                             showAlert(task.getException().toString());
                         }
                     }
-
                 } catch (ApiException e) {
                     // Google Sign In failed, update UI appropriately
                     showAlert(e.toString());
