@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".EjerRun"
+    tools:context=".fragment.EjerRunFragment"
     android:id="@id/ejerRun"
     android:clickable="true">
 
@@ -71,9 +71,13 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+<<<<<<< HEAD
                     app:layout_constraintTop_toBottomOf="@+id/fechaAgua"
                     app:layout_constraintVertical_bias="0.0"
                     tools:ignore="MissingClass" />
+=======
+                    app:layout_constraintVertical_bias="0.0" />
+>>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984
 
 
                 <ImageView

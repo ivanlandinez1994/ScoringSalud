@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ProfileFragment"
+    tools:context=".fragment.ProfileFragment"
     android:id="@+id/perfilF">
 
 
@@ -40,7 +40,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.021" />
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984
 
             <Button
                 android:id="@+id/activo"
@@ -51,7 +54,10 @@
                 android:drawableStart="@drawable/walk"
                 android:drawableTint="@color/white"
                 android:paddingStart="10dp"
+<<<<<<< HEAD
 
+=======
+>>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView31"
