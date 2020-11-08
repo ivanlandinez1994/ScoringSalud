@@ -50,21 +50,21 @@
 
 
                 <Button
-                    android:id="@+id/btnGO"
+                    android:id="@+id/btn_ejerdesc_go"
                     android:layout_width="197dp"
                     android:layout_height="37dp"
                     android:background="@drawable/rounded_corners"
-                    android:text="Comenzar"
+                    android:text="@string/comenzar_exc"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_ejerdesc_descripcion"
                     app:layout_constraintVertical_bias="0.618" />
 
                 <pl.droidsonroids.gif.GifImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/iv_ejedesc"
                     android:layout_width="351dp"
                     android:layout_height="169dp"
                     android:layout_marginBottom="384dp"
@@ -79,7 +79,7 @@
                     tools:ignore="MissingClass" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/tv_ejerdesc_descripcion"
                     android:layout_width="279dp"
                     android:layout_height="159dp"
                     android:text="Colocarse de pie y dar un paso al frente con una de las piernas, flexionando ligeramente. Luego, estirar la pierna contraria totalmente estirada hacia atrás y flexionar la de adelante. Asegurarse que la pelvis vaya hacia adelante. Realizar 10 repeticiones (vaivenes) con cada pierna. Se conseguirá así un estiramiento de los flexores de la pierna atrasada."
@@ -87,46 +87,44 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
                     app:layout_constraintVertical_bias="0.38" />
 
                 <TextView
                     android:id="@+id/tv_ejedesc_duracion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2 min"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.938"
+                    app:layout_constraintHorizontal_bias="0.894"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                    app:layout_constraintVertical_bias="0.057" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
+                    app:layout_constraintVertical_bias="0.06" />
 
                 <TextView
                     android:id="@+id/tv_ejedesc_nombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ejercicio Cadera"
                     android:textColor="@color/cardview_dark_background"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/textView12"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_ejerdesc_descripcion"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.502"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
                     app:layout_constraintVertical_bias="0.618" />
 
                 <TextView
                     android:id="@+id/tv_ejedesc_articulacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cadera"
+                    android:layout_marginStart="36dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/textView10"
                     app:layout_constraintHorizontal_bias="0.079"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                    app:layout_constraintVertical_bias="0.057" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
+                    app:layout_constraintVertical_bias="0.06" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

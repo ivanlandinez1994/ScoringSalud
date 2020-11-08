@@ -17,16 +17,16 @@ public class FactoryPuntuable {
     public static Puntuable actividad(String codigo){
         String n = codigo.toUpperCase();
         Puntuable p;
-        int[] posicionUno;
-        int[] posicionDos;
+        double[] posicionUno;
+        double[] posicionDos;
         Medible acelerometro;
         Medible contador;
         ArrayList<Medible> medibles;
         switch(n){
             case "HOMBRO":
 
-                posicionUno = new int[]{8,0,1};
-                posicionDos = new int[]{-8,0,1};
+                posicionUno = new double[]{8,0,1};
+                posicionDos = new double[]{-8,0,1};
                 acelerometro = new Acelerometro(posicionUno,posicionDos);
                 contador = new Contador(10000);
                 medibles = new ArrayList<Medible>();
@@ -35,13 +35,13 @@ public class FactoryPuntuable {
 
 
                 p = new Actividad(codigo,"Estiramiento de HOMBRO",100,"Hombro",
-                        "","",false,3,medibles);
+                        2131165332,"",false,3,medibles);
                 break;
 
             case "CADERA":
 
-                posicionUno = new int[]{8,0,1};
-                posicionDos = new int[]{-8,0,0};
+                posicionUno = new double[]{8,0,1};
+                posicionDos = new double[]{-8,0,0};
                 acelerometro = new Acelerometro(posicionUno,posicionDos);
                 contador = new Contador(10000);
                 medibles = new ArrayList<Medible>();
@@ -49,13 +49,18 @@ public class FactoryPuntuable {
                 medibles.add(contador);
 
                 p = new Actividad(codigo,"Estiramiento de CADERA",100,"CADERA",
-                        "","",false,3,medibles);
+                        2131165328,"Colocarse de pie y dar un paso al frente con" +
+                        " una de las piernas, flexionando ligeramente. Luego, estirar la pierna " +
+                        "contraria totalmente estirada hacia atrás y flexionar la de adelante. " +
+                        "Asegurarse que la pelvis vaya hacia adelante. Realizar 10 repeticiones " +
+                        "(vaivenes) con cada pierna. Se conseguirá así un estiramiento de los" +
+                        " flexores de la pierna atrasada.",false,3,medibles);
                 break;
 
                 case "CUELLO":
 
-                    posicionUno = new int[]{8,0,0};
-                    posicionDos = new int[]{-8,0,0};
+                    posicionUno = new double[]{8,0,0};
+                    posicionDos = new double[]{-8,0,0};
                     acelerometro = new Acelerometro(posicionUno,posicionDos);
                     contador = new Contador(5000);
                     medibles = new ArrayList<Medible>();
@@ -63,8 +68,34 @@ public class FactoryPuntuable {
                     medibles.add(contador);
 
                     p = new Actividad(codigo,"Estiramiento de CUELLO",100,"CUELLO",
-                            "","",false,2,medibles);
+                            2131165330,"",false,1,medibles);
                     break;
+            case "MUNIECA":
+
+                posicionUno = new double[]{8,0,0};
+                posicionDos = new double[]{-8,0,0};
+                acelerometro = new Acelerometro(posicionUno,posicionDos);
+                contador = new Contador(5000);
+                medibles = new ArrayList<Medible>();
+                medibles.add(acelerometro);
+                medibles.add(contador);
+
+                p = new Actividad(codigo,"Estiramiento de CUELLO",100,"CUELLO",
+                        2131165334,"",false,1,medibles);
+                break;
+            case "RODILLA":
+
+                posicionUno = new double[]{8,0,0};
+                posicionDos = new double[]{-8,0,0};
+                acelerometro = new Acelerometro(posicionUno,posicionDos);
+                contador = new Contador(5000);
+                medibles = new ArrayList<Medible>();
+                medibles.add(acelerometro);
+                medibles.add(contador);
+
+                p = new Actividad(codigo,"Estiramiento de CUELLO",100,"CUELLO",
+                        2131165336,"",false,1,medibles);
+                break;
             default:
                 p=null;
                 break;

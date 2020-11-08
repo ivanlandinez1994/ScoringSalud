@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.fragment.FragmentNavigator;
 
 public class EjerciciosActivity extends AppCompatActivity {
 
@@ -11,7 +12,6 @@ public class EjerciciosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejercicios);
-
 
 
         // boton atras deprecado

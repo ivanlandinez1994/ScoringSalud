@@ -1,9 +1,7 @@
 package com.pf.scoringsalud;
 
 
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 
@@ -17,27 +15,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pf.scoringsalud.Factorys.FactoryPuntuable;
 import com.pf.scoringsalud.Puntuable.Actividad;
-import com.pf.scoringsalud.Puntuable.Medidor.Acelerometro;
 import com.pf.scoringsalud.Puntuable.Medidor.Contador;
-import com.pf.scoringsalud.Puntuable.Medidor.Proximity;
+
+
 
 
 public class EjerDesc extends Fragment {
     Button bacK;
     Button go;
     String dato;
-    TextView tv_ejedesc_nombre, tv_ejedesc_articulacion, tv_ejedesc_duracion;
+    TextView tv_ejedesc_nombre, tv_ejedesc_articulacion, tv_ejedesc_duracion, tv_ejerdesc_descripcion;
     Actividad a;
+    ImageView iv_ejedesc;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_ejer_desc, container, false);
+
 
         //boton a fragment ejercicios
         bacK= view.findViewById(R.id.back);
@@ -62,6 +64,9 @@ public class EjerDesc extends Fragment {
         tv_ejedesc_nombre = view.findViewById(R.id.tv_ejedesc_nombre);
         tv_ejedesc_articulacion = view.findViewById(R.id.tv_ejedesc_articulacion);
         tv_ejedesc_duracion = view.findViewById(R.id.tv_ejedesc_duracion);
+        tv_ejerdesc_descripcion = view.findViewById(R.id.tv_ejerdesc_descripcion);
+        iv_ejedesc = (ImageView) view.findViewById(R.id.iv_ejedesc);
+
         getParentFragmentManager().setFragmentResultListener("btn_ejercicio", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -69,10 +74,12 @@ public class EjerDesc extends Fragment {
               a = (Actividad) FactoryPuntuable.actividad(dato);
               setearDatos();
 
+
             }
         });
 
-        go= view.findViewById(R.id.btnGO);
+
+        go= view.findViewById(R.id.btn_ejerdesc_go);
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +112,8 @@ public class EjerDesc extends Fragment {
 
         tv_ejedesc_nombre.setText(a.getNombre());
         tv_ejedesc_articulacion.setText("Articulacion "+a.getArticulacion());
+        iv_ejedesc.setImageResource(a.getRutaGif());
+        tv_ejerdesc_descripcion.setText(a.getDescripcion());
 
     }
 

@@ -25,11 +25,9 @@ public class EstrategiaEjerRun_Acelerometro extends EstrategiaEjerRun {
     private void setEje(){
         if(acelerometro.getPosicionUno()[0] != acelerometro.getPosicionDos()[0]){
             this.eje = "X";
-        }
-        if(acelerometro.getPosicionUno()[1] != acelerometro.getPosicionDos()[1]){
+        }else if(acelerometro.getPosicionUno()[1] != acelerometro.getPosicionDos()[1]){
             this.eje = "Y";
-        }
-        if(acelerometro.getPosicionUno()[2] != acelerometro.getPosicionDos()[2]){
+        }else {
             this.eje = "Z";
         }
     }
@@ -38,7 +36,8 @@ public class EstrategiaEjerRun_Acelerometro extends EstrategiaEjerRun {
 
     @Override
     public boolean posicionCorrecta(double x, double y, double z, int numero) {
-        boolean posicionCorrecta = false;
+        boolean posicionCorrecta;
+        posicionCorrecta=false;
         switch (eje) {
             case "X":
                 if (x > acelerometro.getPosicionUno()[0] && numero == 0) {
@@ -64,7 +63,6 @@ public class EstrategiaEjerRun_Acelerometro extends EstrategiaEjerRun {
                 if (z < acelerometro.getPosicionDos()[2] && numero == 1) {
                     posicionCorrecta = true;
                 }
-
                 break;
             default:
                 posicionCorrecta = true;
@@ -102,5 +100,12 @@ public class EstrategiaEjerRun_Acelerometro extends EstrategiaEjerRun {
                 break;
         }
         return posicionInicio;
+    }
+
+    public String getActivo(){
+        return "YES";
+    }
+    public Acelerometro getAcelerometro(){
+        return this.acelerometro;
     }
 }

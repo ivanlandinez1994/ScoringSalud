@@ -10,17 +10,16 @@ public abstract class Puntuable {
     protected   int puntosOtorgables;
     protected   int puntosObtenidos;
     protected   LocalDateTime fecha;
-    protected   String rutaGif;
+
     protected   String descripcion;
     protected   String detalle;
 
 
     public Puntuable(String codigo, String nombre, int puntosOtorgables,
-                     String rutaGif, String descripcion) {
+                      String descripcion) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.puntosOtorgables = puntosOtorgables;
-        this.rutaGif=rutaGif;
         this.descripcion=descripcion;
         fecha = LocalDateTime.now();
     }
@@ -76,13 +75,7 @@ public abstract class Puntuable {
 
 
 
-    public String getRutaGif() {
-        return rutaGif;
-    }
 
-    public void setRutaGif(String rutaGif) {
-        this.rutaGif = rutaGif;
-    }
 
     public String getDescripcion() {
         return descripcion;

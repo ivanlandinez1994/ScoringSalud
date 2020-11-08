@@ -4,32 +4,32 @@ package com.pf.scoringsalud.Puntuable.Medidor;
 public class Acelerometro implements Medible {
 
 
-    protected int [] posicionUno;
-    protected int [] posicionDos;
+    protected double [] posicionUno;
+    protected double [] posicionDos;
 
-    public Acelerometro(int[] posicionUno) {
+    public Acelerometro(double[] posicionUno) {
         this.posicionUno = posicionUno;
     }
 
-    public Acelerometro(int[] posicionUno, int[] posicionDos) {
+    public Acelerometro(double[] posicionUno, double[] posicionDos) {
         this.posicionUno = posicionUno;
         this.posicionDos = posicionDos;
     }
 
     //Getters / Setters
-    public int[] getPosicionUno() {
+    public double[] getPosicionUno() {
         return posicionUno;
     }
 
-    public void setPosicionUno(int[] posicionUno) {
+    public void setPosicionUno(double[] posicionUno) {
         this.posicionUno = posicionUno;
     }
 
-    public int[] getPosicionDos() {
+    public double[] getPosicionDos() {
         return posicionDos;
     }
 
-    public void setPosicionDos(int[] posicionDos) {
+    public void setPosicionDos(double[] posicionDos) {
         this.posicionDos = posicionDos;
     }
 
