@@ -24,7 +24,7 @@
             android:layout_marginRight="10dp">
 
 
-            <Button
+            <!--<Button
                 android:id="@+id/actualizar"
                 android:layout_width="30dp"
                 android:layout_height="28dp"
@@ -39,7 +39,7 @@
                 app:layout_constraintStart_toEndOf="@+id/ivUser"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.021" />
-
+              -->
 
             <Button
                 android:id="@+id/activo"
