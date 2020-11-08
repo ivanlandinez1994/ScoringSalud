@@ -1,6 +1,6 @@
 package com.pf.scoringsalud.api.interfaces;
 
-import com.pf.scoringsalud.User.Domain.User;
+import com.pf.scoringsalud.user.Domain.User;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

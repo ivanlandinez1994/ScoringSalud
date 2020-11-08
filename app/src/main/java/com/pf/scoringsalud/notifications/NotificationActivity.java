@@ -20,7 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
-import com.pf.scoringsalud.EjerciciosActivity;
+import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.R;
 
 import java.util.Calendar;

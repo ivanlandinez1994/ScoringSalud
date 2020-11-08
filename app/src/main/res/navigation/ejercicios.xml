@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/listaEjercicios"
-        android:name="com.pf.scoringsalud.ListaEjercicios"
+        android:name="com.pf.scoringsalud.fragment.ListaEjerciciosFragment"
         android:label="fragment_lista_ejercicios"
         tools:layout="@layout/fragment_lista_ejercicios" />
     <fragment
         android:id="@+id/ejerDesc"
-        android:name="com.pf.scoringsalud.EjerDesc"
+        android:name="com.pf.scoringsalud.fragment.EjerDescFragment"
         android:label="fragment_ejer_desc"
         tools:layout="@layout/fragment_ejer_desc" />
     <fragment
         android:id="@+id/ejerRun"
-        android:name="com.pf.scoringsalud.EjerRun"
+        android:name="com.pf.scoringsalud.fragment.EjerRunFragment"
         android:label="fragment_ejer_run"
         tools:layout="@layout/fragment_ejer_run" />
     <fragment
         android:id="@+id/ejerEnd2"
-        android:name="com.pf.scoringsalud.EjerEnd"
+        android:name="com.pf.scoringsalud.fragment.EjerEndFragment"
         android:label="fragment_ejer_end"
         tools:layout="@layout/fragment_ejer_end" />
 </navigation>
