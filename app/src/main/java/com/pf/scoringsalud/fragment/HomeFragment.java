@@ -62,7 +62,18 @@ public class HomeFragment extends Fragment {
 
 
 
+        // abrir activity Pasos
+       /* Button btnpasos= view.findViewById(R.id.buttonPasos);
+        btnpasos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PasosActivity.class);
+                startActivity(intent);
+            }
+        });
 
+
+*/
 
 
 

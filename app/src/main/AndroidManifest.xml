@@ -2,24 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pf.scoringsalud">
 
-
-    <uses-feature
-        android:name="android.hardware.sensor.accelerometer"
-        android:required="true" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/health"
@@ -28,29 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.EjerciciosActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PuntosActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.RegisterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.GetUserActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".notifications.NotificationActivity"
-                  android:taskAffinity="" android:excludeFromRecents="true"/>
+        <activity android:name=".activity.PasosActivity"></activity>
+        <activity
+            android:name=".activity.EjerciciosActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.PuntosActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.GetUserActivity" />
+        <activity
+            android:name=".notifications.NotificationActivity"
+            android:excludeFromRecents="true"
+            android:taskAffinity="" />
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.
         -->
-        <activity android:name=".activity.AuthActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity android:name=".activity.AuthActivity" />
         <!--
  Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more.
         -->
-        <activity android:name=".activity.WaterActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.WaterActivity" />
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
@@ -89,5 +69,21 @@
             android:name=".notifications.NotificationService"
             android:enabled="true" />
     </application>
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>
