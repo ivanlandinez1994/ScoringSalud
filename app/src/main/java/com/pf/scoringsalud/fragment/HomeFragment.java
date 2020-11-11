@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.pf.scoringsalud.activity.EjerciciosActivity;
+import com.pf.scoringsalud.activity.PasosActivity;
 import com.pf.scoringsalud.activity.PuntosActivity;
 import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.activity.WaterActivity;
@@ -63,7 +64,7 @@ public class HomeFragment extends Fragment {
 
 
         // abrir activity Pasos
-       /* Button btnpasos= view.findViewById(R.id.buttonPasos);
+        Button btnpasos= view.findViewById(R.id.buttonPasos);
         btnpasos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +74,6 @@ public class HomeFragment extends Fragment {
         });
 
 
-*/
 
 
 
