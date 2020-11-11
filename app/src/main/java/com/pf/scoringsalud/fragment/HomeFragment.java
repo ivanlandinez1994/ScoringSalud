@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.pf.scoringsalud.activity.EjerciciosActivity;
+import com.pf.scoringsalud.activity.PasosActivity;
 import com.pf.scoringsalud.activity.PuntosActivity;
 import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.activity.WaterActivity;
@@ -36,7 +37,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         // abrir activity agua
         Button btnAgua= view.findViewById(R.id.buttonAgua);
         btnAgua.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         // abrir activity puntos
         Button btnptos= view.findViewById(R.id.btnProgress);
@@ -58,7 +57,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
+        // abrir activity Pasos
+        Button btnpasos= view.findViewById(R.id.buttonPasos);
+        btnpasos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PasosActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button btnAct= view.findViewById(R.id.buttonRutinas);
         btnAct.setOnClickListener(new View.OnClickListener() {
