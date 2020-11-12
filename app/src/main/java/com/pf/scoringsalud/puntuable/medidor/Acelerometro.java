@@ -1,4 +1,4 @@
-package com.pf.scoringsalud.puntuable.Medidor;
+package com.pf.scoringsalud.puntuable.medidor;
 
 
 public class Acelerometro implements Medible {

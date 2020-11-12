@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.pf.scoringsalud.Factorys.FactoryPuntuable;
-import com.pf.scoringsalud.Puntuable.Actividad;
+import com.pf.scoringsalud.factory.FactoryPuntuable;
+import com.pf.scoringsalud.puntuable.Actividad;
 
 
 import com.pf.scoringsalud.R;
@@ -34,31 +34,22 @@ public class EjerEndFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_ejer_end, container, false);
         tv_ejerend_descripcion = (TextView) view.findViewById(R.id.tv_ejerend_descripcion);
-
         end= view.findViewById(R.id.end);
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD:app/src/main/java/com/pf/scoringsalud/EjerEnd.java
-                postPuntuable();
-                ListaEjercicios ed= new ListaEjercicios();
-=======
-                ListaEjerciciosFragment ed= new ListaEjerciciosFragment();
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984:app/src/main/java/com/pf/scoringsalud/fragment/EjerEndFragment.java
+                HomeFragment hf= new HomeFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.ejerEnd, ed );
+                transaction.replace(R.id.ejerEnd, hf );
                 transaction.commit();
             }
         });
-
-
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         //recupero datos del fragment
         getParentFragmentManager().setFragmentResultListener("eje_end", this, new FragmentResultListener() {
             @Override
@@ -82,7 +73,5 @@ public class EjerEndFragment extends Fragment {
 
     }
 
-    private void postPuntuable(){
 
-    }
 }

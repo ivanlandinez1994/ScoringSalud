@@ -1,5 +1,6 @@
 package com.pf.scoringsalud.fragment;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,33 +23,25 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-<<<<<<< HEAD:app/src/main/java/com/pf/scoringsalud/EjerRun.java
-import com.pf.scoringsalud.Factorys.FactoryPuntuable;
-import com.pf.scoringsalud.Puntuable.Actividad;
-import com.pf.scoringsalud.Puntuable.EstrategiaMedicion.MedicionEjerRun;
-import com.pf.scoringsalud.Puntuable.Medidor.Acelerometro;
-import com.pf.scoringsalud.Puntuable.Medidor.Contador;
-import com.pf.scoringsalud.Puntuable.Medidor.Proximity;
-=======
-import com.pf.scoringsalud.factory.FactoryPuntuable;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.pf.scoringsalud.api.consumo.ApiPuntuable;
+import com.pf.scoringsalud.api.infraestructura.PuntuableEndPoint;
 import com.pf.scoringsalud.puntuable.Actividad;
-import com.pf.scoringsalud.puntuable.EstrategiaMedicion.MedicionEjerRun;
-import com.pf.scoringsalud.puntuable.Medidor.Acelerometro;
-import com.pf.scoringsalud.puntuable.Medidor.Contador;
-import com.pf.scoringsalud.puntuable.Medidor.Proximity;
+import com.pf.scoringsalud.puntuable.estrategiaMedicion.MedicionEjerRun;
+import com.pf.scoringsalud.puntuable.medidor.Acelerometro;
+import com.pf.scoringsalud.puntuable.medidor.Contador;
+import com.pf.scoringsalud.puntuable.medidor.Proximity;
+import com.pf.scoringsalud.factory.FactoryPuntuable;
 import com.pf.scoringsalud.R;
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984:app/src/main/java/com/pf/scoringsalud/fragment/EjerRunFragment.java
 
 import static android.content.Context.SENSOR_SERVICE;
 
 //
-<<<<<<< HEAD:app/src/main/java/com/pf/scoringsalud/EjerRun.java
-public class EjerRun extends Fragment implements SensorEventListener {
-    Button go, stop;
-=======
+
 public class EjerRunFragment extends Fragment implements SensorEventListener {
-    Button go, end;
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984:app/src/main/java/com/pf/scoringsalud/fragment/EjerRunFragment.java
+    Button go, stop;
     String dato;
     CountDownTimer contador;
     Actividad a;
@@ -83,15 +77,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD:app/src/main/java/com/pf/scoringsalud/EjerRun.java
                 comienzo = false;
                 contador.cancel();
-=======
-                EjerEndFragment ed= new EjerEndFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.ejerDesc, ed );
-                transaction.commit();
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984:app/src/main/java/com/pf/scoringsalud/fragment/EjerRunFragment.java
             }
         });
 
@@ -144,7 +131,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-//tv_ejerun_sensores.setText(((Acelerometro)((EstrategiaEjerRun_Acelerometro)medicion.getEstrategia()).getAcelerometro()).getPosicionUno()[0]);
         if(comienzo) {
             if (acelerometro) {
                 tv_ejerun_sensores.setText("x: " + String.valueOf(x).substring(0,2) +" Y: "
@@ -194,6 +180,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
             }
         //}
+        vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         tv_ejerun_repeticiones.setText(a.getRepeticionesRealizadas()+" / "+a.getRepeticiones());
         iv_ejedesc.setImageResource(a.getRutaGif());
     }
@@ -208,7 +195,13 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
             @Override
             public void onFinish() {
+                if(contadorEjercicio ==0){
+                    vibrator.vibrate(500);
+                }else{
+                    vibrator.vibrate(1000);
+                }
                 contadorEjercicio++;
+                if(a.getRepeticionesRealizadas()!=a.getRepeticiones())
                 comienzo = true;
             }
 
@@ -217,12 +210,11 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
     private void ejercicioAcelerometro(){
         if(medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio)){
-          // vibrator.vibrate(1000);
             iniciarContador();
             comienzo = false;
 
         } else if (medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio)) {
-         // vibrator.vibrate(1000);
+
             iniciarContador();
             comienzo = false;
         }
@@ -233,7 +225,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
             contadorEjercicio = 0;
             ejercicioAcelerometro();
         }
-        if(a.getRepeticionesRealizadas() == a.getRepeticiones()){
+        if(a.getRepeticionesRealizadas() == a.getRepeticiones() && comienzo){
+            //vibrator.vibrate(1000);
             comienzo = false;
             exito();
         }
@@ -246,13 +239,21 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     }
 
     private void exito(){
+    postPuntuable();
     Bundle bundle1 = new Bundle();
     bundle1.putString("key",dato);
     getParentFragmentManager().setFragmentResult("eje_end",bundle1);
-    EjerEnd ed= new EjerEnd();
+    EjerEndFragment ed= new EjerEndFragment();
     FragmentTransaction transaction = getFragmentManager().beginTransaction();
     transaction.replace(R.id.ejerRun, ed );
     transaction.commit();
+    }
+    private void postPuntuable(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        PuntuableEndPoint pep = new PuntuableEndPoint("Actividad",a.getNombre(),
+                a.getPuntosOtorgables(),"Prueba",user.getEmail());
+        ApiPuntuable ap = new ApiPuntuable();
+        ap.crearPuntuable(pep,getContext());
 
     }
 }

@@ -1,8 +1,8 @@
-package com.pf.scoringsalud.puntuable.EstrategiaMedicion;
+package com.pf.scoringsalud.puntuable.estrategiaMedicion;
 
 import com.pf.scoringsalud.puntuable.Actividad;
-import com.pf.scoringsalud.puntuable.Medidor.Acelerometro;
-import com.pf.scoringsalud.puntuable.Medidor.Medible;
+import com.pf.scoringsalud.puntuable.medidor.Acelerometro;
+import com.pf.scoringsalud.puntuable.medidor.Medible;
 
 public class EstrategiaEjerRun_Acelerometro extends EstrategiaEjerRun {
 
@@ -40,28 +40,54 @@ public class EstrategiaEjerRun_Acelerometro extends EstrategiaEjerRun {
         posicionCorrecta=false;
         switch (eje) {
             case "X":
-                if (x > acelerometro.getPosicionUno()[0] && numero == 0) {
-                    posicionCorrecta = true;
-                }
-                if (x < acelerometro.getPosicionDos()[0] && numero == 1) {
-                    posicionCorrecta = true;
+                if(acelerometro.getPosicionUno()[0]>acelerometro.getPosicionDos()[0]) {
+                    if (x > acelerometro.getPosicionUno()[0] && numero == 0) {
+                        posicionCorrecta = true;
+                    }
+                    if (x < acelerometro.getPosicionDos()[0] && numero == 1) {
+                        posicionCorrecta = true;
+                    }
+                }else{
+                    if (x < acelerometro.getPosicionUno()[0] && numero == 0) {
+                        posicionCorrecta = true;
+                    }
+                    if (x > acelerometro.getPosicionDos()[0] && numero == 1) {
+                        posicionCorrecta = true;
+                    }
                 }
                 break;
             case "Y":
-                if (y > acelerometro.getPosicionUno()[1] && numero == 0) {
-                    posicionCorrecta = true;
+                if(acelerometro.getPosicionUno()[1]>acelerometro.getPosicionDos()[1]) {
+                    if (y > acelerometro.getPosicionUno()[1] && numero == 0) {
+                        posicionCorrecta = true;
+                    }
+                    if (y < acelerometro.getPosicionDos()[1] && numero == 1) {
+                        posicionCorrecta = true;
+                    }
+                }else{
+                    if (y < acelerometro.getPosicionUno()[1] && numero == 0) {
+                        posicionCorrecta = true;
+                    }
+                    if (y > acelerometro.getPosicionDos()[1] && numero == 1) {
+                        posicionCorrecta = true;
+                    }
                 }
-                if (y < acelerometro.getPosicionDos()[1] && numero == 1) {
-                    posicionCorrecta = true;
-                }
-
                 break;
             case "Z":
-                if (z > acelerometro.getPosicionUno()[2] && numero == 0) {
-                    posicionCorrecta = true;
-                }
-                if (z < acelerometro.getPosicionDos()[2] && numero == 1) {
-                    posicionCorrecta = true;
+                if(acelerometro.getPosicionUno()[2]>acelerometro.getPosicionDos()[2]) {
+                    if (z > acelerometro.getPosicionUno()[2] && numero == 0) {
+                        posicionCorrecta = true;
+                    }
+                    if (z < acelerometro.getPosicionDos()[2] && numero == 1) {
+                        posicionCorrecta = true;
+                    }
+                }else{
+                    if (z < acelerometro.getPosicionUno()[2] && numero == 0) {
+                        posicionCorrecta = true;
+                    }
+                    if (z > acelerometro.getPosicionDos()[2] && numero == 1) {
+                        posicionCorrecta = true;
+                    }
                 }
                 break;
             default:

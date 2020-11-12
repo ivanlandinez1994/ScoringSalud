@@ -80,15 +80,16 @@
 
                 <TextView
                     android:id="@+id/tv_ejerdesc_descripcion"
-                    android:layout_width="279dp"
-                    android:layout_height="159dp"
+                    android:layout_width="292dp"
+                    android:layout_height="215dp"
                     android:text="Colocarse de pie y dar un paso al frente con una de las piernas, flexionando ligeramente. Luego, estirar la pierna contraria totalmente estirada hacia atrás y flexionar la de adelante. Asegurarse que la pelvis vaya hacia adelante. Realizar 10 repeticiones (vaivenes) con cada pierna. Se conseguirá así un estiramiento de los flexores de la pierna atrasada."
                     android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.507"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.38" />
+                    app:layout_constraintVertical_bias="0.572" />
 
                 <TextView
                     android:id="@+id/tv_ejedesc_duracion"
@@ -109,10 +110,9 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/tv_ejerdesc_descripcion"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.502"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.618" />
+                    app:layout_constraintVertical_bias="0.743" />
 
                 <TextView
                     android:id="@+id/tv_ejedesc_articulacion"

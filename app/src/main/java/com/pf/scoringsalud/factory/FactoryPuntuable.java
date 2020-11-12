@@ -2,10 +2,11 @@ package com.pf.scoringsalud.factory;
 
 
 import com.pf.scoringsalud.puntuable.Actividad;
-import com.pf.scoringsalud.puntuable.Medidor.Acelerometro;
-import com.pf.scoringsalud.puntuable.Medidor.Contador;
-import com.pf.scoringsalud.puntuable.Medidor.Medible;
+import com.pf.scoringsalud.puntuable.medidor.Acelerometro;
+import com.pf.scoringsalud.puntuable.medidor.Contador;
+import com.pf.scoringsalud.puntuable.medidor.Medible;
 import com.pf.scoringsalud.puntuable.Puntuable;
+import com.pf.scoringsalud.puntuable.medidor.Proximity;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class FactoryPuntuable {
         double[] posicionUno;
         double[] posicionDos;
         Medible acelerometro;
+        Medible proximity;
         Medible contador;
         ArrayList<Medible> medibles;
         switch(n){
@@ -33,9 +35,10 @@ public class FactoryPuntuable {
                 medibles.add(acelerometro);
                 medibles.add(contador);
 
-
                 p = new Actividad(codigo,"Estiramiento de HOMBRO",100,"Hombro",
-                        2131165332,"",false,3,medibles);
+                        2131165332,"Sostener el celular con la mano derecha mirando hacia abajo y apuntando a su izquierda" +
+                        ". Estirar el brazo, colocar la otra mano en el codo y tirar. Una vez finalizado el contador, repetir con el brazo contrario," +
+                        " cambiando el celular de mano, mirando hacia abajo y apuntando a su derecha.",false,3,medibles);
                 break;
 
             case "CADERA":
@@ -72,25 +75,27 @@ public class FactoryPuntuable {
                     break;
             case "MUNIECA":
 
-                posicionUno = new double[]{8,0,0};
-                posicionDos = new double[]{-8,0,0};
+                posicionUno = new double[]{-8,0,0};
+                posicionDos = new double[]{8,0,0};
                 acelerometro = new Acelerometro(posicionUno,posicionDos);
                 contador = new Contador(5000);
                 medibles = new ArrayList<Medible>();
                 medibles.add(acelerometro);
                 medibles.add(contador);
 
-                p = new Actividad(codigo,"Estiramiento de CUELLO",100,"CUELLO",
-                        2131165334,"",false,1,medibles);
+                p = new Actividad(codigo,"Estiramiento de MUÑECAS",100,"MUÑECAS",
+                        2131165334,"Sostener el Celular de forma horizontal mirando hacia abajo" +
+                        ". Doblar la muñeca hacia abajo logrando que el celular te mire a vos " +
+                        "y el contador se iniciará. Al llegar a cero doblar la muñeca hacia arriba, logrando que el celular " +
+                        "mire hacia adelante, el contador se iniciará y al llegar a cero, la vibracion le indicara que debe cambiar de mano"+
+                        " para repetir los mismos movimientos",false,3,medibles);
                 break;
             case "RODILLA":
 
-                posicionUno = new double[]{8,0,0};
-                posicionDos = new double[]{-8,0,0};
-                acelerometro = new Acelerometro(posicionUno,posicionDos);
+                proximity = new Proximity();
                 contador = new Contador(5000);
                 medibles = new ArrayList<Medible>();
-                medibles.add(acelerometro);
+                medibles.add(proximity);
                 medibles.add(contador);
 
                 p = new Actividad(codigo,"Estiramiento de CUELLO",100,"CUELLO",

@@ -1,9 +1,9 @@
 package com.pf.scoringsalud.puntuable;
 
-import com.pf.scoringsalud.puntuable.Medidor.Acelerometro;
-import com.pf.scoringsalud.puntuable.Medidor.Contador;
-import com.pf.scoringsalud.puntuable.Medidor.Medible;
-import com.pf.scoringsalud.puntuable.Medidor.Proximity;
+import com.pf.scoringsalud.puntuable.medidor.Acelerometro;
+import com.pf.scoringsalud.puntuable.medidor.Contador;
+import com.pf.scoringsalud.puntuable.medidor.Medible;
+import com.pf.scoringsalud.puntuable.medidor.Proximity;
 
 import java.util.ArrayList;
 

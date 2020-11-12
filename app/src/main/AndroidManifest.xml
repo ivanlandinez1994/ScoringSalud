@@ -16,11 +16,9 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<<<<<<< HEAD
-=======
 
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -31,21 +29,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
 
-        <activity android:name=".EjerciciosActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Puntos" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".GetUser" />
-=======
         <activity android:name=".activity.EjerciciosActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.PuntosActivity" />
 
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.GetUserActivity" />
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984
         <activity android:name=".notifications.NotificationActivity"
                   android:taskAffinity="" android:excludeFromRecents="true"/>
         <!--

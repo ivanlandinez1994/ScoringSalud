@@ -1,6 +1,4 @@
-package com.pf.scoringsalud.Puntuable;
-
-import java.util.ArrayList;
+package com.pf.scoringsalud.puntuable;
 
 public class Pomodoro {
 

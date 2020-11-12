@@ -1,10 +1,5 @@
 package com.pf.scoringsalud.fragment;
 
-
-<<<<<<< HEAD:app/src/main/java/com/pf/scoringsalud/EjerDesc.java
-import android.graphics.drawable.Drawable;
-=======
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984:app/src/main/java/com/pf/scoringsalud/fragment/EjerDescFragment.java
 import android.os.Bundle;
 
 
@@ -21,18 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-<<<<<<< HEAD:app/src/main/java/com/pf/scoringsalud/EjerDesc.java
-import com.pf.scoringsalud.Factorys.FactoryPuntuable;
-import com.pf.scoringsalud.Puntuable.Actividad;
-import com.pf.scoringsalud.Puntuable.Medidor.Contador;
-
-
-=======
 import com.pf.scoringsalud.factory.FactoryPuntuable;
-import com.pf.scoringsalud.puntuable.Actividad;
-import com.pf.scoringsalud.puntuable.Medidor.Contador;
 import com.pf.scoringsalud.R;
->>>>>>> cfcd42294e0395ee178c1f8289ea208e5e112984:app/src/main/java/com/pf/scoringsalud/fragment/EjerDescFragment.java
+import com.pf.scoringsalud.puntuable.Actividad;
+import com.pf.scoringsalud.puntuable.medidor.Contador;
 
 
 public class EjerDescFragment extends Fragment {

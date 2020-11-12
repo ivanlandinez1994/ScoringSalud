@@ -1,8 +1,8 @@
-package com.pf.scoringsalud.puntuable.EstrategiaMedicion;
+package com.pf.scoringsalud.puntuable.estrategiaMedicion;
 
 import com.pf.scoringsalud.puntuable.Actividad;
-import com.pf.scoringsalud.puntuable.Medidor.Medible;
-import com.pf.scoringsalud.puntuable.Medidor.Proximity;
+import com.pf.scoringsalud.puntuable.medidor.Medible;
+import com.pf.scoringsalud.puntuable.medidor.Proximity;
 
 public class EstrategiaEjerRun_Proximity extends EstrategiaEjerRun {
     private Proximity proximity;
