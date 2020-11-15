@@ -81,10 +81,9 @@
                     android:text="28 de Octubre"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.203" />
+                    app:layout_constraintVertical_bias="0.262" />
 
                 <TextView
                     android:id="@+id/txpasos"
@@ -152,6 +151,20 @@
                     app:layout_constraintStart_toEndOf="@+id/tvKm"
                     app:layout_constraintTop_toBottomOf="@+id/textpasos"
                     app:layout_constraintVertical_bias="0.298" />
+
+                <TextView
+                    android:id="@+id/tituloPantalla"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mis Pasos"
+                    android:textSize="23dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.496"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.11" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
