@@ -27,8 +27,8 @@ public class NotificationActivity extends AppCompatActivity {
 
     private Button btNotificacion;
     private PendingIntent pendingIntent;
-  //  private final static String CHANNEL_ID = "NOTIFICACION";
-   // private final static int NOTIFICACION_ID = 1;
+    //  private final static String CHANNEL_ID = "NOTIFICACION";
+    // private final static int NOTIFICACION_ID = 1;
 
 
     private TextView notificationsTime;
@@ -66,7 +66,6 @@ public class NotificationActivity extends AppCompatActivity {
 
 /*
         String minuto_sistema,dia_sistema,hora_sistema;
-
         dia_sistema = String.valueOf(diaActual);
         hora_sistema = String.valueOf(horaActual);
         minuto_sistema = String.valueOf(minutoActual);
@@ -97,9 +96,9 @@ public class NotificationActivity extends AppCompatActivity {
         btNotificacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    validar();
-                    llenar();
-                    finish();
+                validar();
+                llenar();
+                finish();
             }
         });
         //Boton NOTIFICACION
@@ -167,7 +166,7 @@ public class NotificationActivity extends AppCompatActivity {
             }
         });
 
-            findViewById(R.id.change_notificationFin).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.change_notificationFin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar mcurrentTime = Calendar.getInstance();
@@ -220,18 +219,18 @@ public class NotificationActivity extends AppCompatActivity {
 
 
 
-public void servicio(){
+    public void servicio(){
         try{
-                Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+            Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
             Log.i("Exeption servicio", "intent de servicio");
-                final PendingIntent pendingIntent = PendingIntent.getBroadcast(NotificationActivity.this,AlarmReceiver.REQUEST_CODE,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            final PendingIntent pendingIntent = PendingIntent.getBroadcast(NotificationActivity.this,AlarmReceiver.REQUEST_CODE,intent,PendingIntent.FLAG_UPDATE_CURRENT);
             Log.i("Exeption servicio", "pending de servicio");
-                long firstMillis = System.currentTimeMillis();
+            long firstMillis = System.currentTimeMillis();
             Log.i("Exeption servicio", "hora "+firstMillis);
-                int intervalMillis = 1000*5;
+            int intervalMillis = 1000*5;
             System.out.println();
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,firstMillis,intervalMillis, pendingIntent);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,firstMillis,intervalMillis, pendingIntent);
 
 
         }catch(IllegalArgumentException e ){
@@ -239,110 +238,110 @@ public void servicio(){
             Log.i("Exeption servicio", e.getMessage());
 
         }
-}
+    }
 
 
 
 
 
 
-private void validar(){
+    private void validar(){
 
-    lunes.setOnClickListener(new View.OnClickListener() {
+        lunes.setOnClickListener(new View.OnClickListener() {
 
-        @Override
-        public void onClick(View view) {
-            if(dias[1]==0){
-                lunes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                dias[1]=2;
-            }else{
-                lunes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                dias[1]=0;
+            @Override
+            public void onClick(View view) {
+                if(dias[1]==0){
+                    lunes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    dias[1]=2;
+                }else{
+                    lunes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    dias[1]=0;
+                }
             }
-        }
-    });
-    martes.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+        });
+        martes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-            if(dias[2]==0){
-                martes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                dias[2]=3;
-            }else{
-                martes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                dias[2]=0;
+                if(dias[2]==0){
+                    martes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    dias[2]=3;
+                }else{
+                    martes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    dias[2]=0;
+                }
+
+
+
+
             }
+        });
+        miercoles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dias[3]==0){
+                    miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    dias[3]=4;
+                }else{
+                    miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    dias[3]=0;
+                }
 
 
 
-
-        }
-    });
-    miercoles.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(dias[3]==0){
-                miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                dias[3]=4;
-            }else{
-                miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                dias[3]=0;
             }
-
-
-
-        }
-    });
-    jueves.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(dias[4]==0){
-                jueves.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                dias[4]=5;
-            }else{
-                jueves.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                dias[4]=0;
+        });
+        jueves.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dias[4]==0){
+                    jueves.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    dias[4]=5;
+                }else{
+                    jueves.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    dias[4]=0;
+                }
             }
-        }
-    });
-    viernes.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(dias[5]==0){
-                viernes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                dias[5]=6;
-            }else{
-                viernes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                dias[5]=0;
+        });
+        viernes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dias[5]==0){
+                    viernes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    dias[5]=6;
+                }else{
+                    viernes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    dias[5]=0;
+                }
             }
-        }
-    });
-    sabado.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(dias[6]==0){
-                sabado.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                dias[6]=7;
-            }else{
-                sabado.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                dias[6]=0;
+        });
+        sabado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dias[6]==0){
+                    sabado.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    dias[6]=7;
+                }else{
+                    sabado.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    dias[6]=0;
+                }
             }
-        }
-    });
-    domingo.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(dias[0]==0){
-                domingo.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                dias[0]=1;
-            }else{
-                domingo.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                dias[0]=0;
+        });
+        domingo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dias[0]==0){
+                    domingo.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    dias[0]=1;
+                }else{
+                    domingo.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    dias[0]=0;
+                }
             }
-        }
-    });
+        });
 
-}
+    }
 
     public void llenar() {
         try {
@@ -366,7 +365,7 @@ private void validar(){
                 bd.insert("alarma", null, registro);
                 Log.i("hora en llenar ", "hora"+registro.toString());
 
-        }
+            }
             bd.close();
 
         }catch(Exception e){
@@ -382,13 +381,9 @@ private void validar(){
 
 
 /* private void createNotification(){
-
-
         Intent intentActividad  = new Intent(this,  EjerciciosActivity.class);
         intentActividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //DEfinimos la nueva actividad como tarea
         PendingIntent pendingActividad = PendingIntent.getActivity(this, 0, intentActividad, 0);
-
-
         try {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
             builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
@@ -401,18 +396,12 @@ private void validar(){
             builder.setDefaults(Notification.DEFAULT_SOUND);
             builder.setAutoCancel(true);
             builder.setContentIntent(pendingActividad);
-
             //NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext())
             NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             mNotifyMgr.notify(NOTIFICACION_ID, builder.build());
-
         }catch (Exception e ){
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-
         }
-
-
-
     }*/
 
 
@@ -421,15 +410,12 @@ private void validar(){
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "NOTIFICACION_ACTIVIDAD";
-
             String description = "Channel para remiender de Actividad";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("NOTIFICACION", name, importance);
             channel.setDescription(description);
-
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-
             /*
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

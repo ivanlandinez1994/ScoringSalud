@@ -16,7 +16,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import com.pf.scoringsalud.EjerciciosActivity;
+import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.R;
 
 

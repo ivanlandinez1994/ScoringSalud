@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
+import com.pf.scoringsalud.activity.AuthActivity;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     private final int DURATION = 3000;

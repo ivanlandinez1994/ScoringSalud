@@ -1,42 +1,58 @@
 {
   "project_info": {
-    "project_number": "102370289482",
-    "firebase_url": "https://scoring-salud.firebaseio.com",
-    "project_id": "scoring-salud",
-    "storage_bucket": "scoring-salud.appspot.com"
+    "project_number": "141406688590",
+    "firebase_url": "https://scoring-salud-b23b6.firebaseio.com",
+    "project_id": "scoring-salud-b23b6",
+    "storage_bucket": "scoring-salud-b23b6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:102370289482:android:90828906f0b278d8f843b3",
+        "mobilesdk_app_id": "1:141406688590:android:78a96c434bd1908031ba1f",
         "android_client_info": {
           "package_name": "com.pf.scoringsalud"
         }
       },
       "oauth_client": [
         {
-          "client_id": "102370289482-fb8b8e2t0h3ls2pli6fnjg7p5gdcci6g.apps.googleusercontent.com",
+          "client_id": "141406688590-cflkcm3tphb2ibjdd8snqor398uoba4r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.pf.scoringsalud",
-            "certificate_hash": "2d7ab6b72b6eaa6b7438163f6517e454396542be"
+            "certificate_hash": "825c3636fc8f30a32d84086978c8b29644a319ce"
           }
         },
         {
-          "client_id": "102370289482-n2dncdgvhv2r80l580ndb4csu7vr80rn.apps.googleusercontent.com",
+          "client_id": "141406688590-2nfe2k80g7r0o216qh6h43u8dh83j7o9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pf.scoringsalud",
+            "certificate_hash": "8f4094d0df9ca9b2cc2c9e90e4f1ed796e0e1241"
+          }
+        },
+        {
+          "client_id": "141406688590-7ibar77ia0k8a0eca846lsdplnt96s35.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pf.scoringsalud",
+            "certificate_hash": "a434351ebb211190305df037b6184d8850eb9d78"
+          }
+        },
+        {
+          "client_id": "141406688590-gusnneitd26oik773gpqlemjufalvt1t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCt_HeYn53bgc2skYwqjI-pRNqvhc3G6Fg"
+          "current_key": "AIzaSyCPB60GZOwqMCkYHFDLyKjOd3dvEvHWaA4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "102370289482-n2dncdgvhv2r80l580ndb4csu7vr80rn.apps.googleusercontent.com",
+              "client_id": "141406688590-gusnneitd26oik773gpqlemjufalvt1t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

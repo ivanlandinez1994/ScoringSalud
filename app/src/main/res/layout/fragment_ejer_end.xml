@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EjerEnd"
+    tools:context=".fragment.EjerEndFragment"
     android:background="@color/background"
-    android:id="@+id/ejerEnd"
-    android:clickable="true">
+    android:id="@+id/ejerEnd">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -45,7 +44,7 @@
                     app:layout_constraintHorizontal_bias="0.503"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView12"
-                    app:layout_constraintVertical_bias="0.633" />
+                    app:layout_constraintVertical_bias="0.366" />
 
                 <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/imageView2"

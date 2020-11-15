@@ -9,25 +9,25 @@
     <item
         android:id="@+id/menuProfile"
         android:icon="@drawable/card"
-        android:title="@string/profile"
+        android:title="@string/perfil"
         android:checkable="true"/>
-    
-        <item
-        android:id="@+id/menuProgreso"
-        android:icon="@drawable/goal"
-        android:title="@string/progreso"
-        android:checkable="true"/>
+
+       <item
+        android:id="@+id/menuRutina"
+        android:icon="@drawable/calendar"
+        android:title="@string/rutina"
+           android:checkable="true"/>
 
         <item
         android:id="@+id/about"
         android:icon="@drawable/info"
-        android:title="About"
+        android:title="@string/acerca_de"
         android:checkable="true" />
 
     <item
         android:id="@+id/salir"
         android:icon="@drawable/exit"
-        android:title="Log Out"
+        android:title="@string/cerrar_sesi_n"
         android:checkable="true" />
 
 

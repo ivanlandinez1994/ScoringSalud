@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ProfileFragment"
+    tools:context=".fragment.ProfileFragment"
     android:id="@+id/perfilF">
 
 
@@ -24,25 +24,6 @@
             android:layout_marginRight="10dp">
 
 
-            <Button
-                android:id="@+id/actualizar"
-                android:layout_width="30dp"
-                android:layout_height="28dp"
-                android:layout_marginEnd="9dp"
-                android:background="@color/white"
-                android:drawableTop="@drawable/ic_baseline_edit_24"
-                android:drawableTint="@color/colorPrimary"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.97"
-                app:layout_constraintStart_toEndOf="@+id/ivUser"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.021" />
-
-
-            
-
 
             <Button
                 android:id="@+id/activo"
@@ -53,7 +34,6 @@
                 android:drawableStart="@drawable/walk"
                 android:drawableTint="@color/white"
                 android:paddingStart="10dp"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView31"
