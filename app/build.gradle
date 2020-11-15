@@ -11,6 +11,7 @@ android {
         targetSdkVersion 30
         versionCode 2
         versionName "2.0"
+        buildConfigField "String","URL_API",'"https://scoringsalud.herokuapp.com/"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,14 +28,14 @@ dependencies {
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     //---------------------- Firebase ---------------------------
-    implementation 'com.google.firebase:firebase-analytics:17.6.0'
-    implementation 'com.google.firebase:firebase-auth:19.4.0'
-    implementation 'com.google.firebase:firebase-core:17.5.1'
-    implementation 'com.google.android.gms:play-services-auth:18.1.0'
-    implementation 'com.google.firebase:firebase-messaging:20.3.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
+    implementation 'com.google.firebase:firebase-core:18.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.firebase:firebase-messaging:21.0.0'
     implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
     //-----------------------------------------------------------
 
@@ -44,6 +45,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     //----------------------------------------------------------
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.wear:wear:1.1.0'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -58,7 +60,7 @@ dependencies {
     //Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
-    implementation 'androidx.fragment:fragment:1.3.0-alpha07' // <-- Navegacion datos fragments
+    implementation 'androidx.fragment:fragment:1.3.0-beta01' // <-- Navegacion datos fragments
 
 
     //barchart
@@ -66,6 +68,7 @@ dependencies {
 
     //Gif Drawable
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+    compileOnly 'com.google.android.wearable:wearable:2.8.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
