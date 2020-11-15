@@ -61,9 +61,9 @@ public class EjerDescFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("btn_ejercicio", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-              recuperarDato(result.getString("codigo").toString());
-              a = (Actividad) FactoryPuntuable.actividad(dato);
-              setearDatos();
+                recuperarDato(result.getString("codigo").toString());
+                a = (Actividad) FactoryPuntuable.actividad(dato);
+                setearDatos();
 
             }
         });
@@ -72,7 +72,7 @@ public class EjerDescFragment extends Fragment {
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Bundle bundle = new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("codigo",dato);
                 getParentFragmentManager().setFragmentResult("btn_ejerRun",bundle);
                 EjerRunFragment ed= new EjerRunFragment();
@@ -88,16 +88,16 @@ public class EjerDescFragment extends Fragment {
     }
     private void setearDatos(){
 
-            if(a.tieneContador()) {
-                for (int i = 0; i < a.getMedidores().size(); i++) {
-                    if (a.getMedidores().get(i) instanceof Contador) {
-                        tv_ejedesc_duracion.setText("Duracion: "+((((Contador) a.getMedidores().get(i)).getDuracionSegundos()) * a.getRepeticiones())+" Segundos");
-                    }
-
+        if(a.tieneContador()) {
+            for (int i = 0; i < a.getMedidores().size(); i++) {
+                if (a.getMedidores().get(i) instanceof Contador) {
+                    tv_ejedesc_duracion.setText("Duracion: "+((((Contador) a.getMedidores().get(i)).getDuracionSegundos()) * a.getRepeticiones())+" Segundos");
                 }
-            }else{
-                tv_ejedesc_duracion.setText("--:--");
+
             }
+        }else{
+            tv_ejedesc_duracion.setText("--:--");
+        }
 
         tv_ejedesc_nombre.setText(a.getNombre());
         tv_ejedesc_articulacion.setText("Articulacion "+a.getArticulacion());
