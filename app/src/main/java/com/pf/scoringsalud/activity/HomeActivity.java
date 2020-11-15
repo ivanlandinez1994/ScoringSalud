@@ -124,9 +124,14 @@ public class HomeActivity extends AppCompatActivity {
             tvEmail.setText(user.getEmail());
             tvNombre.setText(user.getDisplayName());
             ivUser.setImageBitmap(null);
-            LoadImage loadImage = new LoadImage(ivUser);
-            loadImage.execute(user.getPhotoUrl().toString());
-            Log.i("image profe:", user.getPhotoUrl().toString());
+            try {
+                LoadImage loadImage = new LoadImage(ivUser);
+                loadImage.execute(user.getPhotoUrl().toString());
+            }catch(Exception e){
+                ivUser.setImageResource(R.drawable.prof);
+                Log.i("Exception 131-HomeActivity",e.getMessage());
+                Log.i("image profe:", user.getPhotoUrl().toString());
+            }
         }else{
             tvEmail.setText("Jhon");
             tvNombre.setText("Doe");

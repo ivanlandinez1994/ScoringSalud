@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.pf.scoringsalud.api.Config;
 import com.pf.scoringsalud.api.infraestructura.PuntuableEndPoint;
 import com.pf.scoringsalud.api.interfaces.PuntuableApi;
 
@@ -19,9 +18,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+//Import configuration file
+import static com.pf.scoringsalud.BuildConfig.URL_API;
 
 public class ApiPuntuable {
-    final Retrofit retrofit = new Retrofit.Builder().baseUrl(Config.URL_API)
+    final Retrofit retrofit = new Retrofit.Builder().baseUrl(URL_API)
             .addConverterFactory(GsonConverterFactory.create()).build();
 
     final PuntuableApi puntuableApi = retrofit.create(PuntuableApi.class);
