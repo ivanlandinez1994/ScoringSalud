@@ -14,6 +14,7 @@ import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.activity.PasosActivity;
 import com.pf.scoringsalud.activity.PuntosActivity;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.activity.SuenioActivity;
 import com.pf.scoringsalud.activity.WaterActivity;
 import com.pf.scoringsalud.notifications.NotificationActivity;
 
@@ -66,6 +67,18 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        // abrir activity Sueño
+        Button btnsuenio= view.findViewById(R.id.buttonComSleep);
+        btnsuenio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SuenioActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         Button btnAct= view.findViewById(R.id.buttonRutinas);

@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.PasosActivity"></activity>
+        <activity android:name=".activity.SuenioActivity"></activity>
+        <activity android:name=".activity.PasosActivity" />
         <activity
             android:name=".activity.EjerciciosActivity"
             android:screenOrientation="portrait" />
