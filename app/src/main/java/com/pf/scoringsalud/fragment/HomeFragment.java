@@ -3,7 +3,6 @@ package com.pf.scoringsalud.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -20,7 +19,7 @@ import com.pf.scoringsalud.notifications.NotificationActivity;
 
 public class HomeFragment extends Fragment {
 
-    CardView ptos;
+    Button button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         // abrir activity agua
         Button btnAgua= view.findViewById(R.id.buttonAgua);
         btnAgua.setOnClickListener(new View.OnClickListener() {
@@ -49,8 +47,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
         // abrir activity puntos
         Button btnptos= view.findViewById(R.id.btnProgress);
         btnptos.setOnClickListener(new View.OnClickListener() {
@@ -60,8 +56,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
 
         // abrir activity Pasos
         Button btnpasos= view.findViewById(R.id.buttonPasos);
@@ -74,9 +68,6 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-
-
         Button btnAct= view.findViewById(R.id.buttonRutinas);
         btnAct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,9 +76,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
 
         return view;
     }

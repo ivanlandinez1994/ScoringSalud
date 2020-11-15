@@ -213,7 +213,6 @@ public class AuthActivity extends AppCompatActivity implements OnFailureListener
                             showAlert(task.getException().toString());
                         }
                     }
-
                 } catch (ApiException e) {
                     // Google Sign In failed, update UI appropriately
                     showAlert(e.toString());
