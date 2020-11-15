@@ -113,8 +113,13 @@ public class ProfileFragment extends Fragment {
             tvEmail.setText(user.getEmail());
             tvNombre.setText(user.getDisplayName());
             ivUser.setImageBitmap(null);
-            LoadImage loadImage = new LoadImage(ivUser);
-            loadImage.execute(user.getPhotoUrl().toString());
+            try {
+                LoadImage loadImage = new LoadImage(ivUser);
+                loadImage.execute(user.getPhotoUrl().toString());
+            } catch(Exception e){
+                ivUser.setImageResource(R.drawable.prof);
+                Log.i("Exception 120-profileFragment",e.getMessage());
+            }
         }else{
             tvEmail.setText("Jhon");
             tvNombre.setText("Doe");
