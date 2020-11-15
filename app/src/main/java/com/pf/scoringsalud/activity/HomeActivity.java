@@ -139,9 +139,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private void setProfilePhoto(){
-
-    }
-
-
+    @Override
+    public void onBackPressed() {  }
 }
