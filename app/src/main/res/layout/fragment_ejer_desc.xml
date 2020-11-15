@@ -30,7 +30,7 @@
             app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.023" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="352dp"
@@ -80,10 +80,14 @@
 
                 <TextView
                     android:id="@+id/tv_ejerdesc_descripcion"
-                    android:layout_width="292dp"
-                    android:layout_height="215dp"
-                    android:text="Colocarse de pie y dar un paso al frente con una de las piernas, flexionando ligeramente. Luego, estirar la pierna contraria totalmente estirada hacia atrás y flexionar la de adelante. Asegurarse que la pelvis vaya hacia adelante. Realizar 10 repeticiones (vaivenes) con cada pierna. Se conseguirá así un estiramiento de los flexores de la pierna atrasada."
+                    android:layout_width="323dp"
+                    android:layout_height="209dp"
+                    android:autoSizeTextType="uniform"
                     android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/black"
+                    android:textDirection="inherit"
+                    android:textIsSelectable="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.507"
@@ -95,36 +99,33 @@
                     android:id="@+id/tv_ejedesc_duracion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_ejerdesc_descripcion"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.894"
+                    app:layout_constraintHorizontal_bias="0.102"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.06" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_ejedesc_articulacion"
+                    app:layout_constraintVertical_bias="0.478" />
 
                 <TextView
                     android:id="@+id/tv_ejedesc_nombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:textColor="@color/cardview_dark_background"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_ejerdesc_descripcion"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.743" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc" />
 
                 <TextView
                     android:id="@+id/tv_ejedesc_articulacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView10"
-                    app:layout_constraintHorizontal_bias="0.079"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.102"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.06" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_ejedesc_nombre" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -134,17 +135,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </FrameLayout>

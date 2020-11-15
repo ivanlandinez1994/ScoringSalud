@@ -1,5 +1,6 @@
 package com.pf.scoringsalud.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.factory.FactoryPuntuable;
 import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.puntuable.Actividad;
@@ -43,10 +45,13 @@ public class EjerDescFragment extends Fragment {
         bacK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ListaEjerciciosFragment ed= new ListaEjerciciosFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.ejerDesc, ed );
-                transaction.commit();
+               // EjerciciosActivity ea= new EjerciciosActivity();
+             //   FragmentTransaction transaction = getFragmentManager().beginTransaction();
+              //  transaction.replace(R.id.ejerDesc, ea );
+              //  transaction.commit();
+
+                Intent intent = new Intent(getActivity(), EjerciciosActivity.class);
+                getActivity().startActivity(intent);
             }
         });
 
@@ -99,7 +104,7 @@ public class EjerDescFragment extends Fragment {
             if(a.tieneContador()) {
                 for (int i = 0; i < a.getMedidores().size(); i++) {
                     if (a.getMedidores().get(i) instanceof Contador) {
-                        tv_ejedesc_duracion.setText("Duracion: "+((((Contador) a.getMedidores().get(i)).getDuracionSegundos()) * a.getRepeticiones())+" Segundos");
+                        tv_ejedesc_duracion.setText("Tiempo: "+((((Contador) a.getMedidores().get(i)).getDuracionSegundos()) * a.getRepeticiones())+" Segundos");
                     }
 
                 }
@@ -108,7 +113,7 @@ public class EjerDescFragment extends Fragment {
             }
 
         tv_ejedesc_nombre.setText(a.getNombre());
-        tv_ejedesc_articulacion.setText("Articulacion "+a.getArticulacion());
+        tv_ejedesc_articulacion.setText("Articulacion: "+a.getArticulacion());
         iv_ejedesc.setImageResource(a.getRutaGif());
         tv_ejerdesc_descripcion.setText(a.getDescripcion());
 

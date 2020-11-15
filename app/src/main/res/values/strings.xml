@@ -35,6 +35,7 @@
     <string name="programar_actividad">Programar com.pf.scoringsalud.Puntuable.Actividad</string>
     <string name="tu_proxima_actividad_iniciar_a_las">Tu proxima actividad iniciará a las:</string>
     <string name="ver_progreso">Ver progreso</string>
-    <string name="comenzar_exc">¡Comenzar!</string>
+    <string name="comenzar_exc">¡COMENZAR!</string>
     <string name="exito">¡EXITO!</string>
+    <string name="finalizar">FINALIZAR</string>
 </resources>

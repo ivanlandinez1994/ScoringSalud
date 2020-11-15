@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
@@ -15,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,21 +41,26 @@ import static android.content.Context.SENSOR_SERVICE;
 //
 
 public class EjerRunFragment extends Fragment implements SensorEventListener {
-    Button go, stop;
-    String dato;
-    CountDownTimer contador;
-    Actividad a;
-    MedicionEjerRun medicion;
-    TextView tv_ejerun_tiempo, tv_ejerun_repeticiones, tv_ejerun_sensores;
-    ImageView iv_ejedesc;
+    private  Button go, stop;
+    private String dato;
+    private CountDownTimer contador;
+    private Actividad a;
+    private MedicionEjerRun medicion;
+    private String tipo;
+    private TextView tv_ejerun_tiempo, tv_ejerun_repeticiones;
+    private ImageView iv_ejedesc;
+    int tiempoVibracion;
+    private int tiempoEspera;
+    private int tiempoActividad;
+    private boolean actividadIniciada;
 
     private SensorManager sm;
     private Sensor sensor;
     private Vibrator vibrator;
+    private MediaPlayer mp;
 
     private boolean acelerometro = false;
     private boolean proximity=false;
-    private int contadorActividad;
     private boolean comienzo =false;
 
     private double x;
@@ -70,8 +75,11 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         View view= inflater.inflate(R.layout.fragment_ejer_run, container, false);
         tv_ejerun_tiempo = view.findViewById(R.id.tv_ejerun_tiempo);
         tv_ejerun_repeticiones = view.findViewById(R.id.tv_ejerun_repeticiones);
-        tv_ejerun_sensores = view.findViewById(R.id.tv_ejerRun_sensores);
         iv_ejedesc = view.findViewById(R.id.iv_ejedesc);
+        mp = MediaPlayer.create(getContext(),R.raw.beep);
+        actividadIniciada = false;
+        tiempoEspera=3000;
+        tipo ="Actividad";
 
         stop= view.findViewById(R.id.btn_ejerrun_deneter);
         stop.setOnClickListener(new View.OnClickListener() {
@@ -133,9 +141,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     public void onSensorChanged(SensorEvent sensorEvent) {
         if(comienzo) {
             if (acelerometro) {
-                tv_ejerun_sensores.setText("x: " + String.valueOf(x).substring(0,2) +" Y: "
-                        +String.valueOf(y).substring(0,2)+" Z: "+String.valueOf(z).substring(0,2)+
-                        " Cont:"+ contadorEjercicio);
                 x = sensorEvent.values[0];
                 y = sensorEvent.values[1];
                 z = sensorEvent.values[2];
@@ -144,6 +149,14 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
             }
             if (proximity) {
                 x = sensorEvent.values[0];
+                if(x!=0){
+                    contador.cancel();
+                    actividadIniciada = false;
+                    comienzo =false;
+                }else{
+                    ejercicioProximity();
+                }
+
             }
         }
     }
@@ -169,7 +182,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
                 if (!(a.tieneContador())){
                     tv_ejerun_tiempo.setText("--:--");
                 }else if(a.getMedidores().get(i) instanceof Contador) {
-                    contadorActividad = ((Contador)a.getMedidores().get(i)).getTiempo();
+                    tiempoActividad = ((Contador)a.getMedidores().get(i)).getTiempo();
                     tv_ejerun_tiempo.setText(""+((Contador)a.getMedidores().get(i)).getTiempo()/1000);
                 }
                 //Proximity
@@ -185,8 +198,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         iv_ejedesc.setImageResource(a.getRutaGif());
     }
 
-    private void iniciarContador(){
-        contador = new CountDownTimer(contadorActividad,1000) {
+    private void iniciarContador(int tiempo){
+        contador = new CountDownTimer(tiempo,1000) {
 
             @Override
             public void onTick(long l) {
@@ -195,27 +208,54 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
             @Override
             public void onFinish() {
-                if(contadorEjercicio ==0){
-                    vibrator.vibrate(500);
-                }else{
-                    vibrator.vibrate(1000);
+                tiempoVibracion=500;
+                if(contadorEjercicio ==1){
+                    tiempoVibracion=tiempoVibracion*2;
                 }
+                vibrator.vibrate(tiempoVibracion);
+                mp.start();
                 contadorEjercicio++;
-                if(a.getRepeticionesRealizadas()!=a.getRepeticiones())
-                comienzo = true;
+                if(proximity  ){
+                    ejercicioProximity();
+                }
+
             }
 
         }.start();
 }
 
+    private void iniciarContadorEspera(int tiempo){
+        contador = new CountDownTimer(tiempo,1000) {
+
+            @Override
+            public void onTick(long l) {
+                tv_ejerun_tiempo.setText(String.valueOf(l / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                tiempoVibracion=1000;
+                vibrator.vibrate(tiempoVibracion);
+                mp.start();
+                actividadIniciada=true;
+                comienzo = true;
+                if(proximity){
+                   ejercicioProximity();
+                }else {
+                    ejercicioAcelerometro();
+                }
+            }
+        }.start();
+    }
+
     private void ejercicioAcelerometro(){
         if(medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio)){
-            iniciarContador();
+            iniciarContador(tiempoActividad);
             comienzo = false;
 
         } else if (medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio)) {
 
-            iniciarContador();
+            iniciarContador(tiempoActividad);
             comienzo = false;
         }
 
@@ -226,34 +266,61 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
             ejercicioAcelerometro();
         }
         if(a.getRepeticionesRealizadas() == a.getRepeticiones() && comienzo){
-            //vibrator.vibrate(1000);
+            mp.start();
+            mp.start();
             comienzo = false;
             exito();
         }
     }
 
-    private void comenzar() {
-        if(medicion.getEstrategia().posicionInicio(x,y,z)) {
-            comienzo = true;
+    private void ejercicioProximity(){
+        if (contadorEjercicio == 2 && a.getRepeticionesRealizadas() < a.getRepeticiones()) {
+            a.setRepeticionesRealizadas(a.getRepeticionesRealizadas() + 1);
+            tv_ejerun_repeticiones.setText("" + a.getRepeticionesRealizadas() + "/" + a.getRepeticiones());
+            contadorEjercicio = 0;
         }
+        if(!actividadIniciada){
+            iniciarContadorEspera(tiempoEspera);
+
+        }else if(a.getRepeticionesRealizadas() == a.getRepeticiones() && comienzo){
+            mp.start();
+            mp.start();
+            comienzo = false;
+            exito();
+
+        }else if(a.getRepeticionesRealizadas() != a.getRepeticiones()){
+                iniciarContador(tiempoActividad);
+        }
+
+
+    }
+
+    private void comenzar() {
+    //    if(medicion.getEstrategia().posicionInicio(x,y,z)) {
+            comienzo = true;
+   //     }
     }
 
     private void exito(){
-    postPuntuable();
-    Bundle bundle1 = new Bundle();
-    bundle1.putString("key",dato);
-    getParentFragmentManager().setFragmentResult("eje_end",bundle1);
-    EjerEndFragment ed= new EjerEndFragment();
-    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-    transaction.replace(R.id.ejerRun, ed );
-    transaction.commit();
+        postPuntuable();
+        fragmentEnd();
     }
     private void postPuntuable(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        PuntuableEndPoint pep = new PuntuableEndPoint("Actividad",a.getNombre(),
+        PuntuableEndPoint pep = new PuntuableEndPoint(tipo,a.getNombre(),
                 a.getPuntosOtorgables(),"Prueba",user.getEmail());
         ApiPuntuable ap = new ApiPuntuable();
         ap.crearPuntuable(pep,getContext());
 
     }
+    private void fragmentEnd(){
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("key",dato);
+        getParentFragmentManager().setFragmentResult("eje_end",bundle1);
+        EjerEndFragment ed= new EjerEndFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.ejerRun, ed );
+        transaction.commit();
+    }
+
 }

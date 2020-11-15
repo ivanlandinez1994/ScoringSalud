@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.WaterActivity"
-    android:background="@color/background">
-
+    tools:context=".activity.PasosActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/layoutToolBar"
@@ -74,112 +74,83 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <DatePicker
-                    android:id="@+id/fechaAgua"
-                    android:layout_width="225dp"
-                    android:layout_height="112dp"
-                    android:calendarTextColor="@color/colorPrimary"
-                    android:calendarViewShown="false"
-                    android:datePickerMode="spinner"
-                    android:dayOfWeekTextAppearance="@style/TextAppearance.AppCompat.Small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8"
-                    app:layout_constraintVertical_bias="0.031" />
-
-                <ImageView
-                    android:id="@+id/iv_ejedesc"
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/vasito2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.501"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fechaAgua"
-                    app:layout_constraintVertical_bias="0.0" />
-
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hidratación"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="23dp"
-                    android:textStyle="bold"
+                    android:text="28 de Octubre"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.544"
+                    app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.027" />
+                    app:layout_constraintVertical_bias="0.203" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/tv_pasos_conteo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vasos de Agua"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="49dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11"
+                    app:layout_constraintVertical_bias="0.118" />
+
+                <TextView
+                    android:id="@+id/textpasos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="288dp"
+                    android:text="Pasos"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintHorizontal_bias="0.512"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.055" />
-
-                <Button
-                    android:id="@+id/btnLess"
-                    android:layout_width="36dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="88dp"
-                    android:background="@color/white"
-                    android:text="-"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_ejerun_repeticiones"
-                    app:layout_constraintHorizontal_bias="0.567"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9"
-                    app:layout_constraintVertical_bias="0.343" />
-
-                <Button
-                    android:id="@+id/btnPlus"
-                    android:layout_width="36dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="88dp"
-                    android:background="@color/white"
-                    android:text="+"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.508"
-                    app:layout_constraintStart_toEndOf="@+id/tv_ejerun_repeticiones"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9"
-                    app:layout_constraintVertical_bias="0.343" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_pasos_conteo"
+                    app:layout_constraintVertical_bias="0.275" />
 
                 <TextView
-                    android:id="@+id/tv_agua"
+                    android:id="@+id/tvKm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="72dp"
-                    android:background="@color/colorAccent"
-                    android:padding="19dp"
-                    android:text="0"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="32dp"
-                    app:layout_constraintBottom_toTopOf="@+id/textView15"
+                    android:text="3.1"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                    app:layout_constraintVertical_bias="0.934" />
+                    app:layout_constraintTop_toBottomOf="@+id/textpasos"
+                    app:layout_constraintVertical_bias="0.19" />
 
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Distancia Recorrida"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvKm"
+                    app:layout_constraintVertical_bias="0.129" />
 
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="km"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.017"
+                    app:layout_constraintStart_toEndOf="@+id/tvKm"
+                    app:layout_constraintTop_toBottomOf="@+id/textpasos"
+                    app:layout_constraintVertical_bias="0.298" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -187,6 +158,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

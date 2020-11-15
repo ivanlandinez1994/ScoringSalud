@@ -15,19 +15,19 @@
       },
       "oauth_client": [
         {
+          "client_id": "141406688590-c7vjj5kd0mdai1t9dbraac74ck8cvjom.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pf.scoringsalud",
+            "certificate_hash": "04c07c9e5d3274d2cf0d2d85d9e4c4548794edd2"
+          }
+        },
+        {
           "client_id": "141406688590-6l0m7dqvpdc8rkulknr4j8hbpoctipgv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.pf.scoringsalud",
             "certificate_hash": "dcaeec234b49477163a74899ca6623a1e3d604b2"
-          }
-        },
-        {
-          "client_id": "141406688590-i4q4krfmm95garv19oih4ehfap1ccs7q.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pf.scoringsalud",
-            "certificate_hash": "04c07c9e5d3274d2cf0d2d85d9e4c4548794edd2"
           }
         },
         {

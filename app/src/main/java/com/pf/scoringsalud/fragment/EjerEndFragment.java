@@ -57,11 +57,8 @@ public class EjerEndFragment extends Fragment {
                 tv_ejerend_descripcion.setText("ACAAAA");
                 recuperarDato(result.getString("key").toString());
                 a = (Actividad) FactoryPuntuable.actividad(dato);
-                if(a==null){
-                    tv_ejerend_descripcion.setText("NULL");
-                }else{
-                    tv_ejerend_descripcion.setText("Has completado ¡"+a.getNombre()+"!¡Sumaste " + a.getPuntosOtorgables()+ " puntos!");
-                }
+                tv_ejerend_descripcion.setText("¡Has completado\n"+a.getNombre()+"!");
+
 
             }
         });
