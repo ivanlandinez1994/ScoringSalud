@@ -10,11 +10,7 @@
         android:name="com.pf.scoringsalud.fragment.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/menuLogros"
-        android:name="com.pf.scoringsalud.fragment.LogrosFragment"
-        android:label="Logros"
-        tools:layout="@layout/fragment_logros" />
+
     <fragment
         android:id="@+id/menuRutina"
         android:name="com.pf.scoringsalud.fragment.RutinaFragment"
