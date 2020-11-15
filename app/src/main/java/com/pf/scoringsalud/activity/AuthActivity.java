@@ -191,35 +191,6 @@ public class AuthActivity extends AppCompatActivity implements OnFailureListener
             }catch(Exception e){
                 Log.i("Exception response",e.toString());
             }
-
-            /*METODO ANTERIOR DE LOGIN CON GOOGLE
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == GOOGLE_SIGN_IN) {
-                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                try {
-                    // Google Sign In was successful, authenticate with Firebase
-                    GoogleSignInAccount account = task.getResult(ApiException.class);
-                    if (account != null) {
-                        Log.i("OnActivityResult", "entro a onactivity");
-                        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-                        FirebaseAuth.getInstance().signInWithCredential(credential);
-                        Log.i("OnActivityResult", "Bebore if");
-                        if (task.isSuccessful()) {
-                            Log.i("OnActivityResult", "start if");
-                            Log.i("task successful line 168:", task.getResult().getEmail());
-                            showHome(task.getResult().getEmail(), ProviderType.GOOGLE);
-                            Log.i("OnActivityResult", "End if");
-                        } else {
-                            showAlert(task.getException().toString());
-                        }
-                    }
-                } catch (ApiException e) {
-                    // Google Sign In failed, update UI appropriately
-                    showAlert(e.toString());
-                    // ...
-                }
-            }
-            */
         }
     }
 
