@@ -19,18 +19,6 @@
            android:checkable="true"/>
 
         <item
-        android:id="@+id/menuLogros"
-        android:icon="@drawable/medal"
-        android:title="@string/logors"
-        android:checkable="true"/>
-
-        <item
-        android:id="@+id/menuProgreso"
-        android:icon="@drawable/goal"
-        android:title="@string/progreso"
-        android:checkable="true"/>
-
-        <item
         android:id="@+id/about"
         android:icon="@drawable/info"
         android:title="About"
