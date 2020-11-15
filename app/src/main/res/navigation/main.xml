@@ -31,11 +31,6 @@
         android:name="com.pf.scoringsalud.salir"
         android:label="fragment_salir"
         tools:layout="@layout/fragment_salir" />
-    <fragment
-        android:id="@+id/menuProgreso"
-        android:name="com.pf.scoringsalud.ProgresoFragment"
-        android:label="Progreso"
-        tools:layout="@layout/fragment_progreso" />
 
 
 </navigation>

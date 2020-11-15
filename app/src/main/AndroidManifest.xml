@@ -38,7 +38,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".GetUser" />
         <activity android:name=".notifications.NotificationActivity"
-                  android:taskAffinity="" android:excludeFromRecents="true"/>
+            android:taskAffinity="" android:excludeFromRecents="true"/>
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.
@@ -74,7 +74,8 @@
 
         <receiver
             android:name=".notifications.AlarmReceiver"
-            android:enabled="true" />
+            android:process=":remote"
+             />
 
         <service
             android:name=".notifications.MyFirebaseMessagingService"

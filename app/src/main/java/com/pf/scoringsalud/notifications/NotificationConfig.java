@@ -13,9 +13,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.pf.scoringsalud.R;
 
-/**
- * Created by SAUL on 07/04/2020.
- */
+
 public class NotificationConfig {
     public static final String CHANNEL_ID_NOTIFICATIONS = "channel_id_notifications";
     public static final String CHANNEL_GROUP_GENERAL = "channel_group_general";
