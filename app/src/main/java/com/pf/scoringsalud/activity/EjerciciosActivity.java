@@ -9,7 +9,7 @@ import androidx.navigation.fragment.FragmentNavigator;
 import com.pf.scoringsalud.R;
 
 public class EjerciciosActivity extends AppCompatActivity {
-    String esPomodoro;
+   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +35,6 @@ public class EjerciciosActivity extends AppCompatActivity {
 
             }
         });
-    }
-    public String getNotificacion(){
-        return esPomodoro;
     }
 
 
