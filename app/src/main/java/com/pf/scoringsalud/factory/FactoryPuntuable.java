@@ -36,7 +36,7 @@ public class FactoryPuntuable {
                 medibles.add(contador);
 
                 p = new Actividad(codigo,"Estiramiento de HOMBRO",1,"Hombro",
-                        "ejer_hombros","Sostener el celular con la mano derecha mirando hacia abajo y apuntando a su izquierda" +
+                        "ejer_hombro","Sostener el celular con la mano derecha mirando hacia abajo y apuntando a su izquierda" +
                         ". Estirar el brazo, colocar la otra mano en el codo y tirar. Una vez finalizado el contador, repetir con el brazo contrario," +
                         " cambiando el celular de mano, mirando hacia abajo y apuntando a su derecha.",false,3,medibles);
                 break;

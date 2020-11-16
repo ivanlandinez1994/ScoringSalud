@@ -9,11 +9,12 @@ import androidx.navigation.fragment.FragmentNavigator;
 import com.pf.scoringsalud.R;
 
 public class EjerciciosActivity extends AppCompatActivity {
-
+    String esPomodoro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejercicios);
+
 
 
         // boton atras deprecado
@@ -34,6 +35,9 @@ public class EjerciciosActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public String getNotificacion(){
+        return esPomodoro;
     }
 
 

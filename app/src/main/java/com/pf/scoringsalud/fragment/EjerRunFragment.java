@@ -79,7 +79,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         mp = MediaPlayer.create(getContext(),R.raw.beep);
         actividadIniciada = false;
         tiempoEspera=3000;
-        tipo ="Actividad";
+        tipo="Actividad";
 
         stop= view.findViewById(R.id.btn_ejerrun_deneter);
         stop.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +217,10 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
                 contadorEjercicio++;
                 if(proximity  ){
                     ejercicioProximity();
+                }else{
+                    comienzo=true;
                 }
+
 
             }
 
@@ -306,6 +309,11 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         fragmentEnd();
     }
     private void postPuntuable(){
+        if(getActivity().getIntent().getStringExtra("pomodoro")=="Pomodoro"){
+
+            tipo = getActivity().getIntent().getStringExtra("pomodoro");
+        }
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         PuntuableEndPoint pep = new PuntuableEndPoint(tipo,a.getNombre(),
                 a.getPuntosOtorgables(),"Prueba",user.getEmail());

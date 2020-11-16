@@ -127,12 +127,14 @@ public class HomeActivity extends AppCompatActivity {
             tvNombre.setText(user.getDisplayName());
             ivUser.setImageBitmap(null);
             try {
+
                 LoadImage loadImage = new LoadImage(ivUser);
                 loadImage.execute(user.getPhotoUrl().toString());
+                Log.i("image profe:", user.getPhotoUrl().toString());
             }catch(Exception e){
                 ivUser.setImageResource(R.drawable.prof);
                 Log.i("Exception 131-HomeActivity",e.getMessage());
-                Log.i("image profe:", user.getPhotoUrl().toString());
+
             }
         }else{
             tvEmail.setText("Jhon");
