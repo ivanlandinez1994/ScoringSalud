@@ -1,4 +1,4 @@
-package com.pf.scoringsalud.puntuable.EstrategiaMedicion;
+package com.pf.scoringsalud.puntuable.estrategiaMedicion;
 
 import com.pf.scoringsalud.puntuable.Actividad;
 

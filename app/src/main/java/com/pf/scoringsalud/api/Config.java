@@ -2,8 +2,7 @@
 package com.pf.scoringsalud.api;
 
 public abstract class Config {
-
-    public static final String URL_API="http://192.168.0.121:8081/";
+    public static final String URL_API = "http://scoringsalud.herokuapp.com/";
 
 }
 

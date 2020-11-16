@@ -59,6 +59,7 @@ public class AlarmReceiver extends BroadcastReceiver{
 
     private void triggerNotification(Context context){
         Intent notificationIntent = new Intent(context, EjerciciosActivity.class);
+        notificationIntent.putExtra("pomodoro","Pomodoro");
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent contentIntent  = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
