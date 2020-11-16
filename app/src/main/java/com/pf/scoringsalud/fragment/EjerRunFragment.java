@@ -195,7 +195,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         //}
         vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         tv_ejerun_repeticiones.setText(a.getRepeticionesRealizadas()+" / "+a.getRepeticiones());
-        iv_ejedesc.setImageResource(a.getRutaGif());
+        iv_ejedesc.setImageResource(getResources().getIdentifier(a.getRutaGif(), "drawable",getContext().getPackageName()));
     }
 
     private void iniciarContador(int tiempo){

@@ -38,4 +38,12 @@
     <string name="comenzar_exc">¡COMENZAR!</string>
     <string name="exito">¡EXITO!</string>
     <string name="finalizar">FINALIZAR</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello Square World!</string>
+    <string name="perfil">Perfil</string>
+    <string name="acerca_de">Acerca de</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="lun">lun</string>
+
 </resources>

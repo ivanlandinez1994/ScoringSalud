@@ -72,9 +72,9 @@ public class EjerDescFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("btn_ejercicio", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-              recuperarDato(result.getString("codigo").toString());
-              a = (Actividad) FactoryPuntuable.actividad(dato);
-              setearDatos();
+                recuperarDato(result.getString("codigo").toString());
+                a = (Actividad) FactoryPuntuable.actividad(dato);
+                setearDatos();
 
 
             }
@@ -85,7 +85,7 @@ public class EjerDescFragment extends Fragment {
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Bundle bundle = new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("codigo",dato);
                 getParentFragmentManager().setFragmentResult("btn_ejerRun",bundle);
                 EjerRunFragment ed= new EjerRunFragment();
@@ -104,17 +104,19 @@ public class EjerDescFragment extends Fragment {
             if(a.tieneContador()) {
                 for (int i = 0; i < a.getMedidores().size(); i++) {
                     if (a.getMedidores().get(i) instanceof Contador) {
-                        tv_ejedesc_duracion.setText("Tiempo: "+((((Contador) a.getMedidores().get(i)).getDuracionSegundos()) * a.getRepeticiones())+" Segundos");
+                        tv_ejedesc_duracion.setText("Tiempo: " + ((((Contador) a.getMedidores().get(i)).getDuracionSegundos()) * a.getRepeticiones()) + " Segundos");
                     }
 
                 }
-            }else{
+
+
+            }else {
                 tv_ejedesc_duracion.setText("--:--");
             }
 
         tv_ejedesc_nombre.setText(a.getNombre());
         tv_ejedesc_articulacion.setText("Articulacion: "+a.getArticulacion());
-        iv_ejedesc.setImageResource(a.getRutaGif());
+        iv_ejedesc.setImageResource(getResources().getIdentifier(a.getRutaGif(), "drawable",getContext().getPackageName()));
         tv_ejerdesc_descripcion.setText(a.getDescripcion());
 
     }

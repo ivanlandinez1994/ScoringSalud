@@ -14,9 +14,9 @@ public class Actividad extends Puntuable {
     protected int repeticiones;
     protected int repeticionesRealizadas;
     protected ArrayList<Medible> medidores;
-    protected   int rutaGif;
+    protected String rutaGif;
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
-                     int rutaGif, String descripcion,boolean PosicionUnica,int repeticiones) {
+                     String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones) {
         super(codigo, nombre,puntosOtorgables,descripcion);
         this.articulacion=articulacion;
         this.PosicionUnica=PosicionUnica;
@@ -25,7 +25,7 @@ public class Actividad extends Puntuable {
         setRepeticionesRealizadas(0);
     }
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
-                     int rutaGif, String descripcion,boolean PosicionUnica,int repeticiones, ArrayList<Medible> medidores) {
+                     String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones, ArrayList<Medible> medidores) {
         super(codigo, nombre,puntosOtorgables,descripcion);
         this.articulacion = articulacion;
         this.PosicionUnica=PosicionUnica;
@@ -116,11 +116,11 @@ public class Actividad extends Puntuable {
         this.articulacion = articulacion;
     }
 
-    public int getRutaGif() {
+    public String getRutaGif() {
         return rutaGif;
     }
 
-    public void setRutaGif(int rutaGif) {
+    public void setRutaGif(String rutaGif) {
         this.rutaGif = rutaGif;
     }
 }
