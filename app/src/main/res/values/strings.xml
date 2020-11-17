@@ -44,4 +44,7 @@
     <string name="perfil">Perfil</string>
     <string name="acerca_de">Acerca de</string>
     <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="title_activity_progreso">ProgresoActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

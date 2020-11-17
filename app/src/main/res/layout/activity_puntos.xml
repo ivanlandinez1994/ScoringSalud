@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context=".activity.PuntosActivity">
 
     <LinearLayout
@@ -50,265 +49,44 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="412dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="23dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="413dp"
+        android:layout_height="49dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutToolBar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/semanaBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onModeSelect"
+            android:text="semana" />
+
+        <Button
+            android:id="@+id/anioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onModeSelect"
+            android:text="año" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/contenedorFragmentsProgreso"
+        android:layout_width="410dp"
+        android:layout_height="618dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutToolBar"
-        app:layout_constraintVertical_bias="0.0"
-        android:paddingBottom="63dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="23dp">
-
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mi Semana"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/ChartProgressBar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.056"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
-
-
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ejercicios"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.687"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.562" />
-
-
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hoy"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.402"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ChartProgressBar"
-                app:layout_constraintVertical_bias="0.043" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:text="Horas de Sueño"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.809"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-            <TextView
-                android:id="@+id/numPasos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4"
-                android:textColor="@color/colorPrimary"
-                android:textSize="28dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.476"
-                app:layout_constraintStart_toEndOf="@+id/numAgua"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-            <TextView
-                android:id="@+id/numAgua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4"
-                android:textColor="@color/colorPrimary"
-                android:textSize="28dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.164"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.605" />
-
-            <TextView
-                android:id="@+id/suenio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4"
-                android:textColor="@color/colorPrimary"
-                android:textSize="28dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.583"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.499" />
-
-            <TextView
-                android:id="@+id/numEjer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4"
-                android:textColor="@color/colorPrimary"
-                android:textSize="28dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.162"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.494" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pasos"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.177"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.457" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="138dp"
-                android:layout_height="26dp"
-                android:text="Vasos de Agua"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.238"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.562" />
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="500"
-                android:textColor="@color/colorPrimary"
-                android:textSize="25dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.578"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ChartProgressBar"
-                app:layout_constraintVertical_bias="0.045" />
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="552dp"
-                android:text="Mi Mes"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.195"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.hadiidbouk.charts.ChartProgressBar
-                android:id="@+id/ChartProgressBar"
-                android:layout_width="253dp"
-                android:layout_height="209dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                app:hdBarCanBeClick="true"
-                app:hdBarHeight="110dp"
-                app:hdBarRadius="8dp"
-                app:hdBarTitleColor="@color/bar_title_color"
-                app:hdBarTitleMarginTop="9dp"
-                app:hdBarTitleSelectedColor="@color/bar_title_selected_color"
-                app:hdBarTitleTxtSize="13sp"
-                app:hdBarWidth="14dp"
-                app:hdEmptyColor="@color/empty"
-                app:hdMaxValue="10"
-                app:hdPinBackgroundColor="@color/pin_background"
-                app:hdPinDrawable="@drawable/ic_pin"
-                app:hdPinMarginBottom="55dp"
-                app:hdPinMarginEnd="20dp"
-                app:hdPinMarginTop="10dp"
-                app:hdPinPaddingBottom="5dp"
-                app:hdPinTextColor="@color/pin_text"
-                app:hdPinTxtSize="17sp"
-                app:hdProgressClickColor="@color/progress_click"
-                app:hdProgressColor="@color/progress"
-                app:hdProgressDisableColor="@color/progress_disable"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.503"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.083" />
-
-            <com.hadiidbouk.charts.ChartProgressBar
-                android:id="@+id/ChartProgressBar2"
-                android:layout_width="253dp"
-                android:layout_height="209dp"
-                android:layout_centerInParent="true"
-
-                android:gravity="center"
-                app:hdBarCanBeClick="true"
-                app:hdBarHeight="110dp"
-                app:hdBarRadius="8dp"
-                app:hdBarTitleColor="@color/bar_title_color"
-                app:hdBarTitleMarginTop="9dp"
-                app:hdBarTitleSelectedColor="@color/bar_title_selected_color"
-                app:hdBarTitleTxtSize="13sp"
-                app:hdBarWidth="14dp"
-                app:hdEmptyColor="@color/empty"
-                app:hdMaxValue="10"
-                app:hdPinBackgroundColor="@color/pin_background"
-                app:hdPinDrawable="@drawable/ic_pin"
-                app:hdPinMarginBottom="55dp"
-                app:hdPinMarginEnd="20dp"
-                app:hdPinMarginTop="10dp"
-                app:hdPinPaddingBottom="5dp"
-                app:hdPinTextColor="@color/pin_text"
-                app:hdPinTxtSize="17sp"
-                app:hdProgressClickColor="@color/progress_click"
-                app:hdProgressColor="@color/progress"
-                app:hdProgressDisableColor="@color/progress_disable"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView24">
-
-            </com.hadiidbouk.charts.ChartProgressBar>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"></FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
