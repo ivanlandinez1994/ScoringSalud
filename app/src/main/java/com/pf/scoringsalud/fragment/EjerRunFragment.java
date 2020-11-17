@@ -299,28 +299,26 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     }
 
     private void comenzar() {
-    //    if(medicion.getEstrategia().posicionInicio(x,y,z)) {
             comienzo = true;
-   //     }
     }
 
     private void exito(){
         postPuntuable();
         fragmentEnd();
     }
+
     private void postPuntuable(){
         if(getActivity().getIntent().getStringExtra("pomodoro")=="Pomodoro"){
 
             tipo = getActivity().getIntent().getStringExtra("pomodoro");
         }
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         PuntuableEndPoint pep = new PuntuableEndPoint(tipo,a.getNombre(),
-                a.getPuntosOtorgables(),"Prueba",user.getEmail());
+                a.getUnidadesOtorgables(),a.getDetalle(),user.getEmail());
         ApiPuntuable ap = new ApiPuntuable();
         ap.crearPuntuable(pep,getContext());
-
     }
+
     private void fragmentEnd(){
         Bundle bundle1 = new Bundle();
         bundle1.putString("key",dato);
