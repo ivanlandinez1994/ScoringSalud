@@ -2,10 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notification"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".notifications.NotificationActivity"
-    android:id="@+id/notification">
+    android:textAlignment="center"
+    tools:context=".notifications.NotificationActivity">
+
     <LinearLayout
         android:id="@+id/layoutToolBar"
         android:layout_width="match_parent"
@@ -49,62 +51,274 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="365dp"
-        android:layout_height="308dp"
-        android:layout_marginTop="144dp"
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="415dp"
+        android:layout_height="632dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/layoutToolBar"
+        app:layout_constraintVertical_bias="0.0">
+
 
         <Button
-            android:id="@+id/change_notification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:id="@+id/lun"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="192dp"
             android:background="@drawable/rounded_accent"
-            android:text="@string/change_time"
-            android:textColor="@color/white"
-            android:textSize="24dp" />
+            android:drawableTint="@color/white"
+            android:paddingStart="15dp"
+            android:text="@string/lun"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintVertical_bias="0.164" />
+
+        <Button
+            android:id="@+id/mar"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginBottom="192dp"
+            android:background="@drawable/rounded_accent"
+            android:drawableTint="@color/white"
+            android:paddingStart="9dp"
+            android:text="MAR"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintVertical_bias="0.164" />
+
+        <Button
+            android:id="@+id/mie"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="136dp"
+            android:layout_marginBottom="192dp"
+            android:background="@drawable/rounded_accent"
+            android:drawableTint="@color/white"
+            android:paddingStart="9dp"
+            android:text="MIE"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintVertical_bias="0.164" />
+
+        <Button
+            android:id="@+id/jue"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="184dp"
+            android:layout_marginBottom="192dp"
+            android:background="@drawable/rounded_accent"
+            android:drawableTint="@color/white"
+            android:paddingStart="9dp"
+            android:text="JUE"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintVertical_bias="0.164" />
+
+        <Button
+            android:id="@+id/vie"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="232dp"
+            android:layout_marginBottom="192dp"
+            android:background="@drawable/rounded_accent"
+            android:drawableTint="@color/white"
+            android:paddingStart="9dp"
+            android:text="VIE"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintVertical_bias="0.164" />
+
+        <Button
+            android:id="@+id/sab"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginBottom="192dp"
+            android:background="@drawable/rounded_accent"
+            android:drawableTint="@color/white"
+            android:paddingStart="9dp"
+            android:text="SAB"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintVertical_bias="0.164" />
+
+        <Button
+            android:id="@+id/dom"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="328dp"
+            android:layout_marginBottom="192dp"
+            android:background="@drawable/rounded_accent"
+            android:drawableTint="@color/white"
+            android:paddingStart="9dp"
+            android:text="DOM"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintVertical_bias="0.164" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/tu_proxima_actividad_iniciar_a_las"
+            android:id="@+id/textV"
+            android:layout_width="321dp"
+            android:layout_height="56dp"
+            android:text="Selecciona los horarios de tu rutina"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.625"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.482" />
+
+        <TextView
+            android:id="@+id/textVie"
+            android:layout_width="140dp"
+            android:layout_height="34dp"
+            android:text="Horarios"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.103" />
+
+        <Button
+            android:id="@+id/change_notificationFin"
+            android:layout_width="110dp"
+            android:layout_height="41dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_accent"
+            android:text="Fin"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.729"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.349" />
 
         <TextView
-            android:id="@+id/notifications_time"
-            android:layout_width="match_parent"
+            android:id="@+id/notifications_time_end"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.705"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.232"
             tools:text="12:00" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/change_notification"
+            android:layout_width="110dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_accent"
+            android:text="Inicio"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.184"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.351" />
 
-    <Button
-        android:id="@+id/btNotificacion"
-        android:layout_width="193dp"
-        android:layout_height="48dp"
-        android:background="@drawable/rounded_corners"
-        android:text="Notificar"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.424" />
+        <Button
+            android:id="@+id/btNotificacion"
+            android:layout_width="193dp"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_accent"
+            android:text="Confirmar"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.934" />
+
+        <TextView
+            android:id="@+id/diasDescripcion"
+            android:layout_width="307dp"
+            android:layout_height="59dp"
+            android:text="Elegí los días de la semana en los que realizaras la rutina"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.812" />
+
+        <TextView
+            android:id="@+id/diasDeActividad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Días de actividad"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.612" />
+
+        <TextView
+            android:id="@+id/notifications_time"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btNotificacion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.205"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.248"
+            tools:text="12:00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

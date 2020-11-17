@@ -34,6 +34,7 @@
                 android:drawableStart="@drawable/walk"
                 android:drawableTint="@color/white"
                 android:paddingStart="10dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView31"

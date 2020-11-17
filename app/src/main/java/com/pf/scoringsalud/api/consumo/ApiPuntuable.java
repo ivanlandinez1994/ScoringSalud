@@ -33,7 +33,7 @@ public class ApiPuntuable {
 
     final PuntuableApi puntuableApi = retrofit.create(PuntuableApi.class);
 
-    public void crearPuntuable(PuntuableEndPoint puntuable, final Class activityDestino, final Context actualContext) {
+    public void crearPuntuable(PuntuableEndPoint puntuable, final Context actualContext) {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
