@@ -12,8 +12,8 @@ import android.widget.Button;
 
 import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.activity.PasosActivity;
-import com.pf.scoringsalud.activity.PuntosActivity;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.activity.PuntosActivity;
 import com.pf.scoringsalud.activity.SuenioActivity;
 import com.pf.scoringsalud.activity.WaterActivity;
 import com.pf.scoringsalud.notifications.NotificationActivity;
