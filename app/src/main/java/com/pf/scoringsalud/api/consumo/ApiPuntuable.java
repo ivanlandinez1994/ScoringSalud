@@ -4,8 +4,14 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.pf.scoringsalud.api.infraestructura.ArrayListReportValueCallback;
 import com.pf.scoringsalud.api.infraestructura.PuntuableEndPoint;
+import com.pf.scoringsalud.api.infraestructura.Reporte;
+import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.api.interfaces.PuntuableApi;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -59,7 +65,7 @@ public class ApiPuntuable {
         });
     }
 
-    public void actualizarPuntuable(final String mail, final String tipo, final int cantidad, final Class activityDestino, final Context actualContext) {
+    public void actualizarPuntuable(final String mail, final String tipo, final int cantidad, final Context actualContext, final StringValueCallback callback) {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -73,7 +79,8 @@ public class ApiPuntuable {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     if (response.isSuccessful()) {
-
+                        String value = response.body().string();
+                        callback.onSuccess(value);
                     }
                     Log.i("Response code: ", Integer.toString(response.code()));
                 } catch (Exception e) {
@@ -91,7 +98,7 @@ public class ApiPuntuable {
         });
     }
 
-    public void obtenerPuntosDia(final String mail, final Class activityDestino, final Context actualContext) {
+    public void obtenerPuntosDia(final String mail, final Context actualContext, final StringValueCallback callback) {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -104,8 +111,10 @@ public class ApiPuntuable {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     if (response.isSuccessful()) {
-
+                        String value = response.body().string();
+                        callback.onSuccess(value);
                     }
+                    Log.i("Response body:",response.body().string());
                     Log.i("Response code: ", Integer.toString(response.code()));
                 } catch (Exception e) {
                     Log.i("Excepcion", "register exception" + e.getMessage());
@@ -122,19 +131,21 @@ public class ApiPuntuable {
         });
     }
 
-    public void obtenerReportes(final String mail, final String tipo, final Class activityDestino, final Context actualContext) {
+    public void obtenerReportes(final String mail, final String tipo, final ArrayListReportValueCallback callback) {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        Call<ArrayList<ResponseBody>> call = puntuableApi.obtenerReportes(mail, tipo);
-        call.enqueue(new Callback<ArrayList<ResponseBody>>() {
+        Call<ArrayList<Reporte>> call = puntuableApi.obtenerReportes(mail, tipo);
+        call.enqueue(new Callback<ArrayList<Reporte>>() {
             @Override
-            public void onResponse(Call<ArrayList<ResponseBody>> call1, Response<ArrayList<ResponseBody>> response) {
+            public void onResponse(Call<ArrayList<Reporte>> call1, Response<ArrayList<Reporte>> response) {
                 try {
                     if (response.isSuccessful()) {
+                        ArrayList<Reporte> value = response.body();
+                        callback.onSuccess(value);
 
                     }
                     Log.i("Response code: ", Integer.toString(response.code()));
@@ -145,11 +156,11 @@ public class ApiPuntuable {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ResponseBody>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Reporte>> call, Throwable t) {
                 String error = "Error de conexion, intente nuevamente";
-                Toast.makeText(actualContext, error, Toast.LENGTH_SHORT).show();
                 Log.i("Failure", t.toString());
             }
+
         });
     }
 
