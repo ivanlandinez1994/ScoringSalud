@@ -26,6 +26,7 @@
                 android:background="@drawable/round_white"
                 android:drawableEnd="@drawable/hearth_smaller"
                 android:paddingStart="28dp"
+                android:layout_marginTop="8dp"
                 android:text="Ejercicios"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorPrimary"

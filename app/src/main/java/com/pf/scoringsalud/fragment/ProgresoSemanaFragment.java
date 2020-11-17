@@ -4,12 +4,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,7 +77,6 @@ public class ProgresoSemanaFragment extends Fragment {
         tv_cantPasos = view.findViewById(R.id.cantPasos);
         tv_dia = view.findViewById(R.id.dia);
 
-        btn_primero = view.findViewById(R.id.enero);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         ApiPuntuable ap = new ApiPuntuable();
@@ -84,16 +86,14 @@ public class ProgresoSemanaFragment extends Fragment {
                 reportes = values;
                 Reporte reporteHoy = reportes.get(0);
                 setTextValues(reporteHoy);
-                setBtnValues(view, reportes);
+                setBtnValues(view);
+                setColumnSizes(reportes);
             }
             @Override
             public void onFailure() {
 
             }
         });
-
-
-
     }
 
     private void setTextValues(Reporte reporte){
@@ -104,62 +104,43 @@ public class ProgresoSemanaFragment extends Fragment {
         tv_cantPasos.setText(Integer.toString(reporte.getCantidadDePasos()));
         tv_dia.setText(reporte.getTitulo());
     }
-    private void setBtnValues(View view, final ArrayList<Reporte> reportesArray){
-        /**int maxHeight = 125;
-        int primeroSize = maxHeight * reportesArray.get(6).getPuntos() / 1000;
-        ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams( ConstraintLayout.LayoutParams.WRAP_CONTENT,  ConstraintLayout.LayoutParams.WRAP_CONTENT);
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        lp.height = (int) (primeroSize * scale + 0.5f);
-        btn_primero.setLayoutParams( lp );**/
+    private void setBtnValues(View view){
+        btn_primero = view.findViewById(R.id.primero);
+        btn_segundo= view.findViewById(R.id.segundo);
+        btn_tercero= view.findViewById(R.id.tercero);
+        btn_cuarto= view.findViewById(R.id.cuarto);
+        btn_quinto= view.findViewById(R.id.quinto);
+        btn_sexto= view.findViewById(R.id.sexto);
+        btn_septimo= view.findViewById(R.id.septimo);
+    }
 
-        btn_primero.setOnClickListener(new View.OnClickListener() {
+    private void setColumnSizes(final ArrayList<Reporte> reportesArray){
+        setColumnSize(reportesArray, btn_primero, 6);
+        setColumnSize(reportesArray, btn_segundo, 5);
+        setColumnSize(reportesArray, btn_tercero, 4);
+        setColumnSize(reportesArray, btn_cuarto, 3);
+        setColumnSize(reportesArray, btn_quinto, 2);
+        setColumnSize(reportesArray, btn_sexto, 1);
+        setColumnSize(reportesArray, btn_septimo, 0);
+    }
+    private void setColumnSize(final ArrayList<Reporte> reportesArray, Button button, final int index){
+        int maxHeight = 125;
+        int size = reportesArray.get(index).getPuntos() * maxHeight / 2000;
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
+        size = size +20;
+        if (size > 125) {
+            size = 125;
+        }
+        float heightInPixels = getResources().getDisplayMetrics().density * size;
+        float widthInPixels = getResources().getDisplayMetrics().density * 21;
+        lp.height = (int) (heightInPixels);
+        lp.width = (int) (widthInPixels);
+        button.setLayoutParams( lp );
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setTextValues(reportesArray.get(6));
-            }
-        });
-        btn_segundo= view.findViewById(R.id.febrero);
-        btn_segundo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(5));
-            }
-        });
-        btn_tercero= view.findViewById(R.id.marzo);
-        btn_tercero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(4));
-            }
-        });
-        btn_cuarto= view.findViewById(R.id.abril);
-        btn_cuarto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(3));
-            }
-        });
-        btn_quinto= view.findViewById(R.id.mayo);
-        btn_quinto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(2));
-            }
-        });
-        btn_sexto= view.findViewById(R.id.junio);
-        btn_sexto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(1));
-            }
-        });
-        btn_septimo= view.findViewById(R.id.julio);
-        btn_septimo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(0));
+                setTextValues(reportesArray.get(index));
             }
         });
     }
-
 }

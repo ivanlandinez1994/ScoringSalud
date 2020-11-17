@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -103,16 +104,14 @@ public class ProgresoAnioFragment extends Fragment {
                 reportes = values;
                 Reporte reporteMesActual = reportes.get(Calendar.getInstance().get(Calendar.MONTH));
                 setTextValues(reporteMesActual);
-                setBtnValues(view, reportes);
+                setBtnValues(view);
+                setColumnSizes(reportes);
             }
             @Override
             public void onFailure() {
 
             }
         });
-
-
-
     }
 
     private void setTextValues(Reporte reporte){
@@ -123,95 +122,51 @@ public class ProgresoAnioFragment extends Fragment {
         tv_cantPasos.setText(Integer.toString(reporte.getCantidadDePasos()));
         tv_mes.setText(reporte.getTitulo());
     }
-    private void setBtnValues(View view, final ArrayList<Reporte> reportesArray){
-        /**int maxHeight = 125;
-         int primeroSize = maxHeight * reportesArray.get(6).getPuntos() / 1000;
-         ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams( ConstraintLayout.LayoutParams.WRAP_CONTENT,  ConstraintLayout.LayoutParams.WRAP_CONTENT);
-         final float scale = getContext().getResources().getDisplayMetrics().density;
-         lp.height = (int) (primeroSize * scale + 0.5f);
-         btn_primero.setLayoutParams( lp );**/
+    private void setBtnValues(View view){
         btn_enero= view.findViewById(R.id.enero);
-        btn_enero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(0));
-            }
-        });
         btn_febrero= view.findViewById(R.id.febrero);
-        btn_febrero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(1));
-            }
-        });
         btn_marzo= view.findViewById(R.id.marzo);
-        btn_marzo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(2));
-            }
-        });
         btn_abril= view.findViewById(R.id.abril);
-        btn_abril.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(3));
-            }
-        });
         btn_mayo= view.findViewById(R.id.mayo);
-        btn_mayo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(4));
-            }
-        });
         btn_junio= view.findViewById(R.id.junio);
-        btn_junio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(5));
-            }
-        });
         btn_julio= view.findViewById(R.id.julio);
-        btn_julio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(6));
-            }
-        });
         btn_agosto= view.findViewById(R.id.agosto);
-        btn_agosto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(7));
-            }
-        });
         btn_septiembre= view.findViewById(R.id.septiembre);
-        btn_septiembre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(8));
-            }
-        });
         btn_octubre= view.findViewById(R.id.octubre);
-        btn_octubre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(9));
-            }
-        });
         btn_noviembre= view.findViewById(R.id.noviembre);
-        btn_noviembre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTextValues(reportesArray.get(10));
-            }
-        });
         btn_diciembre= view.findViewById(R.id.diciembre);
-        btn_diciembre.setOnClickListener(new View.OnClickListener() {
+    }
+    private void setColumnSizes(final ArrayList<Reporte> reportesArray){
+        setColumnSize(reportesArray, btn_enero, 0);
+        setColumnSize(reportesArray, btn_febrero, 1);
+        setColumnSize(reportesArray, btn_marzo, 2);
+        setColumnSize(reportesArray, btn_abril, 3);
+        setColumnSize(reportesArray, btn_mayo, 4);
+        setColumnSize(reportesArray, btn_junio, 5);
+        setColumnSize(reportesArray, btn_julio, 6);
+        setColumnSize(reportesArray, btn_agosto, 7);
+        setColumnSize(reportesArray, btn_septiembre, 8);
+        setColumnSize(reportesArray, btn_octubre, 9);
+        setColumnSize(reportesArray, btn_noviembre, 10);
+        setColumnSize(reportesArray, btn_diciembre, 11);
+    }
+    private void setColumnSize(final ArrayList<Reporte> reportesArray, Button button, final int index){
+        int maxHeight = 125;
+        int size = reportesArray.get(index).getPuntos() * maxHeight / 50000;
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
+        size = size +20;
+        if (size > 125) {
+            size = 125;
+        }
+        float heightInPixels = getResources().getDisplayMetrics().density * size;
+        float widthInPixels = getResources().getDisplayMetrics().density * 21;
+        lp.height = (int) (heightInPixels);
+        lp.width = (int) (widthInPixels);
+        button.setLayoutParams( lp );
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setTextValues(reportesArray.get(11));
+                setTextValues(reportesArray.get(index));
             }
         });
     }

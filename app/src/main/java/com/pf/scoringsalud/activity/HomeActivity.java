@@ -68,7 +68,20 @@ public class HomeActivity extends AppCompatActivity {
 
         //Traer y setear puntos
         tv_puntos = findViewById(R.id.textView18);
-        tv_puntos.setText("0");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        ApiPuntuable ap = new ApiPuntuable();
+        ap.obtenerPuntosDia(user.getEmail(), getApplicationContext(), new StringValueCallback() {
+            @Override
+            public void onSuccess(String value) {
+                tv_puntos.setText(value);
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
 
         //drawer, comportamiento del boton para abrir drawer
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);

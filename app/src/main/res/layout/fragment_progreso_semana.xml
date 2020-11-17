@@ -36,24 +36,24 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.507"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.386" />
+                    app:layout_constraintVertical_bias="0.39" />
 
                 <TextView
                     android:id="@+id/cantPuntos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text=""
                     android:textColor="@color/colorPrimary"
                     android:textSize="36sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dia"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.47000003" />
 
                 <TextView
                     android:id="@+id/puntosTitle"
@@ -122,13 +122,13 @@
                     app:layout_constraintHorizontal_bias="0.133"
                     app:layout_constraintStart_toEndOf="@+id/cantAguaTitle"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.803" />
+                    app:layout_constraintVertical_bias="0.798" />
 
                 <TextView
                     android:id="@+id/cantEjer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text=""
                     android:textColor="@color/colorPrimary"
                     android:textSize="28dp"
                     android:textStyle="bold"
@@ -142,7 +142,7 @@
                     android:id="@+id/cantSuenio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text=""
                     android:textColor="@color/colorPrimary"
                     android:textSize="28dp"
                     android:textStyle="bold"
@@ -157,7 +157,7 @@
                     android:id="@+id/cantAgua"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text=""
                     android:textColor="@color/colorPrimary"
                     android:textSize="28dp"
                     android:textStyle="bold"
@@ -172,7 +172,7 @@
                     android:id="@+id/cantPasos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text=""
                     android:textColor="@color/colorPrimary"
                     android:textSize="28dp"
                     android:textStyle="bold"
@@ -183,76 +183,115 @@
                     app:layout_constraintTop_toBottomOf="@+id/cantPasosTitle"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <Button
-                    android:id="@+id/julio"
-                    android:layout_width="21dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="32dp"
-                    android:backgroundTint="@color/colorAccent"
-                    app:layout_constraintStart_toEndOf="@+id/junio"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/abril"
-                    android:layout_width="21dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="32dp"
-                    android:backgroundTint="@color/colorAccent"
-                    app:layout_constraintStart_toEndOf="@+id/marzo"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/junio"
-                    android:layout_width="21dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="32dp"
-                    android:backgroundTint="@color/colorAccent"
-                    app:layout_constraintStart_toEndOf="@+id/mayo"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/marzo"
-                    android:layout_width="21dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="32dp"
-                    android:backgroundTint="@color/colorAccent"
-                    app:layout_constraintStart_toEndOf="@+id/febrero"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/febrero"
-                    android:layout_width="21dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="32dp"
-                    android:backgroundTint="@color/colorAccent"
-                    app:layout_constraintStart_toEndOf="@+id/enero"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/enero"
-                    android:layout_width="21dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="80dp"
-                    android:layout_marginTop="32dp"
-                    android:backgroundTint="@color/colorAccent"
+                <LinearLayout
+                    android:id="@+id/wrapSemana"
+                    android:layout_width="190dp"
+                    android:layout_height="126dp"
+                    android:layout_marginTop="45dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <Button
-                    android:id="@+id/mayo"
-                    android:layout_width="21dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="32dp"
-                    android:backgroundTint="@color/colorAccent"
-                    app:layout_constraintStart_toEndOf="@+id/abril"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
 
+                        <Button
+                            android:id="@+id/primero"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/segundo"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/tercero"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/cuarto"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/quinto"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/sexto"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/septimo"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+                </LinearLayout>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
