@@ -1,10 +1,12 @@
 package com.pf.scoringsalud.api.interfaces;
 
 import com.pf.scoringsalud.api.infraestructura.PuntuableEndPoint;
+import com.pf.scoringsalud.api.infraestructura.Reporte;
 import com.pf.scoringsalud.puntuable.Puntuable;
 import com.pf.scoringsalud.user.Domain.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -30,6 +32,6 @@ public interface PuntuableApi {
     public Call<ResponseBody> obtenerPuntosDia(@Query("mail") String mail);
 
     @GET("puntuable/obtenerReportes")
-    public Call<ArrayList<ResponseBody>> obtenerReportes(@Query("mail") String mail,
-                                                      @Query("tipo") String tipo);
+    public Call<ArrayList<Reporte>> obtenerReportes(@Query("mail") String mail,
+                                               @Query("tipo") String tipo);
 }

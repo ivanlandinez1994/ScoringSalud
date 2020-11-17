@@ -78,7 +78,7 @@
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="28 de Octubre"
+                    android:text="Hoy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -86,10 +86,10 @@
                     app:layout_constraintVertical_bias="0.262" />
 
                 <TextView
-                    android:id="@+id/txpasos"
+                    android:id="@+id/tv_pasos_conteo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4556"
+                    android:text="0"
                     android:textColor="@color/colorPrimary"
                     android:textSize="49dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -110,14 +110,14 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.512"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txpasos"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_pasos_conteo"
                     app:layout_constraintVertical_bias="0.275" />
 
                 <TextView
                     android:id="@+id/tvKm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3.1"
+                    android:text="0"
                     android:textColor="@color/colorPrimary"
                     android:textSize="48dp"
                     app:layout_constraintBottom_toBottomOf="parent"
