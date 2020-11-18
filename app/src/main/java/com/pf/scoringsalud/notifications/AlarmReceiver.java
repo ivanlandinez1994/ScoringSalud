@@ -3,20 +3,19 @@ package com.pf.scoringsalud.notifications;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.util.Log;
-import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
+import java.util.Calendar;
 
 public class AlarmReceiver extends BroadcastReceiver{
+    public static final int REQUEST_CODE = 12345;
+
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent service1 = new Intent(context, NotificationService.class);
-        service1.setData((Uri.parse("custom://" + System.currentTimeMillis())));
-        ContextCompat.startForegroundService(context, service1 );
-        Log.d("WALKIRIA", " ALARM RECEIVED!!!");
-        Toast.makeText(context, "ingreso alarmreceiver" , Toast.LENGTH_LONG).show();
+
+        Intent intentActividad = new Intent(context, NotificationService.class);
+        context.startService(intentActividad);
+        Calendar calendario = Calendar.getInstance();
 
     }
 }
