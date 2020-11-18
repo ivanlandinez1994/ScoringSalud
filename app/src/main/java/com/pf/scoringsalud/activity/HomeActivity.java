@@ -128,10 +128,10 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-                if (destination.getId() == R.id.menuRutina){
+                /*if (destination.getId() == R.id.menuRutina){
                     Intent intent= new Intent(HomeActivity.this, NotificationActivity.class);
                     startActivity(intent);
-                }
+                }*/
 
             }
         });
