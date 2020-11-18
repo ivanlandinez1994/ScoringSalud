@@ -27,10 +27,6 @@ public class NotificationActivity extends AppCompatActivity {
 
     private Button btNotificacion;
     private PendingIntent pendingIntent;
-    //  private final static String CHANNEL_ID = "NOTIFICACION";
-    // private final static int NOTIFICACION_ID = 1;
-
-
     private TextView notificationsTime;
     private TextView notificationsTimeEnd;
     private int horaInicioProgramada;
@@ -38,7 +34,8 @@ public class NotificationActivity extends AppCompatActivity {
     private int horaFinProgramada;
     private int minutoFinProgramada;
     private int alarmID = 1;
-
+    private String finalInicio;
+    private String finalFin;
     private SharedPreferences settings;
     Calendar calendario = Calendar.getInstance();
     int horaActual, minutoActual;
@@ -63,13 +60,6 @@ public class NotificationActivity extends AppCompatActivity {
         diaActual = calendario.get(Calendar.DAY_OF_WEEK);
         horaActual = calendario.get(Calendar.HOUR_OF_DAY);
         minutoActual = calendario.get(Calendar.MINUTE);
-
-/*
-        String minuto_sistema,dia_sistema,hora_sistema;
-        dia_sistema = String.valueOf(diaActual);
-        hora_sistema = String.valueOf(horaActual);
-        minuto_sistema = String.valueOf(minutoActual);
-*/
 
 
         dias = new int [7];
@@ -137,6 +127,7 @@ public class NotificationActivity extends AppCompatActivity {
                         if (selectedMinute < 10) finalMinuteInicio = "0" + selectedMinute;
 
                         notificationsTime.setText(finalHourInicio + ":" + finalMinuteInicio);
+                        finalInicio = finalHourInicio + ":" + finalMinuteInicio;
                         horaInicioProgramada = Integer.parseInt(finalHourInicio);
                         Log.i("hora ", "hora"+horaInicioProgramada);
                         minutoInicioProgramada = Integer.parseInt(finalMinuteInicio);
@@ -183,6 +174,7 @@ public class NotificationActivity extends AppCompatActivity {
                         if (selectedHour < 10) finalHourFin = "0" + selectedHour;
                         if (selectedMinute < 10) finalMinuteFin = "0" + selectedMinute;
                         notificationsTimeEnd.setText(finalHourFin + ":" + finalMinuteFin);
+                        finalFin = finalHourFin + ":" + finalMinuteFin;
                         horaFinProgramada = Integer.parseInt(finalHourFin);
                         minutoFinProgramada = Integer.parseInt(finalMinuteFin);
 
@@ -194,8 +186,8 @@ public class NotificationActivity extends AppCompatActivity {
                         today.set(Calendar.SECOND, 0);
 
                         SharedPreferences.Editor edit = settings.edit();
-                        edit.putString("hour", finalHourFin);
-                        edit.putString("minute", finalMinuteFin);
+                        edit.putString("hour", "00");
+                        edit.putString("minute","00");
 
                         //SAVE ALARM TIME TO USE IT IN CASE OF REBOOT
                         edit.putInt("alarmID", alarmID);
@@ -222,28 +214,16 @@ public class NotificationActivity extends AppCompatActivity {
     public void servicio(){
         try{
             Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
-            Log.i("Exeption servicio", "intent de servicio");
             final PendingIntent pendingIntent = PendingIntent.getBroadcast(NotificationActivity.this,AlarmReceiver.REQUEST_CODE,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-            Log.i("Exeption servicio", "pending de servicio");
             long firstMillis = System.currentTimeMillis();
-            Log.i("Exeption servicio", "hora "+firstMillis);
-            int intervalMillis = 1000*5;
+            int intervalMillis = 1* 120 * 1000;
             System.out.println();
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,firstMillis,intervalMillis, pendingIntent);
-
-
         }catch(IllegalArgumentException e ){
-
             Log.i("Exeption servicio", e.getMessage());
-
         }
     }
-
-
-
-
-
 
     private void validar(){
 
@@ -287,9 +267,6 @@ public class NotificationActivity extends AppCompatActivity {
                     miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[3]=0;
                 }
-
-
-
             }
         });
         jueves.setOnClickListener(new View.OnClickListener() {
@@ -351,27 +328,24 @@ public class NotificationActivity extends AppCompatActivity {
             admin.onUpgrade(bd,0,0);
             bd = admin.getReadableDatabase();
             bd = admin.getWritableDatabase();
-
             for (int i = 0; i<dias.length; i++){
-                int d = dias[i];
-                registro = new ContentValues();
-                registro.put("encabezado", "Notificacion");
-                registro.put("dia", d);
-                registro.put("horaIni", horaInicioProgramada );
-                registro.put("minutoIni", minutoInicioProgramada);
-                registro.put("horaFin", horaFinProgramada );
-                registro.put("minutoFin", minutoFinProgramada);
-
-                bd.insert("alarma", null, registro);
-                Log.i("hora en llenar ", "hora"+registro.toString());
-
+                    int d = dias[i];
+                    registro = new ContentValues();
+                    registro.put("encabezado", "Notificacion");
+                    registro.put("dia", d);
+                    registro.put("horaIni", finalInicio);
+                    registro.put("horaFin", finalFin );
+                    registro.put("inicioFijo", finalInicio);
+                    bd.insert("alarma", null, registro);
+                    Log.i("hora en llenar ", "hora"+registro.toString());
             }
+
             bd.close();
 
-        }catch(Exception e){
-            Toast.makeText(NotificationActivity.this, e.getMessage(),Toast.LENGTH_SHORT);
-            bd.close();
-        }
+            }catch(Exception e){
+                Toast.makeText(NotificationActivity.this, e.getMessage(),Toast.LENGTH_SHORT);
+                bd.close();
+            }
 
 
     }
@@ -379,47 +353,3 @@ public class NotificationActivity extends AppCompatActivity {
 
 }
 
-
-/* private void createNotification(){
-        Intent intentActividad  = new Intent(this,  EjerciciosActivity.class);
-        intentActividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //DEfinimos la nueva actividad como tarea
-        PendingIntent pendingActividad = PendingIntent.getActivity(this, 0, intentActividad, 0);
-        try {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
-            builder.setSmallIcon(R.drawable.ic_sms_black_24dp);
-            builder.setContentTitle("Realiza una Actividad");
-            builder.setContentText("Llego la hora de hacer una actividad");
-            builder.setColor(Color.BLUE);
-            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-            builder.setLights(Color.MAGENTA, 1000, 1000);
-            builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
-            builder.setDefaults(Notification.DEFAULT_SOUND);
-            builder.setAutoCancel(true);
-            builder.setContentIntent(pendingActividad);
-            //NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext())
-            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            mNotifyMgr.notify(NOTIFICACION_ID, builder.build());
-        }catch (Exception e ){
-            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-        }
-    }*/
-
-
-//
-/*
-    private void createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            CharSequence name = "NOTIFICACION_ACTIVIDAD";
-            String description = "Channel para remiender de Actividad";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("NOTIFICACION", name, importance);
-            channel.setDescription(description);
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-            /*
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-    }
-*/
