@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.notifications.NotificationActivity;
 import com.pf.scoringsalud.user.Data.LoadImage;
 
 enum ProviderType {
@@ -71,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //colores en los iconos del drawer
-        NavigationView navigationView = findViewById(R.id.navigationView);
+        final NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
 
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
@@ -104,11 +106,25 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                if (destination.getId() == R.id.menuRutina){
+                    Intent intent= new Intent(HomeActivity.this, NotificationActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
         setCustomHeader();
+
+
+
     }
+
+
+
+
+
+
 
     private void setCustomHeader(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);

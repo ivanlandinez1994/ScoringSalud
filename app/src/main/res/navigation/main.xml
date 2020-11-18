@@ -15,7 +15,7 @@
         android:id="@+id/menuRutina"
         android:name="com.pf.scoringsalud.fragment.RutinaFragment"
         android:label="fraRutina"
-        tools:layout="@layout/fragment_rutina" />
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/about"
         android:name="com.pf.scoringsalud.fragment.AboutFragment"
@@ -31,6 +31,11 @@
         android:name="com.pf.scoringsalud.fragment.salirFragment"
         android:label="fragment_salir"
         tools:layout="@layout/fragment_salir" />
+    <activity
+        android:id="@+id/nmenuRutina"
+        android:name="com.pf.scoringsalud.notifications.NotificationActivity"
+        android:label="activity_notification"
+        tools:layout="@layout/activity_notification" />
 
 
 </navigation>
