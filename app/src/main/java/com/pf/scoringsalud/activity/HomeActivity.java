@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +27,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.api.consumo.ApiPuntuable;
+import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.user.Data.LoadImage;
+
+import static java.security.AccessController.getContext;
 
 enum ProviderType {
     BASIC,
@@ -34,6 +39,7 @@ enum ProviderType {
 }
 
 public class HomeActivity extends AppCompatActivity {
+    TextView tv_puntos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -60,6 +66,22 @@ public class HomeActivity extends AppCompatActivity {
 
         Log.i("HomeAct: Fin persistencia","Termino de persistir");
 
+        //Traer y setear puntos
+        tv_puntos = findViewById(R.id.textView18);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        ApiPuntuable ap = new ApiPuntuable();
+        ap.obtenerPuntosDia(user.getEmail(), getApplicationContext(), new StringValueCallback() {
+            @Override
+            public void onSuccess(String value) {
+                tv_puntos.setText(value);
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
 
         //drawer, comportamiento del boton para abrir drawer
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
@@ -109,7 +131,27 @@ public class HomeActivity extends AppCompatActivity {
 
         setCustomHeader();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        //Traer y setear puntos
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        ApiPuntuable ap = new ApiPuntuable();
+        ap.obtenerPuntosDia(user.getEmail(), getApplicationContext(), new StringValueCallback() {
+            @Override
+            public void onSuccess(String value) {
+                tv_puntos.setText(value);
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+
+    }
     private void setCustomHeader(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
         View hView = navigationView.getHeaderView(0);
@@ -121,16 +163,19 @@ public class HomeActivity extends AppCompatActivity {
         tvNombre = hView.findViewById(R.id.tvNameHeader);
         ivUser = hView.findViewById(R.id.imageProfile);
         if(user!=null) {
+
             tvEmail.setText(user.getEmail());
             tvNombre.setText(user.getDisplayName());
             ivUser.setImageBitmap(null);
             try {
+
                 LoadImage loadImage = new LoadImage(ivUser);
                 loadImage.execute(user.getPhotoUrl().toString());
+                Log.i("image profe:", user.getPhotoUrl().toString());
             }catch(Exception e){
                 ivUser.setImageResource(R.drawable.prof);
                 Log.i("Exception 131-HomeActivity",e.getMessage());
-                Log.i("image profe:", user.getPhotoUrl().toString());
+
             }
         }else{
             tvEmail.setText("Jhon");

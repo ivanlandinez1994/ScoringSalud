@@ -4,7 +4,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp" >
     <item
-        android:drawable="@drawable/cadera"
+        android:drawable="@drawable/muniecas"
         android:width="80dp"
         android:height="80dp"
         android:left="30dp"

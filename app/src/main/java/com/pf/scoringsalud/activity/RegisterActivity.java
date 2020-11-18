@@ -40,7 +40,6 @@ public class RegisterActivity extends AppCompatActivity {
         userEdadEdit = findViewById(R.id.userEdadEdit);
         userPuestoEdit = findViewById(R.id.userPuestoEdit);
         btnRegister = findViewById(R.id.btnRegistro);
-
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

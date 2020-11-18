@@ -1,9 +1,9 @@
 package com.pf.scoringsalud.puntuable;
 
-import com.pf.scoringsalud.puntuable.Medidor.Acelerometro;
-import com.pf.scoringsalud.puntuable.Medidor.Contador;
-import com.pf.scoringsalud.puntuable.Medidor.Medible;
-import com.pf.scoringsalud.puntuable.Medidor.Proximity;
+import com.pf.scoringsalud.puntuable.medidor.Acelerometro;
+import com.pf.scoringsalud.puntuable.medidor.Contador;
+import com.pf.scoringsalud.puntuable.medidor.Medible;
+import com.pf.scoringsalud.puntuable.medidor.Proximity;
 
 import java.util.ArrayList;
 
@@ -14,23 +14,25 @@ public class Actividad extends Puntuable {
     protected int repeticiones;
     protected int repeticionesRealizadas;
     protected ArrayList<Medible> medidores;
-
+    protected String rutaGif;
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
                      String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones) {
-        super(codigo, nombre,puntosOtorgables,rutaGif,descripcion);
+        super(codigo, nombre,puntosOtorgables,descripcion);
         this.articulacion=articulacion;
         this.PosicionUnica=PosicionUnica;
+        this.rutaGif = rutaGif;
         setRepeticiones(repeticiones);
         setRepeticionesRealizadas(0);
     }
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
                      String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones, ArrayList<Medible> medidores) {
-        super(codigo, nombre,puntosOtorgables,rutaGif,descripcion);
+        super(codigo, nombre,puntosOtorgables,descripcion);
         this.articulacion = articulacion;
         this.PosicionUnica=PosicionUnica;
         setRepeticiones(repeticiones);
         setRepeticionesRealizadas(0);
         this.medidores = medidores;
+        this.rutaGif = rutaGif;
     }
 
     @Override
@@ -114,8 +116,11 @@ public class Actividad extends Puntuable {
         this.articulacion = articulacion;
     }
 
+    public String getRutaGif() {
+        return rutaGif;
+    }
 
-
-
-
+    public void setRutaGif(String rutaGif) {
+        this.rutaGif = rutaGif;
+    }
 }

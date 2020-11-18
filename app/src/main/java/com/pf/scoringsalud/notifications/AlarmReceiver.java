@@ -7,7 +7,7 @@ import android.content.Intent;
 import java.util.Calendar;
 
 public class AlarmReceiver extends BroadcastReceiver{
-        public static final int REQUEST_CODE = 12345;
+    public static final int REQUEST_CODE = 12345;
 
 
     @Override
@@ -19,4 +19,3 @@ public class AlarmReceiver extends BroadcastReceiver{
 
     }
 }
-
