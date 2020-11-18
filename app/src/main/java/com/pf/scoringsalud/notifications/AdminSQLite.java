@@ -11,18 +11,20 @@ public class AdminSQLite extends SQLiteOpenHelper {
 
 
     }
+    //Creamos la base de datos con SQLITE utilizando esta clase y definicion
+    // los campos, idal (autoincrement), encabezado, dia, horaIni = hora inicio, horaFin = Hora fin y inicioFijo para mantener la hora de inicio
 
     @Override
     public void onCreate(SQLiteDatabase db){
 
-        db.execSQL(" create table alarma( idal integer primary key autoincrement, encabezado text, dia integer, horaIni integer, minutoIni integer, horaFin integer, minutoFin integer)");
+        db.execSQL(" create table alarma( idal integer primary key autoincrement, encabezado text, dia text, horaIni time, horaFin time, inicioFijo time)");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop table if exists alarma" );
-        db.execSQL(" create table alarma( idal integer primary key autoincrement,encabezado text,dia integer, horaIni integer, minutoIni integer, horaFin integer, minutoFin integer)");
+        db.execSQL(" create table alarma( idal integer primary key autoincrement,encabezado text,dia text, horaIni time, horaFin time, inicioFijo time)");
     }
 
 
