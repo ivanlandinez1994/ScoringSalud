@@ -29,6 +29,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
+import com.pf.scoringsalud.notifications.NotificationActivity;
 import com.pf.scoringsalud.user.Data.LoadImage;
 
 import static java.security.AccessController.getContext;
@@ -125,7 +126,6 @@ public class HomeActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
-
             }
         });
 
