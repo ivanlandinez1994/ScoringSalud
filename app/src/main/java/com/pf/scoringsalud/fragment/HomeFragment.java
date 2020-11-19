@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment {
 
         // abrir activity notification
         Button btnRutina= view.findViewById(R.id.buttonRutinas);
-        btnsuenio.setOnClickListener(new View.OnClickListener() {
+        btnRutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), NotificationActivity.class);
