@@ -4,24 +4,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.api.consumo.ApiPuntuable;
+import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 
-public class PasosActivity extends AppCompatActivity implements SensorEventListener {
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
+public class PasosActivity extends AppCompatActivity {
 
     SensorManager sm;
     Sensor sensor;
+    private double magnitudePrevious = 0;
+    private Integer stepCount = 0;
     TextView tv_pasos_conteo;
-    int contador=0;
+    TextView tv_Km;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,17 +41,28 @@ public class PasosActivity extends AppCompatActivity implements SensorEventListe
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
             //ask for permission
-            requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION},Sensor.TYPE_STEP_COUNTER);
+            requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, Sensor.TYPE_ACCELEROMETER);
         }
 
         tv_pasos_conteo= (TextView) findViewById(R.id.tv_pasos_conteo);
+        tv_Km = (TextView) findViewById(R.id.tvKm);
+        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensor = (Sensor) sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        //sensor =(Sensor) sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        ApiPuntuable ap = new ApiPuntuable();
+        ap.actualizarPuntuable(user.getEmail(), "Pasos", -1, getApplicationContext(), new StringValueCallback() {
+            @Override
+            public void onSuccess(String value) {
+                tv_pasos_conteo.setText(value);
+                stepCount = Integer.parseInt(value);
+            }
 
-        sm = (SensorManager) getSystemService(SENSOR_SERVICE);
-        if(sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!=null){
-            sensor = (Sensor) sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        }else if(sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)!=null){
-            sensor =(Sensor) sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
-        }
+            @Override
+            public void onFailure() {
+
+            }
+        });
 
         //boton antras (vuelve a la ultima acttivity vista
         findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
@@ -49,42 +72,87 @@ public class PasosActivity extends AppCompatActivity implements SensorEventListe
 
             }
         });
+        SensorEventListener stepDetector = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent) {
+                if (sensorEvent!= null){
+                    float x_acceleration = sensorEvent.values[0];
+                    float y_acceleration = sensorEvent.values[1];
+                    float z_acceleration = sensorEvent.values[2];
+
+                    double magnitude = Math.sqrt(x_acceleration*x_acceleration + y_acceleration*y_acceleration + z_acceleration*z_acceleration);
+                    double magnitudeDelta = magnitude-magnitudePrevious;
+                    magnitudePrevious = magnitude;
+
+                    if (magnitudeDelta > 6){
+                        stepCount++;
+                    }
+                    if( stepCount  % 5 == 0) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        ApiPuntuable ap = new ApiPuntuable();
+                        ap.actualizarPuntuable(user.getEmail(), "Pasos", stepCount, getApplicationContext(), new StringValueCallback() {
+                            @Override
+                            public void onSuccess(String value) {
+                                Log.i("COUNT", value);
+                            }
+
+                            @Override
+                            public void onFailure() {
+
+                            }
+                        });
+                    }
+                    tv_pasos_conteo.setText(stepCount.toString());
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    df.setRoundingMode(RoundingMode.FLOOR);
+                    double kms = stepCount* 0.0007;
+                    double kmsFormatted = new Double(df.format(kms));
+                    tv_Km.setText(String.valueOf(kmsFormatted));
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i) {
+            }
+        };
+
+        sm.registerListener(stepDetector, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        if(sensor == null){
-            tv_pasos_conteo.setText("NULL"+sensorEvent.values[0]);
-        } else if(sensor==sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)){
-            tv_pasos_conteo.setText("TYPE_STEP_COUNTER: "+sensorEvent.values[0]);
-        }else{
-            tv_pasos_conteo.setText("TYPE_STEP: "+sensorEvent.values[0]);
-        }
-
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
-
-    }
-
-    @Override
-    public void onPause() {
-        stop();
+    protected void onPause() {
         super.onPause();
+
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.putInt("stepCount", stepCount);
+        editor.apply();
     }
 
-    @Override
-    public void onResume() {
-        start();
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.putInt("stepCount", stepCount);
+        editor.apply();
+    }
+
+    protected void onResume() {
         super.onResume();
+
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        stepCount = sharedPreferences.getInt("stepCount", 0);
     }
 
+
+    /**
     private void start() {
         sm.registerListener(this, sensor, sm.SENSOR_DELAY_FASTEST);
     }
 
     private void stop() {
         sm.unregisterListener(this);
-    }
+    }**/
 }
