@@ -232,10 +232,10 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(dias[1]==0){
-                    lunes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    lunes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[1]=2;
                 }else{
-                    lunes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    lunes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                     dias[1]=0;
                 }
             }
@@ -245,10 +245,10 @@ public class NotificationActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(dias[2]==0){
-                    martes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    martes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[2]=3;
                 }else{
-                    martes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    martes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                     dias[2]=0;
                 }
 
@@ -261,10 +261,10 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(dias[3]==0){
-                    miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[3]=4;
                 }else{
-                    miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                     dias[3]=0;
                 }
             }
@@ -273,10 +273,10 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(dias[4]==0){
-                    jueves.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    jueves.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[4]=5;
                 }else{
-                    jueves.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    jueves.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                     dias[4]=0;
                 }
             }
@@ -285,10 +285,10 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(dias[5]==0){
-                    viernes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    viernes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[5]=6;
                 }else{
-                    viernes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    viernes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                     dias[5]=0;
                 }
             }
@@ -297,10 +297,10 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(dias[6]==0){
-                    sabado.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    sabado.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[6]=7;
                 }else{
-                    sabado.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    sabado.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                     dias[6]=0;
                 }
             }
@@ -309,10 +309,10 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(dias[0]==0){
-                    domingo.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                    domingo.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                     dias[0]=1;
                 }else{
-                    domingo.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                    domingo.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                     dias[0]=0;
                 }
             }
