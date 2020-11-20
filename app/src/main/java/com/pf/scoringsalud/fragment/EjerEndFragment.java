@@ -1,5 +1,6 @@
 package com.pf.scoringsalud.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.pf.scoringsalud.activity.EjerciciosActivity;
+import com.pf.scoringsalud.activity.HomeActivity;
 import com.pf.scoringsalud.factory.FactoryPuntuable;
 import com.pf.scoringsalud.puntuable.Actividad;
 
@@ -38,10 +41,8 @@ public class EjerEndFragment extends Fragment {
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeFragment hf= new HomeFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.ejerEnd, hf );
-                transaction.commit();
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                getActivity().startActivity(intent);
             }
         });
         return view;

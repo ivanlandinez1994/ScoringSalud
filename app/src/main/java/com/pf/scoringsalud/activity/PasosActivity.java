@@ -19,7 +19,9 @@ import com.pf.scoringsalud.R;
 public class PasosActivity extends AppCompatActivity implements SensorEventListener {
 
     SensorManager sm;
-    Sensor sensor;
+    Sensor sensorCounter;
+    Sensor sensorDetector;
+
     TextView tv_pasos_conteo;
     int contador=0;
     @Override
@@ -29,17 +31,14 @@ public class PasosActivity extends AppCompatActivity implements SensorEventListe
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
             //ask for permission
-            requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION},Sensor.TYPE_STEP_COUNTER);
+            requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION},1);
         }
 
         tv_pasos_conteo= (TextView) findViewById(R.id.tv_pasos_conteo);
 
         sm = (SensorManager) getSystemService(SENSOR_SERVICE);
-        if(sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!=null){
-            sensor = (Sensor) sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        }else if(sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)!=null){
-            sensor =(Sensor) sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
-        }
+            sensorCounter = (Sensor) sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+            sensorDetector =(Sensor) sm.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
 
         //boton antras (vuelve a la ultima acttivity vista
         findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
@@ -53,14 +52,8 @@ public class PasosActivity extends AppCompatActivity implements SensorEventListe
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        if(sensor == null){
-            tv_pasos_conteo.setText("NULL"+sensorEvent.values[0]);
-        } else if(sensor==sm.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)){
-            tv_pasos_conteo.setText("TYPE_STEP_COUNTER: "+sensorEvent.values[0]);
-        }else{
-            tv_pasos_conteo.setText("TYPE_STEP: "+sensorEvent.values[0]);
-        }
 
+            tv_pasos_conteo.setText("TYPE_STEP_COUNTER: "+sensorEvent.values[0]);
     }
 
     @Override
@@ -81,10 +74,12 @@ public class PasosActivity extends AppCompatActivity implements SensorEventListe
     }
 
     private void start() {
-        sm.registerListener(this, sensor, sm.SENSOR_DELAY_FASTEST);
+        sm.registerListener(this, sensorCounter, sm.SENSOR_DELAY_FASTEST);
+        sm.registerListener(this, sensorDetector, sm.SENSOR_DELAY_FASTEST);
     }
 
     private void stop() {
-        sm.unregisterListener(this);
+        sm.unregisterListener(this,sensorCounter);
+        sm.unregisterListener(this,sensorDetector);
     }
 }

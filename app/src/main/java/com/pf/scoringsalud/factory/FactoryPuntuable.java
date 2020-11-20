@@ -11,7 +11,7 @@ import com.pf.scoringsalud.puntuable.medidor.Proximity;
 import java.util.ArrayList;
 
 public class FactoryPuntuable {
-    public FactoryPuntuable(){
+    private FactoryPuntuable(){
 
     };
 
