@@ -164,39 +164,4 @@ public class ApiPuntuable {
         });
     }
 
-    /*public void obtenerPuntuable(final String id, final Class activityDestino, final Context actualContext) {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        // Asociamos el interceptor a las peticiones
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.addInterceptor(logging);
-
-        Call<Puntuable> call = puntuableApi.obtenerPuntuable(id);
-        call.enqueue(new Callback<Puntuable>() {
-            @Override
-            public void onResponse(Call<Puntuable> call, Response<Puntuable> response) {
-                try {
-                    if (response.isSuccessful()) {
-                        Log.i("Successful", response.body().toString());
-                    } else {
-                        Log.i("Error parseo response: ", retrofit.baseUrl().toString() + response.code());
-                    }
-                    //goIntent(activityDestino, response, actualContext, mail);
-                } catch (Exception e) {
-                    Log.i("Exception catch onResponse: ", e.getMessage());
-                    //goIntent(activityDestino, null, actualContext, mail);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Puntuable> call, Throwable t) {
-                Log.i("Failure (OnFailure): ", t.toString());
-                String error = "Error de conexion, intente nuevamente";
-                Toast.makeText(actualContext, error, Toast.LENGTH_SHORT).show();
-                //goIntent(activityDestino, null, actualContext, null);
-            }
-        });
-    }*/
-
 }

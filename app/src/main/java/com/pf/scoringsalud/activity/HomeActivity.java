@@ -3,6 +3,8 @@ package com.pf.scoringsalud.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -130,6 +132,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         setCustomHeader();
+        checkDB();
     }
     @Override
     protected void onResume() {
@@ -181,6 +184,20 @@ public class HomeActivity extends AppCompatActivity {
             tvEmail.setText("Jhon");
             tvNombre.setText("Doe");
 
+        }
+    }
+
+    private void checkDB(){
+        SQLiteDatabase checkDB = null;
+        try{
+            checkDB = SQLiteDatabase.openDatabase("/data/data/com.pf.scoringsalud/databases/Taller", null, SQLiteDatabase.OPEN_READONLY);
+            checkDB.close();
+        }catch(SQLiteException e){
+
+        }
+        if (checkDB == null){
+            Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+            startActivity(intent);
         }
     }
 
