@@ -93,7 +93,7 @@ public class PasosActivity extends AppCompatActivity {
                         ap.actualizarPuntuable(user.getEmail(), "Pasos", stepCount, getApplicationContext(), new StringValueCallback() {
                             @Override
                             public void onSuccess(String value) {
-                                Log.i("COUNT", value);
+
                             }
 
                             @Override

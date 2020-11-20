@@ -16,9 +16,9 @@ import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 
 public class WaterActivity extends AppCompatActivity {
-    Button btn_tutorial;
     Button inc,dec;
     TextView tV;
+    ImageView vaso;
     int count =0 ;
 
     @Override
@@ -36,6 +36,7 @@ public class WaterActivity extends AppCompatActivity {
             }
         });
 
+        vaso = findViewById(R.id.iv_vaso);
        inc= findViewById(R.id.btnPlus);
        dec= findViewById(R.id.btnLess);
        tV= findViewById(R.id.tv_agua);
@@ -48,6 +49,15 @@ public class WaterActivity extends AppCompatActivity {
             public void onSuccess(String value) {
                 tV.setText(value);
                 count = Integer.parseInt(value);
+                if(count < 2) {
+                    vaso.setImageResource(R.drawable.vaso1);
+                }else if(count >= 2 && count < 5){
+                    vaso.setImageResource(R.drawable.vaso2);
+                }else if(count >= 5 && count < 7){
+                    vaso.setImageResource(R.drawable.vaso3);
+                }else if(count >= 7){
+                    vaso.setImageResource(R.drawable.vaso4);
+                }
             }
 
             @Override
@@ -68,6 +78,15 @@ public class WaterActivity extends AppCompatActivity {
                    public void onSuccess(String value) {
                        tV.setText(value);
                        count = Integer.parseInt(value);
+                       if(count < 2) {
+                           vaso.setImageResource(R.drawable.vaso1);
+                       }else if(count >= 2 && count < 5){
+                           vaso.setImageResource(R.drawable.vaso2);
+                       }else if(count >= 5 && count < 7){
+                           vaso.setImageResource(R.drawable.vaso3);
+                       }else if(count >= 7){
+                           vaso.setImageResource(R.drawable.vaso4);
+                       }
                    }
 
                    @Override
@@ -91,6 +110,15 @@ public class WaterActivity extends AppCompatActivity {
                         public void onSuccess(String value) {
                             tV.setText(value);
                             count = Integer.parseInt(value);
+                            if(count < 2) {
+                                vaso.setImageResource(R.drawable.vaso1);
+                            }else if(count >= 2 && count < 5){
+                                vaso.setImageResource(R.drawable.vaso2);
+                            }else if(count >= 5 && count < 7){
+                                vaso.setImageResource(R.drawable.vaso3);
+                            }else if(count >= 7){
+                                vaso.setImageResource(R.drawable.vaso4);
+                            }
                         }
 
                         @Override
