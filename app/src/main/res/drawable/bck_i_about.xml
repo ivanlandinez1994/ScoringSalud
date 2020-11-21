@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:drawable="@drawable/back_trans"
-        android:width="148dp"
-        android:height="132dp">
+        android:width="448dp"
+        android:height="632dp">
     </item>
 </layer-list>
