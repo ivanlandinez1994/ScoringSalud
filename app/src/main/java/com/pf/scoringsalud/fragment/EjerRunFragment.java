@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.PuntuableEndPoint;
 import com.pf.scoringsalud.puntuable.Actividad;
@@ -68,6 +69,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     private double z;
     private int contadorEjercicio=0;
 
+    private EjerciciosActivity ejerciciosActivity;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,7 +82,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         mp = MediaPlayer.create(getContext(),R.raw.beep);
         actividadIniciada = false;
         tiempoEspera=3000;
-        tipo="Actividad";
+        ejerciciosActivity=(EjerciciosActivity) getActivity();
+        tipo =ejerciciosActivity.getTipo();
 
         stop= view.findViewById(R.id.btn_ejerrun_deneter);
         stop.setOnClickListener(new View.OnClickListener() {
@@ -308,10 +312,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     }
 
     private void postPuntuable(){
-        if(getActivity().getIntent().getStringExtra("pomodoro")=="Pomodoro"){
 
-            tipo = getActivity().getIntent().getStringExtra("pomodoro");
-        }
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         PuntuableEndPoint pep = new PuntuableEndPoint(tipo,a.getNombre(),
                 a.getUnidadesOtorgables(),a.getDetalle(),user.getEmail());

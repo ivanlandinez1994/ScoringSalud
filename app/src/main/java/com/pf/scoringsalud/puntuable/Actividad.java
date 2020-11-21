@@ -121,7 +121,7 @@ public class Actividad extends Puntuable {
         String tiempo="No usa Contador";
         for (Medible m: medidores) {
             if(m instanceof Contador){
-                tiempo =String.valueOf(((Contador)m).getDuracionSegundos());
+                tiempo =String.valueOf(((Contador)m).getDuracionSegundos()*getRepeticiones());
             }
         }
         return tiempo;
