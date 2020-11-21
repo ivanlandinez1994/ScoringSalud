@@ -3,6 +3,8 @@ package com.pf.scoringsalud.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +31,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
+import com.pf.scoringsalud.notifications.NotificationActivity;
 import com.pf.scoringsalud.user.Data.LoadImage;
 
 import static java.security.AccessController.getContext;
@@ -125,11 +128,11 @@ public class HomeActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
-
             }
         });
 
         setCustomHeader();
+        checkDB();
     }
     @Override
     protected void onResume() {
@@ -181,6 +184,20 @@ public class HomeActivity extends AppCompatActivity {
             tvEmail.setText("Jhon");
             tvNombre.setText("Doe");
 
+        }
+    }
+
+    private void checkDB(){
+        SQLiteDatabase checkDB = null;
+        try{
+            checkDB = SQLiteDatabase.openDatabase("/data/data/com.pf.scoringsalud/databases/Taller", null, SQLiteDatabase.OPEN_READONLY);
+            checkDB.close();
+        }catch(SQLiteException e){
+
+        }
+        if (checkDB == null){
+            Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+            startActivity(intent);
         }
     }
 

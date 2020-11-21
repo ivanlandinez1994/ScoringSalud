@@ -10,6 +10,8 @@ import com.pf.scoringsalud.api.consumo.ApiUsuario;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,8 +31,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.pf.scoringsalud.api.infraestructura.Reporte;
+import com.pf.scoringsalud.api.infraestructura.UserValueCallback;
+import com.pf.scoringsalud.notifications.AdminSQLite;
+import com.pf.scoringsalud.notifications.NotificationActivity;
+import com.pf.scoringsalud.user.Domain.User;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class AuthActivity extends AppCompatActivity implements OnFailureListener {
@@ -153,9 +162,27 @@ public class AuthActivity extends AppCompatActivity implements OnFailureListener
         builder.show();
     }
 
-    private void showHome(String email, ProviderType provider) {
+    private void showHome(final String email, ProviderType provider) {
         try{
             Log.i("it's home line 143:", email);
+            ApiUsuario usuarioApi = new ApiUsuario();
+            usuarioApi.getUsuario(email, new UserValueCallback() {
+                @Override
+                public void onSuccess(User value) {
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("usuario", value);
+                    Log.i("NO NULO: ", "user not null");
+                    Toast.makeText(getApplicationContext(), "Bienvenid@: "+value.getNombre(), Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                @Override
+                public void onFailure() {
+                    Log.i("onFailure", "onFailure 176 - AuthActivity");
+                    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                    intent.putExtra("email", email);
+                    startActivity(intent);
+                }
+            });
             destActivity(email);
         }catch(NullPointerException e){
             Log.i("Exception 146:", e.toString());
@@ -164,7 +191,7 @@ public class AuthActivity extends AppCompatActivity implements OnFailureListener
 
     private void destActivity(final String email){
         ApiUsuario usuarioApi = new ApiUsuario();
-        usuarioApi.getUsuario(email, HomeActivity.class, AuthActivity.this);
+        //usuarioApi.getUsuario(email, HomeActivity.class, AuthActivity.this);
     }
 
     @Override

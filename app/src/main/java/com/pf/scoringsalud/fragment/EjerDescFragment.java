@@ -69,13 +69,13 @@ public class EjerDescFragment extends Fragment {
         tv_ejerdesc_descripcion = view.findViewById(R.id.tv_ejerdesc_descripcion);
         iv_ejedesc = (ImageView) view.findViewById(R.id.iv_ejedesc);
 
-        getParentFragmentManager().setFragmentResultListener("btn_ejercicio", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("btn_ejercicio",
+                this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 recuperarDato(result.getString("codigo").toString());
                 a = (Actividad) FactoryPuntuable.actividad(dato);
                 setearDatos();
-
 
             }
         });

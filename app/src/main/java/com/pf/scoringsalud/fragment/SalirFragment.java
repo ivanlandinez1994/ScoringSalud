@@ -12,10 +12,10 @@ import com.pf.scoringsalud.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RutinaFragment#newInstance} factory method to
+ * Use the {@link SalirFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RutinaFragment extends Fragment {
+public class SalirFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +25,8 @@ public class RutinaFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public RutinaFragment() {
+
+    public SalirFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +36,11 @@ public class RutinaFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RutinaFragment.
+     * @return A new instance of fragment salir.
      */
     // TODO: Rename and change types and number of parameters
-    public static RutinaFragment newInstance(String param1, String param2) {
-        RutinaFragment fragment = new RutinaFragment();
+    public static SalirFragment newInstance(String param1, String param2) {
+        SalirFragment fragment = new SalirFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -50,7 +51,6 @@ public class RutinaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -61,8 +61,6 @@ public class RutinaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rutina, container, false);
+        return inflater.inflate(R.layout.fragment_salir, container, false);
     }
-
-
 }

@@ -8,8 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.user.Domain.User;
 import com.pf.scoringsalud.api.consumo.ApiUsuario;
 
@@ -58,8 +62,22 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registrar(User user){
         ApiUsuario userApi = new ApiUsuario();
-        userApi.registrarUsuario(user, HomeActivity.class, getApplicationContext());
+        userApi.registrarUsuario(user, new StringValueCallback() {
+            @Override
+            public void onSuccess(String value) {
+                FirebaseUser userFirebase;
+                userFirebase = FirebaseAuth.getInstance().getCurrentUser();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("email", userFirebase.getEmail());
+                Toast.makeText(getApplicationContext(), "Bienvenid@: "+userFirebase.getDisplayName(), Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure() {
+                Toast.makeText(getApplicationContext(), "Error de conexion, intente nuevamente", Toast.LENGTH_SHORT).show();
+            }
+        });
         Log.i("Success", user.toString());
-        //Log.i("ERROR Successful", Integer.toString(response.code()));
     }
 }
