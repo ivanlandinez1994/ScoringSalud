@@ -26,6 +26,200 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <LinearLayout
+                    android:id="@+id/wrapAnio"
+                    android:layout_width="250dp"
+                    android:layout_height="126dp"
+                    android:layout_marginTop="45dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/enero"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/febrero"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/marzo"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/abril"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/mayo"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/junio"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/julio"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/agosto"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/septiembre"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/octubre"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/noviembre"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|bottom"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/diciembre"
+                            android:layout_width="21dp"
+                            android:layout_height="20dp"
+                            android:backgroundTint="@color/colorAccent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Mi Año"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22dp"
+                    app:layout_constraintBottom_toTopOf="@+id/wrapSemana"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/mes"
@@ -70,6 +264,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cantPuntos"
                     app:layout_constraintVertical_bias="0.0" />
 
+
                 <TextView
                     android:id="@+id/cantEjerciciosTitle"
                     android:layout_width="wrap_content"
@@ -79,10 +274,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.138"
+                    app:layout_constraintHorizontal_bias="0.06"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantPuntos"
-                    app:layout_constraintVertical_bias="0.181" />
+                    app:layout_constraintVertical_bias="0.182" />
 
                 <TextView
                     android:id="@+id/horasDeSueñoTitle"
@@ -93,7 +288,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.622"
+                    app:layout_constraintHorizontal_bias="0.801"
                     app:layout_constraintStart_toEndOf="@+id/cantEjerciciosTitle"
                     app:layout_constraintTop_toBottomOf="@+id/puntosTitle" />
 
@@ -106,10 +301,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.178"
+                    app:layout_constraintHorizontal_bias="0.062"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantEjerciciosTitle"
-                    app:layout_constraintVertical_bias="0.353" />
+                    app:layout_constraintVertical_bias="0.351" />
 
                 <TextView
                     android:id="@+id/cantPasosTitle"
@@ -120,7 +315,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.133"
+                    app:layout_constraintHorizontal_bias="0.805"
                     app:layout_constraintStart_toEndOf="@+id/cantAguaTitle"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.803" />
@@ -134,10 +329,9 @@
                     android:textSize="28dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.112"
+                    app:layout_constraintHorizontal_bias="0.084"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantEjerciciosTitle" />
-
 
                 <TextView
                     android:id="@+id/cantSuenio"
@@ -149,7 +343,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.58"
+                    app:layout_constraintHorizontal_bias="0.918"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horasDeSueñoTitle"
                     app:layout_constraintVertical_bias="0.0" />
@@ -164,7 +358,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.112"
+                    app:layout_constraintHorizontal_bias="0.084"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantAguaTitle"
                     app:layout_constraintVertical_bias="0.0" />
@@ -179,166 +373,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.58"
+                    app:layout_constraintHorizontal_bias="0.918"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantPasosTitle"
                     app:layout_constraintVertical_bias="0.0" />
-                <LinearLayout
-                android:id="@+id/wrapAnio"
-                android:layout_width="250dp"
-                android:layout_height="126dp"
-                android:layout_marginTop="45dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/enero"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/febrero"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/marzo"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/abril"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/mayo"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/junio"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/julio"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/agosto"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/septiembre"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/octubre"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/noviembre"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center|bottom"
-                    android:orientation="vertical">
-                <Button
-                    android:id="@+id/diciembre"
-                    android:layout_width="21dp"
-                    android:layout_height="20dp"
-                    android:backgroundTint="@color/colorAccent" />
-                </LinearLayout>
-
-                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
