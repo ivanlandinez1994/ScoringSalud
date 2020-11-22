@@ -90,7 +90,12 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
             @Override
             public void onClick(View view) {
                 comienzo = false;
-                contador.cancel();
+                try{
+                    contador.cancel();
+                }catch (Exception e){
+
+                }
+
             }
         });
 
@@ -212,6 +217,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
             @Override
             public void onFinish() {
+                a.setRepeticionesRealizadas(a.getRepeticionesRealizadas()+1);
+                tv_ejerun_repeticiones.setText("" + a.getRepeticionesRealizadas()+ "/" + a.getRepeticiones());
                 tiempoVibracion=500;
                 if(contadorEjercicio ==1){
                     tiempoVibracion=tiempoVibracion*2;
@@ -267,8 +274,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         }
 
         if (contadorEjercicio == 2 && a.getRepeticionesRealizadas() < a.getRepeticiones()){
-            a.setRepeticionesRealizadas(a.getRepeticionesRealizadas()+1);
-            tv_ejerun_repeticiones.setText("" + a.getRepeticionesRealizadas()+ "/" + a.getRepeticiones());
             contadorEjercicio = 0;
             ejercicioAcelerometro();
         }
