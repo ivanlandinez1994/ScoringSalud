@@ -1,4 +1,5 @@
-/**package com.pf.scoringsalud.stepCounter;
+/**
+package com.pf.scoringsalud.stepCounter;
 
 import android.app.Service;
 import android.content.Intent;
@@ -47,4 +48,4 @@ public class SaveSteps {
         });
     }
 }
-*/
+ */

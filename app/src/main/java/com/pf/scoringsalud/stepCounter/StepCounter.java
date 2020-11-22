@@ -1,3 +1,4 @@
+/**
 package com.pf.scoringsalud.stepCounter;
 
 import android.hardware.Sensor;
@@ -9,7 +10,7 @@ import android.util.Log;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-/**
+
 public class StepCounter implements SensorEventListener {
     public static int STEP_COUNT;
     public static double DISTANCIA;

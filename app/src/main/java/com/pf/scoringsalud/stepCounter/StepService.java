@@ -1,5 +1,4 @@
 /**
- *
 package com.pf.scoringsalud.stepCounter;
 
 import android.annotation.SuppressLint;
@@ -77,4 +76,4 @@ public class StepService extends Service {
         return null;
     }
 }
- */
+*/
