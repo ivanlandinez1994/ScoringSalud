@@ -88,10 +88,10 @@ public class NotificationActivity extends AppCompatActivity {
                    case "2":
                        if(di.equals("0")){
                            dias[1]=0;
-                           lunes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
+                           lunes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
                            Log.i("lunes ", "No seleccionado segun la base de datos");
                        }else{
-                           lunes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                           lunes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                            dias[1]=2;
                            Log.i("lunes ", "seleccionado");
                        }
@@ -99,59 +99,54 @@ public class NotificationActivity extends AppCompatActivity {
                    case "3":
 
                        if(di.equals("0")){
-
-                         dias[2]=0;
-                         martes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                       }else{
+                           dias[2]=0;
                            martes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                       }else{
+                           martes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                            dias[2]=3;
                        }
                        case "4":
 
                            if(di.equals("0")){
-
                                dias[3]=0;
-                               miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                           }else{
                                miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                           }else{
+                               miercoles.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                                dias[3]=4;
                            }
                    case "5":
 
                        if(di.equals("0")){
-
-                          dias[4]=0;
-                           jueves.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                       }else{
+                           dias[4]=0;
                            jueves.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                       }else{
+                           jueves.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                            dias[4]=5;
                        }
                    case "6":
                        if(di.equals("0")){
-
-                          dias[5]=0;
-                           viernes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                       }else{
+                           dias[5]=0;
                            viernes.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                       }else{
+                           viernes.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                            dias[5]=6;
                        }
                    case "7":
 
                        if(di.equals("0")){
-                          dias[6]=0;
-                           sabado.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                       }else{
+                           dias[6]=0;
                            sabado.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                       }else{
+                           sabado.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                            dias[6]=7;
                        }
                    case "1":
 
                        if(di.equals("0")){
-
                            dias[0]=0;
-                           domingo.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
-                       }else{
                            domingo.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
+                       }else{
+                           domingo.setBackground(getResources().getDrawable(R.drawable.rounded_accent));
                            dias[0]=1;
                        }
              }
