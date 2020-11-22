@@ -149,8 +149,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
             if (proximity) {
                 x = sensorEvent.values[0];
                 if(x!=0){
-                    contador.cancel();
-                    actividadIniciada = false;
+                    detener();
                     comienzo =false;
                 }else{
                     ejercicioProximity();
@@ -314,6 +313,9 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
             contador.cancel();
         }catch (Exception e){
 
+        }
+        if(proximity){
+            actividadIniciada=false;
         }
         go.setText("Comenzar");
         go.setBackgroundResource(R.drawable.rounded_corners);
