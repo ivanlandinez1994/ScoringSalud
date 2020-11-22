@@ -11,15 +11,9 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 
+
+   
     <fragment
-<<<<<<< HEAD
-        android:id="@+id/menuRutina"
-        android:name="com.pf.scoringsalud.fragment.RutinaFragment"
-        android:label="fraRutina"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-=======
->>>>>>> master
         android:id="@+id/about"
         android:name="com.pf.scoringsalud.fragment.AboutFragment"
         android:label="About"

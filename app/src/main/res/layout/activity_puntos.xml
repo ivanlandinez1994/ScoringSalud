@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:onClick="onModeSelect"
             android:text="semana"
-            android:background="@color/colorAccent"
+            android:background="@drawable/rounded_corners"
             android:textColor="@color/white"
             />
         <View
@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:onClick="onModeSelect"
             android:text="año"
-            android:background="@color/colorAccent"
+            android:background="@drawable/rounded_corners"
             android:textColor="@color/white"/>
         <View
             android:layout_width="5dp"

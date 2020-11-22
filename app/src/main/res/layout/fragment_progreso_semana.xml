@@ -78,10 +78,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.138"
+                    app:layout_constraintHorizontal_bias="0.06"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantPuntos"
-                    app:layout_constraintVertical_bias="0.181" />
+                    app:layout_constraintVertical_bias="0.182" />
 
                 <TextView
                     android:id="@+id/horasDeSueñoTitle"
@@ -92,7 +92,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.622"
+                    app:layout_constraintHorizontal_bias="0.808"
                     app:layout_constraintStart_toEndOf="@+id/cantEjerciciosTitle"
                     app:layout_constraintTop_toBottomOf="@+id/puntosTitle" />
 
@@ -105,10 +105,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.178"
+                    app:layout_constraintHorizontal_bias="0.077"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantEjerciciosTitle"
-                    app:layout_constraintVertical_bias="0.353" />
+                    app:layout_constraintVertical_bias="0.335" />
 
                 <TextView
                     android:id="@+id/cantPasosTitle"
@@ -119,10 +119,11 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.133"
+                    app:layout_constraintHorizontal_bias="0.808"
                     app:layout_constraintStart_toEndOf="@+id/cantAguaTitle"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.798" />
+                    app:layout_constraintVertical_bias="0.793" />
+
 
                 <TextView
                     android:id="@+id/cantEjer"
@@ -133,10 +134,9 @@
                     android:textSize="28dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.112"
+                    app:layout_constraintHorizontal_bias="0.075"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantEjerciciosTitle" />
-
 
                 <TextView
                     android:id="@+id/cantSuenio"
@@ -148,7 +148,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.58"
+                    app:layout_constraintHorizontal_bias="0.921"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horasDeSueñoTitle"
                     app:layout_constraintVertical_bias="0.0" />
@@ -163,7 +163,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.112"
+                    app:layout_constraintHorizontal_bias="0.075"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantAguaTitle"
                     app:layout_constraintVertical_bias="0.0" />
@@ -178,10 +178,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.58"
+                    app:layout_constraintHorizontal_bias="0.921"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cantPasosTitle"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.057" />
 
                 <LinearLayout
                     android:id="@+id/wrapSemana"
@@ -292,6 +292,18 @@
                             android:backgroundTint="@color/colorAccent" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mi semana"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22dp"
+                    app:layout_constraintBottom_toTopOf="@+id/wrapSemana"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
