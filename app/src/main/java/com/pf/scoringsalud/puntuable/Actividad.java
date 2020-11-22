@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Actividad extends Puntuable {
 
-    protected   String articulacion;
+    protected String articulacion;
     protected boolean PosicionUnica;
     protected int repeticiones;
     protected int repeticionesRealizadas;
