@@ -70,6 +70,7 @@ dependencies {
     //Gif Drawable
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
