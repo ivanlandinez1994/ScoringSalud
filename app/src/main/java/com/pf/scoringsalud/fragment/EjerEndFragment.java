@@ -1,5 +1,6 @@
 package com.pf.scoringsalud.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.pf.scoringsalud.activity.HomeActivity;
 import com.pf.scoringsalud.factory.FactoryPuntuable;
 import com.pf.scoringsalud.puntuable.Actividad;
 
@@ -38,10 +40,8 @@ public class EjerEndFragment extends Fragment {
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeFragment hf= new HomeFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.ejerEnd, hf );
-                transaction.commit();
+               getActivity().finish();
+
             }
         });
         return view;
@@ -54,7 +54,6 @@ public class EjerEndFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("eje_end", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                tv_ejerend_descripcion.setText("ACAAAA");
                 recuperarDato(result.getString("key").toString());
                 a = (Actividad) FactoryPuntuable.actividad(dato);
                 tv_ejerend_descripcion.setText("¡Has completado\n"+a.getNombre()+"!");

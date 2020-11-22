@@ -68,7 +68,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         // abrir activity Sueño
         Button btnsuenio= view.findViewById(R.id.buttonComSleep);
         btnsuenio.setOnClickListener(new View.OnClickListener() {
@@ -79,10 +78,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-        Button btnAct= view.findViewById(R.id.buttonRutinas);
-        btnAct.setOnClickListener(new View.OnClickListener() {
+        // abrir activity notification
+        Button btnRutina= view.findViewById(R.id.buttonRutinas);
+        btnRutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), NotificationActivity.class);

@@ -12,13 +12,7 @@
         android:title="@string/perfil"
         android:checkable="true"/>
 
-       <item
-        android:id="@+id/menuRutina"
-        android:icon="@drawable/calendar"
-        android:title="@string/rutina"
-           android:checkable="true"/>
-
-        <item
+    <item
         android:id="@+id/about"
         android:icon="@drawable/info"
         android:title="@string/acerca_de"
@@ -29,7 +23,5 @@
         android:icon="@drawable/exit"
         android:title="@string/cerrar_sesi_n"
         android:checkable="true" />
-
-
 
 </menu>

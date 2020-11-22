@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".fragment.EjerRun"
+    tools:context=".fragment.EjerRunFragment"
     android:id="@id/ejerRun"
     android:clickable="true">
 
@@ -48,46 +48,28 @@
 
                 <Button
                     android:id="@+id/btn_ejerrun_deneter"
-                    android:layout_width="151dp"
-                    android:layout_height="28dp"
+                    android:layout_width="213dp"
+                    android:layout_height="26dp"
                     android:layout_marginBottom="12dp"
-                    android:background="@drawable/rounded_corners"
+                    android:background="@color/pin_background"
                     android:text="Detener"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.502"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintVertical_bias="0.416" />
-
-                <pl.droidsonroids.gif.GifImageView
-                    android:id="@+id/iv_ejedesc"
-                    android:layout_width="351dp"
-                    android:layout_height="169dp"
-                    android:background="@color/colorAccent"
-                    android:src="@drawable/ejer_cadera"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fechaAgua"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:ignore="MissingClass" />
-
-
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="55dp"
                     android:layout_height="59dp"
-                    android:layout_marginStart="44dp"
+                    android:layout_marginStart="112dp"
                     android:src="@drawable/clock"
                     app:layout_constraintBottom_toTopOf="@+id/tv_ejerun_repeticiones"
-                    app:layout_constraintHorizontal_bias="0.877"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.514" />
+                    app:layout_constraintVertical_bias="0.441" />
+
 
                 <TextView
                     android:id="@+id/textView15"
@@ -111,10 +93,10 @@
                     android:textSize="40dp"
                     app:layout_constraintBottom_toTopOf="@+id/tv_ejerun_repeticiones"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.669"
+                    app:layout_constraintHorizontal_bias="0.2"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.426" />
+                    app:layout_constraintVertical_bias="0.422" />
 
                 <TextView
                     android:id="@+id/tv_ejerun_repeticiones"
@@ -130,6 +112,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
                     app:layout_constraintVertical_bias="0.934" />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/iv_ejedesc"
+                    android:layout_width="351dp"
+                    android:layout_height="169dp"
+                    android:background="@color/colorAccent"
+                    android:src="@drawable/ejer_cadera"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fechaAgua"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="MissingClass" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
