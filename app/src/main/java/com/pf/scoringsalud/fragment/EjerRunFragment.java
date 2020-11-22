@@ -1,6 +1,7 @@
 package com.pf.scoringsalud.fragment;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -63,6 +64,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     private boolean acelerometro = false;
     private boolean proximity=false;
     private boolean comienzo =false;
+    private boolean isStarted =false;
 
     private double x;
     private double y;
@@ -85,27 +87,15 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         ejerciciosActivity=(EjerciciosActivity) getActivity();
         tipo =ejerciciosActivity.getTipo();
 
-        stop= view.findViewById(R.id.btn_ejerrun_deneter);
-        stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                comienzo = false;
-                try{
-                    contador.cancel();
-                }catch (Exception e){
-
-                }
-
-            }
-        });
-
         go= view.findViewById(R.id.btn_ejerRun_comenzar);
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                comenzar();
-                //iniciarContador();
+                if(!isStarted) {
+                    comenzar();
+                }else{
+                    detener();
+                }
             }
         });
         return view;
@@ -235,7 +225,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
             }
 
-        }.start();
+        };
 }
 
     private void iniciarContadorEspera(int tiempo){
@@ -263,17 +253,19 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     }
 
     private void ejercicioAcelerometro(){
-        if(medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio)){
+        if(medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio) && comienzo){
             iniciarContador(tiempoActividad);
+            contador.start();
             comienzo = false;
 
-        } else if (medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio)) {
+        } else if (medicion.getEstrategia().posicionCorrecta(x,y,z,contadorEjercicio)&& comienzo) {
 
             iniciarContador(tiempoActividad);
+            contador.start();
             comienzo = false;
         }
 
-        if (contadorEjercicio == 2 && a.getRepeticionesRealizadas() < a.getRepeticiones()){
+        if (contadorEjercicio == 2 && a.getRepeticionesRealizadas() < a.getRepeticiones()&& comienzo){
             contadorEjercicio = 0;
             ejercicioAcelerometro();
         }
@@ -302,6 +294,7 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
         }else if(a.getRepeticionesRealizadas() != a.getRepeticiones()){
                 iniciarContador(tiempoActividad);
+            contador.start();
         }
 
 
@@ -309,6 +302,21 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
     private void comenzar() {
             comienzo = true;
+            isStarted =true;
+
+        go.setText("Detener");
+        go.setBackgroundResource(R.drawable.btn_rojo);
+    }
+
+    private void detener(){
+        isStarted = false;
+        try{
+            contador.cancel();
+        }catch (Exception e){
+
+        }
+        go.setText("Comenzar");
+        go.setBackgroundResource(R.drawable.rounded_corners);
     }
 
     private void exito(){
