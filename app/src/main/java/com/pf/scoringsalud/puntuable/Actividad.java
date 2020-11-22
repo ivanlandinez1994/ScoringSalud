@@ -15,7 +15,6 @@ public class Actividad extends Puntuable {
     protected int repeticionesRealizadas;
     protected ArrayList<Medible> medidores;
     protected String rutaGif;
-
     public Actividad(String codigo, String nombre, int puntosOtorgables,String articulacion,
                      String rutaGif, String descripcion,boolean PosicionUnica,int repeticiones) {
         super(codigo, nombre,puntosOtorgables,descripcion);

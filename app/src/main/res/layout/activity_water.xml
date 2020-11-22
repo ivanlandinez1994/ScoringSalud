@@ -122,10 +122,10 @@
                     app:layout_constraintVertical_bias="0.343" />
 
                 <ImageView
-                    android:id="@+id/iv_ejedesc"
+                    android:id="@+id/iv_vaso"
                     android:layout_width="100dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/vasito2"
+                    android:src="@drawable/vaso1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.505"
@@ -152,6 +152,7 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="196dp"
                     android:text="Vasos de Agua"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18dp"
