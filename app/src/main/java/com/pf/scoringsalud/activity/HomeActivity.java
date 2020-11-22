@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +33,7 @@ import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.notifications.NotificationActivity;
 import com.pf.scoringsalud.user.Data.LoadImage;
+
 import static java.security.AccessController.getContext;
 
 enum ProviderType {
@@ -128,16 +128,11 @@ public class HomeActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
-
-
-
             }
         });
 
         setCustomHeader();
-
         checkDB();
-
     }
     @Override
     protected void onResume() {
@@ -160,7 +155,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
-
     private void setCustomHeader(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
         View hView = navigationView.getHeaderView(0);
