@@ -40,7 +40,8 @@ public class EjerEndFragment extends Fragment {
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
+               getActivity().finish();
+
             }
         });
         return view;
