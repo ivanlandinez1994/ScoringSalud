@@ -33,7 +33,6 @@ import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.notifications.NotificationActivity;
 import com.pf.scoringsalud.api.consumo.ApiPuntuable;
-import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.user.Data.LoadImage;
 
 import static java.security.AccessController.getContext;
@@ -98,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //colores en los iconos del drawer
-        final NavigationView navigationView = findViewById(R.id.navigationView);
+        NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
 
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
