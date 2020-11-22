@@ -1,7 +1,7 @@
 package com.pf.scoringsalud.puntuable.medidor;
 
 
-public class Contador implements Medible {
+public class Contador implements com.pf.scoringsalud.puntuable.medidor.Medible {
     private int tiempo;
 
     public Contador(int tiempo){

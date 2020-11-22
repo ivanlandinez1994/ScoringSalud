@@ -9,11 +9,20 @@ import androidx.navigation.fragment.FragmentNavigator;
 import com.pf.scoringsalud.R;
 
 public class EjerciciosActivity extends AppCompatActivity {
-   
+   private String tipo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejercicios);
+        tipo="Actividad";
+try {
+    if(getIntent().getStringExtra("notificacion").equalsIgnoreCase("Pomodoro")){
+        tipo = getIntent().getStringExtra("notificacion");
+        getIntent().removeExtra("notificacion");
+    }
+}catch (Exception e){
+
+}
 
 
 
@@ -38,7 +47,7 @@ public class EjerciciosActivity extends AppCompatActivity {
     }
 
 
-
-
-
+    public String getTipo() {
+        return tipo;
+    }
 }

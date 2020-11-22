@@ -12,23 +12,28 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
+<<<<<<< HEAD
         android:id="@+id/menuRutina"
         android:name="com.pf.scoringsalud.fragment.RutinaFragment"
         android:label="fraRutina"
         tools:layout="@layout/fragment_home" />
     <fragment
+=======
+>>>>>>> master
         android:id="@+id/about"
         android:name="com.pf.scoringsalud.fragment.AboutFragment"
         android:label="About"
         tools:layout="@layout/fragment_about" />
+
     <fragment
         android:id="@+id/menuHome"
         android:name="com.pf.scoringsalud.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
         android:id="@+id/salir"
-        android:name="com.pf.scoringsalud.fragment.salirFragment"
+        android:name="com.pf.scoringsalud.fragment.SalirFragment"
         android:label="fragment_salir"
         tools:layout="@layout/fragment_salir" />
     <activity

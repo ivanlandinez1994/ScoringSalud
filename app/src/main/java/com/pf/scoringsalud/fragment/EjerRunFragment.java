@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.pf.scoringsalud.activity.EjerciciosActivity;
 import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.PuntuableEndPoint;
 import com.pf.scoringsalud.puntuable.Actividad;
@@ -68,6 +69,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     private double z;
     private int contadorEjercicio=0;
 
+    private EjerciciosActivity ejerciciosActivity;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,14 +82,20 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         mp = MediaPlayer.create(getContext(),R.raw.beep);
         actividadIniciada = false;
         tiempoEspera=3000;
-        tipo="Actividad";
+        ejerciciosActivity=(EjerciciosActivity) getActivity();
+        tipo =ejerciciosActivity.getTipo();
 
         stop= view.findViewById(R.id.btn_ejerrun_deneter);
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 comienzo = false;
-                contador.cancel();
+                try{
+                    contador.cancel();
+                }catch (Exception e){
+
+                }
+
             }
         });
 
@@ -208,6 +217,8 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
 
             @Override
             public void onFinish() {
+                a.setRepeticionesRealizadas(a.getRepeticionesRealizadas()+1);
+                tv_ejerun_repeticiones.setText("" + a.getRepeticionesRealizadas()+ "/" + a.getRepeticiones());
                 tiempoVibracion=500;
                 if(contadorEjercicio ==1){
                     tiempoVibracion=tiempoVibracion*2;
@@ -263,8 +274,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         }
 
         if (contadorEjercicio == 2 && a.getRepeticionesRealizadas() < a.getRepeticiones()){
-            a.setRepeticionesRealizadas(a.getRepeticionesRealizadas()+1);
-            tv_ejerun_repeticiones.setText("" + a.getRepeticionesRealizadas()+ "/" + a.getRepeticiones());
             contadorEjercicio = 0;
             ejercicioAcelerometro();
         }
@@ -299,28 +308,24 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     }
 
     private void comenzar() {
-    //    if(medicion.getEstrategia().posicionInicio(x,y,z)) {
             comienzo = true;
-   //     }
     }
 
     private void exito(){
         postPuntuable();
         fragmentEnd();
     }
-    private void postPuntuable(){
-        if(getActivity().getIntent().getStringExtra("pomodoro")=="Pomodoro"){
 
-            tipo = getActivity().getIntent().getStringExtra("pomodoro");
-        }
+    private void postPuntuable(){
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         PuntuableEndPoint pep = new PuntuableEndPoint(tipo,a.getNombre(),
-                a.getPuntosOtorgables(),"Prueba",user.getEmail());
+                a.getUnidadesOtorgables(),a.getDetalle(),user.getEmail());
         ApiPuntuable ap = new ApiPuntuable();
         ap.crearPuntuable(pep,getContext());
-
     }
+
     private void fragmentEnd(){
         Bundle bundle1 = new Bundle();
         bundle1.putString("key",dato);

@@ -52,6 +52,9 @@ public class NotificationService extends IntentService {
 
     @TargetApi(Build.VERSION_CODES.O)
     @Override
+
+
+
     protected void onHandleIntent(Intent intent2) {
 
 
@@ -60,6 +63,7 @@ public class NotificationService extends IntentService {
         Context context = this.getApplicationContext();
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent mIntent = new Intent(this, EjerciciosActivity.class); //colocamos el Activity al cual va a viajar nuestra notificacion, esta variable la implementamos en la notificacion abajo
+        mIntent.putExtra("notificacion","Pomodoro");
         Resources res = this.getResources();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         String message = getString(R.string.new_notification);
