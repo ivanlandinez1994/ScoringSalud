@@ -11,8 +11,6 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 
-
-   
     <fragment
         android:id="@+id/about"
         android:name="com.pf.scoringsalud.fragment.AboutFragment"
@@ -30,11 +28,6 @@
         android:name="com.pf.scoringsalud.fragment.SalirFragment"
         android:label="fragment_salir"
         tools:layout="@layout/fragment_salir" />
-    <activity
-        android:id="@+id/nmenuRutina"
-        android:name="com.pf.scoringsalud.notifications.NotificationActivity"
-        android:label="activity_notification"
-        tools:layout="@layout/activity_notification" />
 
 
 </navigation>
