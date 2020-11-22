@@ -41,8 +41,7 @@ public class EjerEndFragment extends Fragment {
             @Override
             public void onClick(View view) {
                getActivity().finish();
-                // Intent intent = new Intent(EjerEndFragment.this.getActivity(), HomeActivity.class);
-               // startActivity(intent);
+
             }
         });
         return view;
