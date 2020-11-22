@@ -1,21 +1,16 @@
 package com.pf.scoringsalud.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +25,7 @@ public class PasosActivity extends AppCompatActivity {
 
     SensorManager sm;
     Sensor sensor;
+    SensorEventListener stepDetector;
     private double magnitudePrevious = 0;
     private Integer stepCount = 0;
     TextView tv_pasos_conteo;
@@ -38,11 +34,6 @@ public class PasosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pasos);
-
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
-            //ask for permission
-            requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, Sensor.TYPE_ACCELEROMETER);
-        }
 
         tv_pasos_conteo= (TextView) findViewById(R.id.tv_pasos_conteo);
         tv_Km = (TextView) findViewById(R.id.tvKm);
@@ -54,8 +45,10 @@ public class PasosActivity extends AppCompatActivity {
         ap.actualizarPuntuable(user.getEmail(), "Pasos", -1, getApplicationContext(), new StringValueCallback() {
             @Override
             public void onSuccess(String value) {
-                tv_pasos_conteo.setText(value);
-                stepCount = Integer.parseInt(value);
+                if(Integer.parseInt(value) > stepCount){
+                    tv_pasos_conteo.setText(value);
+                    stepCount = Integer.parseInt(value);
+                }
             }
 
             @Override
@@ -72,51 +65,55 @@ public class PasosActivity extends AppCompatActivity {
 
             }
         });
-        SensorEventListener stepDetector = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent sensorEvent) {
-                if (sensorEvent!= null){
-                    float x_acceleration = sensorEvent.values[0];
-                    float y_acceleration = sensorEvent.values[1];
-                    float z_acceleration = sensorEvent.values[2];
+        //boolean isActive = GlobalVariables.getIsServiceActive();
+        //if(!isActive) {
+            stepDetector = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent sensorEvent) {
+                    if (sensorEvent!= null){
+                        float x_acceleration = sensorEvent.values[0];
+                        float y_acceleration = sensorEvent.values[1];
+                        float z_acceleration = sensorEvent.values[2];
 
-                    double magnitude = Math.sqrt(x_acceleration*x_acceleration + y_acceleration*y_acceleration + z_acceleration*z_acceleration);
-                    double magnitudeDelta = magnitude-magnitudePrevious;
-                    magnitudePrevious = magnitude;
+                        double magnitude = Math.sqrt(x_acceleration*x_acceleration + y_acceleration*y_acceleration + z_acceleration*z_acceleration);
+                        double magnitudeDelta = magnitude-magnitudePrevious;
+                        magnitudePrevious = magnitude;
 
-                    if (magnitudeDelta > 6){
-                        stepCount++;
+                        if (magnitudeDelta > 6){
+                            stepCount++;
+                        }
+                        if( stepCount  % 5 == 0) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            ApiPuntuable ap = new ApiPuntuable();
+                            ap.actualizarPuntuable(user.getEmail(), "Pasos", stepCount, getApplicationContext(), new StringValueCallback() {
+                                @Override
+                                public void onSuccess(String value) {
+
+                                }
+
+                                @Override
+                                public void onFailure() {
+
+                                }
+                            });
+                        }
+                        tv_pasos_conteo.setText(stepCount.toString());
+                        DecimalFormat df = new DecimalFormat("#.##");
+                        df.setRoundingMode(RoundingMode.FLOOR);
+                        double kms = stepCount* 0.0007;
+                        double kmsFormatted = new Double(df.format(kms));
+                        tv_Km.setText(String.valueOf(kmsFormatted));
                     }
-                    if( stepCount  % 5 == 0) {
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        ApiPuntuable ap = new ApiPuntuable();
-                        ap.actualizarPuntuable(user.getEmail(), "Pasos", stepCount, getApplicationContext(), new StringValueCallback() {
-                            @Override
-                            public void onSuccess(String value) {
-
-                            }
-
-                            @Override
-                            public void onFailure() {
-
-                            }
-                        });
-                    }
-                    tv_pasos_conteo.setText(stepCount.toString());
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    df.setRoundingMode(RoundingMode.FLOOR);
-                    double kms = stepCount* 0.0007;
-                    double kmsFormatted = new Double(df.format(kms));
-                    tv_Km.setText(String.valueOf(kmsFormatted));
                 }
-            }
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int i) {
-            }
-        };
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int i) {
+                }
+            };
+            sm.registerListener(stepDetector, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        //    GlobalVariables.setIsServiceActive(true);
+        //}
 
-        sm.registerListener(stepDetector, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     protected void onPause() {
@@ -124,7 +121,6 @@ public class PasosActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
         editor.putInt("stepCount", stepCount);
         editor.apply();
     }
@@ -137,6 +133,7 @@ public class PasosActivity extends AppCompatActivity {
         editor.clear();
         editor.putInt("stepCount", stepCount);
         editor.apply();
+
     }
 
     protected void onResume() {
@@ -144,6 +141,22 @@ public class PasosActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         stepCount = sharedPreferences.getInt("stepCount", 0);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        ApiPuntuable ap = new ApiPuntuable();
+        ap.actualizarPuntuable(user.getEmail(), "Pasos", -1, getApplicationContext(), new StringValueCallback() {
+            @Override
+            public void onSuccess(String value) {
+                if(Integer.parseInt(value) > stepCount){
+                    tv_pasos_conteo.setText(value);
+                    stepCount = Integer.parseInt(value);
+                }
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
     }
 
 

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,8 +29,6 @@ import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.user.Data.LoadImage;
-
-import static java.security.AccessController.getContext;
 
 enum ProviderType {
     BASIC,
@@ -182,6 +179,11 @@ public class HomeActivity extends AppCompatActivity {
             tvNombre.setText("Doe");
 
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override
