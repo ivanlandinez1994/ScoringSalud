@@ -30,11 +30,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.notifications.NotificationActivity;
-import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.user.Data.LoadImage;
-
 import static java.security.AccessController.getContext;
 
 enum ProviderType {
@@ -136,8 +135,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         setCustomHeader();
-
-        checkDB();
 
         checkDB();
 
