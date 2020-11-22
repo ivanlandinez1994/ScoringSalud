@@ -1,5 +1,7 @@
 package com.pf.scoringsalud.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,6 +34,7 @@ import com.pf.scoringsalud.R;
 import com.pf.scoringsalud.api.consumo.ApiPuntuable;
 import com.pf.scoringsalud.api.infraestructura.StringValueCallback;
 import com.pf.scoringsalud.notifications.NotificationActivity;
+import com.pf.scoringsalud.notifications.AlarmReceiver;
 import com.pf.scoringsalud.user.Data.LoadImage;
 
 import static java.security.AccessController.getContext;
@@ -69,6 +72,15 @@ public class HomeActivity extends AppCompatActivity {
 
         Log.i("HomeAct: Fin persistencia","Termino de persistir");
 
+        //iniciar stepCounter
+        /**
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(this, AlarmReceiver.class);
+        PendingIntent pending = PendingIntent.getBroadcast(this, 0, i,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, 15000 ,
+                AlarmManager.INTERVAL_HOUR, pending);
+        **/
         //Traer y setear puntos
         tv_puntos = findViewById(R.id.textView18);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -199,6 +211,11 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override

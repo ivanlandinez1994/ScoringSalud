@@ -15,7 +15,13 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pf.scoringsalud.R;
+import com.pf.scoringsalud.api.consumo.ApiPuntuable;
+import com.pf.scoringsalud.api.infraestructura.ArrayListReportValueCallback;
+import com.pf.scoringsalud.api.infraestructura.Reporte;
 import com.pf.scoringsalud.user.Data.LoadImage;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ProfileFragment extends Fragment {
 
@@ -23,8 +29,8 @@ public class ProfileFragment extends Fragment {
     TextView tvEmail;
     TextView tvNombre;
     ImageView ivUser;
-    Button btn1;
-    Button btn2;Button btn3;Button btn4;
+    Button btnSedentario, btnMedioActivo, btnActivo, btnAltoActivo;
+    ArrayList<Reporte> reportes = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,68 +38,13 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
 
-        btn1=view.findViewById(R.id.sedentario);
-        btn2=view.findViewById(R.id.medioActivo);
-        btn3=view.findViewById(R.id.activo);
-        btn4=view.findViewById(R.id.altoActivo);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
-                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-
-
-
-            }
-        });
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
-                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-
-
-            }
-        });
-
-
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
-                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-
-
-            }
-        });
-
-
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                btn4.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
-                btn2.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn3.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-                btn1.setBackground(getResources().getDrawable(R.drawable.rounded_corners_gray));
-
-
-            }
-        });
-
-
+        btnSedentario =view.findViewById(R.id.sedentario);
+        btnMedioActivo =view.findViewById(R.id.medioActivo);
+        btnActivo =view.findViewById(R.id.activo);
+        btnAltoActivo =view.findViewById(R.id.altoActivo);
 
         setData(view);
+        setActividadFisica();
         return view;
     }
 
@@ -129,5 +80,31 @@ public class ProfileFragment extends Fragment {
 
 
     }
-}
 
+    private void setActividadFisica(){
+        ApiPuntuable apiPuntuable = new ApiPuntuable();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        apiPuntuable.obtenerReportes(user.getEmail(), "año", new ArrayListReportValueCallback() {
+            @Override
+            public void onSuccess(ArrayList<Reporte> values) {
+                reportes = values;
+                Reporte reporteMesActual = reportes.get(Calendar.getInstance().get(Calendar.MONTH));
+                int puntosMonth = reporteMesActual.getPuntos();
+                if (puntosMonth<=15000){
+                    btnSedentario.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                }else if(puntosMonth>15000 && puntosMonth<=30000){
+                    btnMedioActivo.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                }else if(puntosMonth>30000 && puntosMonth<=45000){
+                    btnActivo.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                }else if(puntosMonth>45000){
+                    btnAltoActivo.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                }
+
+            }
+            @Override
+            public void onFailure() {
+
+            }
+        });
+    }
+}

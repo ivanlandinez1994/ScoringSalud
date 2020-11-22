@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".fragment.EjerRun"
+    tools:context=".fragment.EjerRunFragment"
     android:id="@id/ejerRun"
     android:clickable="true">
 
@@ -61,18 +61,17 @@
                     tools:ignore="MissingClass" />
 
 
-
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="55dp"
                     android:layout_height="59dp"
                     android:layout_marginStart="44dp"
+                    android:layout_marginBottom="44dp"
                     android:src="@drawable/clock"
                     app:layout_constraintBottom_toTopOf="@+id/tv_ejerun_repeticiones"
-                    app:layout_constraintHorizontal_bias="0.877"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.514" />
+                    app:layout_constraintVertical_bias="0.925" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -86,24 +85,27 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
+
                 <TextView
                     android:id="@+id/tv_ejerun_tiempo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="52dp"
                     android:text=""
                     android:textColor="@android:color/black"
                     android:textSize="40dp"
                     app:layout_constraintBottom_toTopOf="@+id/tv_ejerun_repeticiones"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.699"
+                    app:layout_constraintHorizontal_bias="0.739"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.546" />
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/tv_ejerun_repeticiones"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
                     android:background="@color/colorAccent"
                     android:padding="19dp"
                     android:text="0"
@@ -111,9 +113,7 @@
                     android:textSize="32dp"
                     app:layout_constraintBottom_toTopOf="@+id/textView15"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_ejedesc"
-                    app:layout_constraintVertical_bias="0.858" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
