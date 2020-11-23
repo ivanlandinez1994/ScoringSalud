@@ -16,8 +16,10 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import com.pf.scoringsalud.R;
@@ -48,6 +50,12 @@ public class NotificationService extends IntentService {
 
     public NotificationService() {
         super("SERVICE");
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 
     @TargetApi(Build.VERSION_CODES.O)
@@ -121,7 +129,7 @@ public class NotificationService extends IntentService {
                                 calendario.setTime(d);
 
                                 //aumentamos la en la cantidad que deseeamos
-                                calendario.add(Calendar.MINUTE, 20); //este parametro es el valor que queremos aumentar, intervalos de 10 0 20 min etc
+                                calendario.add(Calendar.MINUTE, 3); //este parametro es el valor que queremos aumentar, intervalos de 10 0 20 min etc
                                 //almacenamos la nueva hora con el incremento, nuevamente en el string para introducirlo en la tabla
                                 String nuevahora = df.format(calendario.getTime());
                                 //verificamos con un Log los valores que actualizamos
@@ -159,7 +167,7 @@ public class NotificationService extends IntentService {
                             pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                             builder.setContentTitle(getString(R.string.app_name)).setCategory(Notification.CATEGORY_SERVICE)
                                     .setSmallIcon(R.drawable.gym)   // required
-                                    .setContentText(message)
+                                    .setContentText("Llego la hora de una nueva actividad")
                                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.gym))
                                     .setDefaults(Notification.DEFAULT_ALL) //este metodo esta deprecado para api26
                                     .setAutoCancel(true)
