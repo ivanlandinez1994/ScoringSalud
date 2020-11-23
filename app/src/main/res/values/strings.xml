@@ -7,7 +7,7 @@
     <!-- [END fcm_default_icon_string] -->
     <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
     <string name="fcm_message">FCM Message</string>
-    <string name="new_notification">Nueva notificación</string>
+    <string name="new_notification">Hora de hacer una actividad</string>
     <string name="changed_to">Notificación cambiada a las %s</string>
     <string name="time_selected_is">La hora seleccionada es:</string>
     <string name="change_time">Programar notificacion</string>

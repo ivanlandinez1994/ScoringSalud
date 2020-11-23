@@ -46,7 +46,7 @@ public class NotificationActivity extends AppCompatActivity {
     private AdminSQLite admin;
     private SQLiteDatabase bd, bdr;
     private ContentValues registro;
-    private String programadasAntesIni, getProgramadasAntesFin;
+    private String programadasAntesIni, programadasAntesFin;
     private static Cursor fila;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,16 +181,18 @@ public class NotificationActivity extends AppCompatActivity {
         try {
 
             fila = bdr.rawQuery("SELECT horaIni FROM alarma where dia = 1", null);
-            fila.moveToFirst();
             programadasAntesIni = fila.getString(0);
+            if (programadasAntesIni == null){
+                programadasAntesIni = "00:00";
+            }
             notificationsTime.setText(programadasAntesIni);
-            fila.moveToNext();
             Cursor f = bdr.rawQuery("SELECT horaFin FROM alarma where dia = 1", null);
-            f.moveToFirst();
-            getProgramadasAntesFin = f.getString(0);
-            f.moveToNext();
-            Log.i("Exeption servicio", programadasAntesIni + " y " + getProgramadasAntesFin);
-            notificationsTimeEnd.setText(getProgramadasAntesFin);
+            programadasAntesFin = f.getString(0);
+            if (programadasAntesFin == null){
+                programadasAntesFin = "00:00";
+            }
+            Log.i("Exeption servicio", programadasAntesIni + " y " + programadasAntesFin);
+            notificationsTimeEnd.setText(programadasAntesFin);
         }catch (CursorIndexOutOfBoundsException e){
             Log.i("Exeption servicio", e.getMessage());
         }
@@ -272,10 +274,10 @@ public class NotificationActivity extends AppCompatActivity {
             fila.moveToNext();
             fila = bdr.rawQuery("SELECT horaFin FROM alarma", null);
             fila.moveToFirst();
-            getProgramadasAntesFin = fila.getString(0);
+            programadasAntesFin = fila.getString(0);
             fila.moveToNext();
-            Log.i("Exeption servicio", programadasAntesIni + " y " + getProgramadasAntesFin);
-            notificationsTimeEnd.setText(getProgramadasAntesFin);
+            Log.i("Exeption servicio", programadasAntesIni + " y " + programadasAntesFin);
+            notificationsTimeEnd.setText(programadasAntesFin);
         }catch (CursorIndexOutOfBoundsException e){
             Log.i("Exeption servicio", e.getMessage());
         }
@@ -409,9 +411,21 @@ public class NotificationActivity extends AppCompatActivity {
                     registro = new ContentValues();
                     registro.put("encabezado", "Notificacion");
                     registro.put("dia", d);
-                    registro.put("horaIni", finalInicio);
-                    registro.put("horaFin", finalFin );
-                    registro.put("inicioFijo", finalInicio);
+                    if(finalInicio == null){
+                        registro.put("horaIni", programadasAntesIni);
+                        registro.put("inicioFijo", programadasAntesIni);
+                    }else {
+                        registro.put("horaIni", finalInicio);
+                        registro.put("inicioFijo", finalInicio);
+                    }
+                if(finalFin == null){
+                    registro.put("horaFin", programadasAntesFin);
+
+                }else{
+                    registro.put("horaFin", finalFin);
+                }
+
+
                     bd.insert("alarma", null, registro);
                     Log.i("hora en llenar ", "hora"+registro.toString());
 
