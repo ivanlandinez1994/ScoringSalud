@@ -143,7 +143,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
                 x = sensorEvent.values[0];
                 y = sensorEvent.values[1];
                 z = sensorEvent.values[2];
-
                 ejercicioAcelerometro();
             }
             if (proximity) {
@@ -154,7 +153,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
                 }else{
                     ejercicioProximity();
                 }
-
             }
         }
     }
@@ -277,11 +275,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
     }
 
     private void ejercicioProximity(){
-        if (contadorEjercicio == 2 && a.getRepeticionesRealizadas() < a.getRepeticiones()) {
-            a.setRepeticionesRealizadas(a.getRepeticionesRealizadas() + 1);
-            tv_ejerun_repeticiones.setText("" + a.getRepeticionesRealizadas() + "/" + a.getRepeticiones());
-            contadorEjercicio = 0;
-        }
         if(!actividadIniciada){
             iniciarContadorEspera(tiempoEspera);
 
@@ -295,8 +288,6 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
                 iniciarContador(tiempoActividad);
             contador.start();
         }
-
-
     }
 
     private void comenzar() {
@@ -325,17 +316,13 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         postPuntuable();
         fragmentEnd();
     }
-
     private void postPuntuable(){
-
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         PuntuableEndPoint pep = new PuntuableEndPoint(tipo,a.getNombre(),
                 a.getUnidadesOtorgables(),a.getDetalle(),user.getEmail());
         ApiPuntuable ap = new ApiPuntuable();
         ap.crearPuntuable(pep,getContext());
     }
-
     private void fragmentEnd(){
         Bundle bundle1 = new Bundle();
         bundle1.putString("key",dato);
@@ -345,5 +332,4 @@ public class EjerRunFragment extends Fragment implements SensorEventListener {
         transaction.replace(R.id.ejerRun, ed );
         transaction.commit();
     }
-
 }
